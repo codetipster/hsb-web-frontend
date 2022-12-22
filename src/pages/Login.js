@@ -35,23 +35,24 @@ const Login = () => {
                     />
                    </div>
                     <div className='relative'>
-                    <div  className="my-4">
-                        <input 
-                            type={seePassword === false ? 'password' : 'text'}
-                            name="password" 
-                            placeholder="Password" 
-                            className='w-[350px] h-10 border-b border-[#fffff] text-gray-700 px-4 py-2 mt-2 focus:ring-1 focus:ring-inset focus:ring-black rounded shadow-lg'
-                        />
+                        <div  className="my-4">
+                            <input 
+                                type={seePassword === false ? 'password' : 'text'}
+                                name="password" 
+                                placeholder="Password" 
+                                className='w-[350px] h-10 border-b border-[#fffff] text-gray-700 px-4 py-2 mt-2 focus:ring-1 focus:ring-inset focus:ring-black rounded shadow-lg'
+                            />
+                        </div>
+
+                        <div className="text-2xl text-gray-500 absolute top-[34px] right-5">
+                            {seePassword === false ? (
+                            <AiFillEye onClick={handleToggle} />
+                            ) : (
+                            <AiFillEyeInvisible onClick={handleToggle} />
+                            )}
+                        </div>
                     </div>
 
-                    <div className="text-2xl text-gray-500 absolute top-[34px] right-5">
-                      {seePassword === false ? (
-                      <AiFillEye onClick={handleToggle} />
-                       ) : (
-                       <AiFillEyeInvisible onClick={handleToggle} />
-                      )}
-                    </div>
-                    </div>
                     <div className="w-[240px] text-sm h-[20px] text-gray-400 relative left-[100px]">
                       <a href="/" className='w-full font-thin font-normal'>Forgot Password? Reset here</a>
                     </div>
