@@ -2,14 +2,15 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import img from '../assets/logo.png'
+import { NavLink } from 'react-router-dom'
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Clients', href: '#', current: false },
-  { name: 'Accountants', href: '#', current: false },
-  { name: 'Chats', href: '#', current: false },
-  { name: 'Profile', href: '#', current: false },
-  { name: 'Logout', href: '#', current: false },
-  { name: 'English', href: '#', current: false }
+  { name: 'Home', href: '/' },
+  { name: 'Clients', href: '/clients',  },
+  { name: 'Accountants', href: '/accountants', },
+  { name: 'Chats', href: '/chats',  },
+  { name: 'Profile', href: '/profile',  },
+  { name: 'Logout', href: '/auth', },
+  { name: 'English', href: '/languages',  }
 ]
 
 function classNames(...classes) {
@@ -50,17 +51,17 @@ export default function Example() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex px-32 space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <NavLink
                         key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-[#FFE9E9] text-gray-800' : 'text-gray-800 hover:bg-[#FFE9E9] hover:text-gray-800',
-                          'px-6 py-2 rounded-md text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
+                        to={item.href}
+                        className={({isActive})=>{
+                          return( 'px-6 py-2 rounded-md text-sm font-medium' + (isActive ? 'text-white bg-[#FF1C1D] hover:bg-[#FFE9E9]':'bg-[#FFE9E9] text-gray-800 hover:bg-[#FFE9E9]')
+                           
+                          )}}
                       >
-                        {item.name}
-                      </a>
+                        {item.name} 
+
+                      </NavLink>
                     ))}
                   </div>
                 </div>

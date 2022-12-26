@@ -39,7 +39,7 @@ const accountants = [
     
   return (
     <div >
-        <Navbar />
+        
         <div className='bg-gray-100 '>
             <div className='justify-center flex '>
                 {data.map(dat=> {

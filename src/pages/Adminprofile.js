@@ -19,8 +19,6 @@ const Adminprofile = () => {
     }
   return (
     <div>
-        <Navbar />
-       
        <div className='bg-gray-100 w-full p-[80px]'>
             <div className='bg-white w-[420px] mx-[590px] rounded-lg'>
                 <p className='font-bold text-sm p-4'>Profile picture</p>
