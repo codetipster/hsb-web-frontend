@@ -6,6 +6,9 @@ import AddClient from './pages/AddClient';
 import Clientprofile from './pages/Clientprofile';
 import Adminprofile from './pages/Adminprofile';
 import Accountants from './pages/Accountants';
+import Clientpage from './pages/Clientpage'
+import BtnLang from './components/BtnLang'
+import Courses from './pages/Courses'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
@@ -14,9 +17,15 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <Routes>
+      <Route path='/login' element={<Login />}/>
+      <Route path='/profile' element={<Clientprofile />}/>
         <Route path='/' element={<Homepage />}/>
         <Route path='/profile' element={<Adminprofile />}/>
         <Route path='/accountants' element={<Accountants />}/>
+        <Route path='/clients' element={<Clientpage />}/>
+        <Route path='/clients/add-client' element={<AddClient />} />
+        <Route path='/drop' element={<BtnLang />} />
+        <Route path='/test' element={<Courses/>} />
       </Routes>
     </BrowserRouter>
     </div>

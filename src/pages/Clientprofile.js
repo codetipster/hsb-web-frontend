@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import {Link} from 'react-router-dom'
 import { MdOutlineArrowBackIos } from 'react-icons/md'
 import { AiFillWechat } from 'react-icons/ai'
 import { MdOutlinePreview } from 'react-icons/md'
@@ -21,13 +22,12 @@ const Clientprofile = () => {
     }
   return (
     <div>
-       <Navbar />
        <div className='bg-gray-100 w-full'>
            <div className='flex'>
-             <a href='#' className='text-red-800 flex px-[180px] py-10'>
+             <Link to='/clients' className='text-red-800 flex px-[180px] py-10'>
                 <MdOutlineArrowBackIos className='mt-1'/>
                     <span>Client's profile</span>
-                </a>
+                </Link>
                 <div className='flex mt-7 ml-[680px]'>
                     <button
                         onClick={handleChat}

@@ -1,16 +1,9 @@
 import React,{useState} from 'react'
-import BtnLang from './BtnLang'
+import { BiDotsVertical} from 'react-icons/bi'
 
-const ListItemAccountant = ({id, phone, first, last, email, data, status}) => {
 
-    const [isOpen, setIsOpen] = useState(false)
-
-    const toggleDropdown = () => {
-      setIsOpen(!isOpen)
-    }
-
-    const [statuus, setstatuus] = useState(false)
-
+const ListItemClients = ({invoiceID, name, clientName, session, status}) => {
+       const [statuus, setstatuus] = useState(false)
   return (
         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td className="p-4 w-4">
@@ -21,23 +14,17 @@ const ListItemAccountant = ({id, phone, first, last, email, data, status}) => {
                         </td>
                         <th scope="row" class="flex items-center py-2 px-4 text-gray-900 whitespace-nowrap dark:text-white">
                             <div className="pl-3">
-                                <div className="text-base mt-4 font-normal">{id}</div>
+                                <div className="text-base mt-4 font-normal">{invoiceID}</div>
                             </div>  
                         </th>
                         <td className="py-4 px-6">
-                            {phone}
+                            {name}
                         </td>
                         <td className="py-4 px-6">
-                            {first}
+                            {clientName}
                         </td>
                         <td className="py-4 px-6">
-                            {last}
-                        </td>
-                        <td className="py-4 px-6">
-                            {email}
-                        </td>
-                        <td className="py-4 px-6">
-                            {data}
+                            {session}
                         </td>
                         <td className="py-4 px-6">
                             <div className="flex items-center">
@@ -45,12 +32,11 @@ const ListItemAccountant = ({id, phone, first, last, email, data, status}) => {
                             </div>
                         </td>
                         <td className="py-4 px-6">
-                            <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline"><BtnLang className='w-[20px] h-[45px]' onClick={toggleDropdown}/></a>
-                            
+                            <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline"><BiDotsVertical className='w-[20px] h-[45px]'/></a>
                         </td>
         </tr>
     
   )
 }
 
-export default ListItemAccountant
+export default ListItemClients

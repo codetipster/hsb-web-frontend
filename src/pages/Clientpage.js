@@ -1,12 +1,12 @@
 import React from 'react'
 import { BiDotsVertical} from 'react-icons/bi'
-import ListItemAccountant from '../components/ListItemAccountant'
+import ListItemClients from '../components/ListItemClients'
 import Nav2 from '../components/Nav2'
 
-const Accountants = () => {
+const Clientpage = () => {
   return (
     <div className='p-24 mt-[-30px]'>
-        <Nav2 title='Accountants'/>
+        <Nav2 title='Invoices'/>
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
     
            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -19,25 +19,19 @@ const Accountants = () => {
                             </div>
                         </th>
                         <th scope="col" className="py-3 px-6">
-                            Accountant ID
+                            Invoice number
                         </th>
                         <th scope="col" className="py-3 px-6">
-                            Mobile number
+                            Invoice name
                         </th>
                         <th scope="col" className="py-3 px-6">
-                            Family name
+                            Client name
                         </th>
                         <th scope="col" className="py-3 px-6">
-                            First name
+                            Date/time created
                         </th>
                         <th scope="col" className="py-3 px-6">
-                            Email address
-                        </th>
-                        <th scope="col" className="py-3 px-6">
-                            Date created
-                        </th>
-                        <th scope="col" className="py-3 px-6">
-                            Status
+                            Invoice Status
                         </th>
                     </tr>
                 </thead>
@@ -53,23 +47,17 @@ const Accountants = () => {
                         </td>
                         <th scope="row" class="flex items-center py-2 px-4 text-gray-900 whitespace-nowrap dark:text-white">
                             <div className="pl-3">
-                                <div className="text-base mt-4 font-normal">0564321100</div>
+                                <div className="text-base mt-4 font-normal">HSB4321100</div>
                             </div>  
                         </th>
                         <td className="py-4 px-6">
-                            +4476532190876
+                            Developing solutions for building creat....
                         </td>
                         <td className="py-4 px-6">
-                            Ibrahim
+                            Ibrahim Johnas
                         </td>
                         <td className="py-4 px-6">
-                            Rialesex
-                        </td>
-                        <td className="py-4 px-6">
-                        neil.sims@flowbite.com
-                        </td>
-                        <td className="py-4 px-6">
-                        23.09.2022
+                            12.06.2022/ 2:34 pm
                         </td>
                         <td className="py-4 px-6">
                             <div className="flex items-center">
@@ -81,28 +69,28 @@ const Accountants = () => {
                         </td>
                     </tr>
 
-                    <ListItemAccountant 
-                        id='123456908' phone='07068565502' first='John' last='Doe' email='john@gmail.com' data='12.12.2022' status='Not active'
+                    <ListItemClients 
+                        invoiceID='HSB456908' name='Solana is a republic in roman empire...' clientName='John Baptirika' session='11.12.2022/4:59 pm' status='Not active'
                     />
 
-                    <ListItemAccountant 
-                        id='123456908' phone='07068565502' first='John' last='Doe' email='john@gmail.com' data='12.12.2022' status='Not active'
+                    <ListItemClients 
+                        invoiceID='HSB456908' name='Solana is a republic in roman empire...' clientName='John Baptirika' session='11.12.2022/4:59 pm' status='Not active'
                     />
 
-                    <ListItemAccountant 
-                        id='123456908' phone='07068565502' first='John' last='Doe' email='john@gmail.com' data='12.12.2022' status='Not active'
+                    <ListItemClients
+                        invoiceID='HSB456908' name='Solana is a republic in roman empire...' clientName='John Baptirika' session='11.12.2022/4:59 pm' status='Not active'
                     />
 
-                    <ListItemAccountant 
-                        id='123456908' phone='07068565502' first='John' last='Doe' email='john@gmail.com' data='12.12.2022' status='Not active'
+                    <ListItemClients 
+                        invoiceID='HSB456908' name='Solana is a republic in roman empire...' clientName='John Baptirika' session='11.12.2022/4:59 pm' status='Not active'
                     />
 
-                    <ListItemAccountant 
-                        id='123456908' phone='07068565502' first='John' last='Doe' email='john@gmail.com' data='12.12.2022' status='Not active'
+                    <ListItemClients 
+                        invoiceID='HSB456908' name='Solana is a republic in roman empire...' clientName='John Baptirika' session='11.12.2022/4:59 pm' status='Not active'
                     />
 
-                    <ListItemAccountant 
-                        id='123456908' phone='07068565502' first='John' last='Doe' email='john@gmail.com' data='12.12.2022' status='Not active'
+                    <ListItemClients 
+                        invoiceID='HSB456908' name='Solana is a republic in roman empire...' clientName='John Baptirika' session='11.12.2022/4:59 pm' status='Not active'
                     />
 
                 </tbody>
@@ -114,4 +102,4 @@ const Accountants = () => {
   )
 }
 
-export default Accountants
+export default Clientpage

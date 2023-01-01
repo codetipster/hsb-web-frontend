@@ -1,15 +1,74 @@
 import React from 'react'
+import { HiOutlineFilter } from 'react-icons/hi'
+import {BiBookAdd} from 'react-icons/bi'
+import AddAccountantModal from './AddAccountantModal'
+import { Link } from 'react-router-dom';
 
-const Nav2 = () => {
-  return (
-    <div className='flex mb-[50px]'>
-    <p>Accountants</p>
-    <div class="relative">
-            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+const Nav2 = ({title}) => {
+  const handleSubmit = () => {
+    console.log('clicked')
+  }
+  if(title === 'Invoices'){
+    return (
+      <div className='flex items-center justify-center '>
+          <p className=' text-[#FF1C1D] mt-4'>{title}</p>
+            <div className=' items-center justify-center'>
+                    <input type="text" className=" mt-1 absolute p-2 pl-10 mx-[200px] mt-[-40px]  w-80 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search accountants"/>
+  
+                    <div className='flex ml-[800px] py-[-20px]'>
+                          <div className=" flex-col items-center font-thin justify-center">
+                                <button
+                                onClick={handleSubmit}
+                                className="w-[260px] inline-flex items-center h-[45px] px-2 ml-4 tracking-wide text-[#FF1C1D] text-l font-medium bg-[#FFE9E9] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] hover:text-white 
+                                relative"
+                                >
+                                <span className='px-[20px]'>Filter clients</span>
+                                <HiOutlineFilter className='mx-[-10px]'/>
+                                </button>      
+                            </div>
+  
+                            <div className=" flex-col items-center font-thin justify-center">
+                                <button
+                                onClick={handleSubmit}
+                                className="w-[260px] inline-flex items-center h-[45px] px-2 ml-4 tracking-wide text-white text-l font-medium bg-[#FF1C1D] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] 
+                                relative"
+                                >
+                                <Link to="/clients/add-client" className='px-[20px] no-underline text-white'>Add new client</Link>
+                                
+                                <BiBookAdd className='mx-[-10px]'/>
+                                </button>      
+                            </div>
+                    </div>
             </div>
-            <input type="text" class=" p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search accountants"/>
-    </div>
+  
+      </div>
+    )
+  }
+  
+  return (
+    <div className='flex items-center justify-center '>
+        <p className=' text-[#FF1C1D] mt-4'>{title}</p>
+          <div className=' items-center justify-center'>
+                  <input type="text" className=" mt-1 absolute p-2 pl-10 mx-[200px] mt-[-40px]  w-80 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search accountants"/>
+
+                  <div className='flex ml-[800px] py-[-20px]'>
+                        <div className=" flex-col items-center font-thin justify-center">
+                              <button
+                              onClick={handleSubmit}
+                              className="w-[260px] inline-flex items-center h-[45px] px-2 ml-4 tracking-wide text-[#FF1C1D] text-l font-medium bg-[#FFE9E9] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] hover:text-white 
+                              relative"
+                              >
+                              <span className='px-[20px]'>Filter account</span>
+                              <HiOutlineFilter className='mx-[-10px]'/>
+                              </button>      
+                          </div>
+
+                          <div className=" flex-col items-center font-thin justify-center">
+                          <AddAccountantModal />
+                                   
+                          </div>
+                  </div>
+          </div>
 
     </div>
   )

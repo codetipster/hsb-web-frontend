@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import Navbar from '../components/Navbar'
+import { Link } from 'react-router-dom';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { MdOutlineArrowBackIos } from 'react-icons/md'
 import {MdNotificationsActive} from 'react-icons/md'
@@ -22,14 +23,13 @@ const AddClient = () => {
 
   return (
     <div>
-        <Navbar />
         <div className='bg-gray-100 w-full'>
-            <a href='#' className='text-red-800 flex px-[120px] py-10'>
+            <a href='#' className='text-red-800 flex px-[170px] py-10 no-underline'>
                <MdOutlineArrowBackIos className='mt-1'/>
-                <span>Add new client</span>
+               <Link to="/clients" className='no-underline text-red-800'>Add Clients</Link>
             </a>
 
-            <div className='bg-white w-[420px] mt-4 mx-[500px] rounded-lg'>
+            <div className='bg-white w-[420px] mt-4 mx-[600px] rounded-lg'>
                 <form className='w-[400px] bg-white items-center justify-center p-4'>
                     <p className='font-bold text-sm'>Login data</p>
                     <div className='mt-8 '>
@@ -65,7 +65,7 @@ const AddClient = () => {
                 </form>
             </div>
 
-            <div className='bg-white w-[420px] mt-4 mx-[500px] rounded-lg'>
+            <div className='bg-white w-[420px] mt-4 mx-[600px] rounded-lg'>
                <form className='w-[400px] bg-white items-center justify-center p-4'>
                   <p className='font-bold text-sm'>General information</p>
                   <div className='mt-8 '>
