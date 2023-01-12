@@ -1,19 +1,18 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 import { BsPeople, BsPerson } from 'react-icons/bs'
 import Navbar from '../components/Navbar'
 import InfoCard from '../components/InfoCard'
 import HomeTable from  '../components/HomeTable'
 
+const Homepage = ({clients}) => {
 
-
-
-
-const Homepage = () => {
-
+    
     const data = [
         {   
             title: 'Total number of clients',
-            count: 1078,
+            count: clients.length,
             Icon: BsPeople,
             stat: 23
         },
@@ -23,15 +22,9 @@ const Homepage = () => {
             count: 108,
             Icon: BsPerson,
             stat: 12
-        },
-        
-        
+        },  
     ]
-
-
-
-
-    
+  
   return (
     <div className='bg-gray-100 p-2'>
         
@@ -50,7 +43,7 @@ const Homepage = () => {
             </div>
         </div>
         
-        <HomeTable />
+        <HomeTable clients={clients}/>
         
     </div>
   )

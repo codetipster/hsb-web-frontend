@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar'
+import Modal from 'react-bootstrap/Modal';
+import { useDropzone } from 'react-dropzone';
+import AddReport from '../components/AddReport'
 import {Link} from 'react-router-dom'
 import { MdOutlineArrowBackIos } from 'react-icons/md'
 import { AiFillWechat } from 'react-icons/ai'
@@ -8,7 +11,21 @@ import {BiDownload} from 'react-icons/bi'
 import {BiAddToQueue} from 'react-icons/bi'
 import profileImage from '../assets/Frame.png'
 import Card from '../components/Card'
+
 const Clientprofile = () => {
+ const [show, setShow] = useState(false)
+ const [files, setFiles] = useState([
+     {
+         title: "Add more information to proceed",
+         file: "ndjdnjnvjrwn"
+     }
+ ])
+
+  const handleShow = () => {
+      setShow(true)
+  }
+  const handleClose = () => setShow(false);
+
     const handleChat = () => {
         console.log('chat')
     }
@@ -20,6 +37,8 @@ const Clientprofile = () => {
     const handleDownload = () => {
         console.log('download')
     }
+
+
   return (
     <div>
        <div className='bg-gray-100 w-full'>
@@ -70,33 +89,35 @@ const Clientprofile = () => {
 
             <div className='bg-white w-[420px] mt-4 mx-[590px] rounded-lg'>
                 <p className='font-bold text-sm p-4'>Reports</p>
-                <div className='flex-1 min-w-0 rounded w-[355px] ml-10'>
-                    <div class="bg-gray-100 rounded p-1">
-                            <p class="text-sm font-small text-gray-900 truncate dark:text-white">
-                                This is good for business
-                            </p>
-                            <p class="text-sm text-gray-400 truncate dark:text-gray-400">
-                                13 march, 12:30pm
-                            </p>
-                    </div>
-                    <div className='relative'>
-                        <BiDownload className='mx-[330px] absolute mt-[-30px]'/>
-                    </div>    
-                </div>
-                <Card />
-                <Card />
-                <Card />
+                <Card/>
                 <div className="mt-3 p-4 flex flex-col items-center font-thin justify-center">
                         <button
-                        onClick={handleDownload}
+                        onClick={handleShow}
                         className="w-[355px] inline-flex items-center h-[45px] px-2 ml-4 py-2 tracking-wide text-white text-l font-medium bg-[#FFB5B5] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] 
                         relative"
                         >
                          <span className='px-[90px]'>Add new report</span>
                         <BiAddToQueue className='mx-[-60px]'/>
                         </button>      
-                </div>    
+                </div> 
+
+                    <Modal
+                        show={show}
+                        onHide={handleClose}
+                        backdrop="static"
+                        keyboard={false}
+                        className='mt-32'
+                    >
+                        <Modal.Header closeButton className='bg-[#EBF5F0]'>
+                            <div className='p-1 bg-[#EBF5F0] w-full'>
+                            <Modal.Title className='text-sm font-bold bg-red-'>Add new Report</Modal.Title>
+                            </div>
+                        </Modal.Header>
+                        <AddReport file={files} setFile={setFiles}/>
+                    </Modal>   
             </div>
+
+
 
             <div className='bg-white w-[420px] mt-4 mx-[590px] rounded-lg'>
                 <p className='font-bold text-sm p-4'>Employee request</p>
