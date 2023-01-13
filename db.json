@@ -149,6 +149,13 @@
       "note": "Just running texts for the best",
       "id": 2,
       "status": "Active",
+      "reports": [
+        {
+          "id": 1,
+          "name": "file.jpg",
+          "url": "http://localhost:3000/files/file.jpg"
+        }        
+      ],
       "invoice": [
         {
           "id": 1,

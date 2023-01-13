@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import { BiDotsVertical} from 'react-icons/bi'
 import { Link } from 'react-router-dom'
-function DropdownMenu() {
+
+
+
+function DropdownMenu({client}) {
   const [isOpen, setIsOpen] = useState(false)
 
+  
   return (
     <div>
       <button
@@ -15,7 +19,7 @@ function DropdownMenu() {
       {isOpen && (
         <ul className="absolute px-3 py-2 right-0 w-48 bg-white rounded-md shadow-lg">
           <li className='mt-2'>
-            <Link to="/profile" className='px-[10px] no-underline text-gray-800'>View client Profile</Link>
+            <Link to={'/profile'}  className='px-[10px] no-underline text-gray-800'>View client Profile</Link>
           </li>
           <li className='mt-2 '>
             <Link to="/profile" className='px-[10px]  no-underline text-gray-800'>View invoice(s)</Link>

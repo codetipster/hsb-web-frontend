@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import {IoMdAddCircleOutline} from 'react-icons/io'
 import {BiSave} from 'react-icons/bi'
 
-const FileUpload = ({files, setFiles }) => {
-  
+const FileUpload = ({clients}) => {
+  const [reports, setReports] = useState(clients)
   const [title, setTitle] = useState('')
   const [file, setFile] = useState('');
   
@@ -11,8 +11,8 @@ const FileUpload = ({files, setFiles }) => {
 
 
   const uploadHandler = (e) => {
+    console.log(e.target.files)
      const file = e.target.files[0]
-     file.isUploading = true
      setFile(file)
   }
 
@@ -22,7 +22,12 @@ const FileUpload = ({files, setFiles }) => {
 
   const handleUploadSubmit = (e) => {
      e.preventDefault()
-     console.log('submitted', title, file)
+     const formData = {
+      title: title,
+      id: reports.length + 1,
+      file: file
+     }
+     console.log('submitted', formData)
   };
 
   
@@ -38,7 +43,7 @@ const FileUpload = ({files, setFiles }) => {
         />
       </div>
       <div className='p-2 border rounded mt-4 mx-4 bg-[#edf2f7] min-w-[380px] min-h-[230px] justify-center content-center'>
-        <input type="file" className='justify-center items-center mt-[80px] mx-[80px]' 
+        <input type="file" className='justify-center items-center mt-[80px] mx-[80px]' name='file' 
           onChange={uploadHandler}
         />
         

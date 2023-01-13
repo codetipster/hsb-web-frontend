@@ -5,6 +5,7 @@ import {useState} from 'react'
 
 const HomeTable = ({clients}) => {
     const [statuus, setstatuus] = useState(false)
+
   return (
       
     <div className='p-4 my-[-20px]'>
@@ -44,11 +45,12 @@ const HomeTable = ({clients}) => {
                                         </div>
                                     </td>
                                     <td className="p-4">
-                                        <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline"><BtnLang className='w-[20px] h-[45px]' /></a>
+                                        <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline"><BtnLang client={client} className='w-[20px] h-[45px]' /></a>
                                         
                                     </td>
                             </tr> 
                         )
+                        
                     })}   
                 </tbody> 
         </table>   

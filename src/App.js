@@ -16,12 +16,16 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 function App() {
  
   const [clients, setClients] = useState([])
-  
+  const [client, setClient] = useState()
   useEffect(()=>{
     axios.get('http://localhost:3001/clients').then((response)=>{
         setClients(response.data)
     })
   },[])
+
+  // useEffect(()=>{
+  //   fetch('http://localhost:3001/clients').then((response)=> response.json()).then((data)=>{setClient(data[0].id)})
+  // },[])
 
   
 
@@ -31,8 +35,8 @@ function App() {
       <Navbar/>
       <Routes>
       <Route path='/login' element={<Login />}/>
-      <Route path='/profile' element={<Clientprofile />}/>
-        <Route path='/' element={<Homepage clients={clients}/>}/>
+      <Route path='/profile' element={<Clientprofile clients={clients}/>}/>
+        <Route exact path='/' element={<Homepage clients={clients}/>}/>
         <Route path='/profile' element={<Adminprofile />}/>
         <Route path='/accountants' element={<Accountants />}/>
         <Route path='/clients' element={<Clientpage clients={clients} invoice={clients.invoice} />}/>

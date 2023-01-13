@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar'
 import Modal from 'react-bootstrap/Modal';
 import { useDropzone } from 'react-dropzone';
@@ -9,22 +9,20 @@ import { AiFillWechat } from 'react-icons/ai'
 import { MdOutlinePreview } from 'react-icons/md'
 import {BiDownload} from 'react-icons/bi'
 import {BiAddToQueue} from 'react-icons/bi'
+import {useParams} from 'react-router-dom'
 import profileImage from '../assets/Frame.png'
+import axios from 'react'
 import Card from '../components/Card'
 
-const Clientprofile = () => {
- const [show, setShow] = useState(false)
- const [files, setFiles] = useState([
-     {
-         title: "Add more information to proceed",
-         file: "ndjdnjnvjrwn"
-     }
- ])
 
-  const handleShow = () => {
+const Clientprofile = () => {
+ 
+
+ const [show, setShow] = useState(false)
+ const handleShow = () => {
       setShow(true)
   }
-  const handleClose = () => setShow(false);
+ const handleClose = () => setShow(false);
 
     const handleChat = () => {
         console.log('chat')
@@ -37,7 +35,8 @@ const Clientprofile = () => {
     const handleDownload = () => {
         console.log('download')
     }
-
+  
+    
 
   return (
     <div>
@@ -48,6 +47,7 @@ const Clientprofile = () => {
                     <span>Client's profile</span>
                 </Link>
                 <div className='flex mt-7 ml-[680px]'>
+                
                     <button
                         onClick={handleChat}
                         className="w-[155px] inline-flex items-center h-[45px] px-2 ml-4 py-2 tracking-wide text-white text-l font-medium bg-[#FFE9E9] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] 
@@ -72,7 +72,7 @@ const Clientprofile = () => {
                 <p className='font-bold text-sm p-4'>Profile picture</p>
                     <div className='ml-[129px] p-2'>
                         <img src={profileImage}/>
-                        <p className='text-sm ml-6 mt-2'>Ibrahim Solace</p>
+                        <p className='text-sm ml-6 mt-2'>fullName</p>
                         <p className='text-sm ml-[-6px]'>Scaling Ventures Consult</p>
                     </div>
                     <div className="mt-3 p-4 flex flex-col items-center font-thin justify-center">
@@ -88,6 +88,7 @@ const Clientprofile = () => {
             </div>
 
             <div className='bg-white w-[420px] mt-4 mx-[590px] rounded-lg'>
+            
                 <p className='font-bold text-sm p-4'>Reports</p>
                 <Card/>
                 <div className="mt-3 p-4 flex flex-col items-center font-thin justify-center">
@@ -113,7 +114,7 @@ const Clientprofile = () => {
                             <Modal.Title className='text-sm font-bold bg-red-'>Add new Report</Modal.Title>
                             </div>
                         </Modal.Header>
-                        <AddReport file={files} setFile={setFiles}/>
+                        <AddReport />
                     </Modal>   
             </div>
 
