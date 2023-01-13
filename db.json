@@ -29,6 +29,11 @@
       "legalNo": "0987",
       "password": "0po98iu76zt",
       "id": 6
+    },
+    {
+      "legalNo": "123456789",
+      "password": "123456789",
+      "id": 7
     }
   ],
   "accountants": [
@@ -113,7 +118,7 @@
           "id": 1,
           "name": "file.jpg",
           "url": "http://localhost:3000/files/file.jpg"
-        }        
+        }
       ],
       "invoice": [
         {
@@ -154,8 +159,42 @@
           "id": 1,
           "name": "file.jpg",
           "url": "http://localhost:3000/files/file.jpg"
-        }        
+        }
       ],
+      "invoice": [
+        {
+          "id": 1,
+          "title": "Cleaner and better customer experience..",
+          "createdON": "2023-01-06T11:41:57.678Z",
+          "status": "Not Active"
+        },
+        {
+          "id": 2,
+          "title": "Cleaner and better customer experience..",
+          "createdON": "2023-01-06T11:41:57.678Z",
+          "status": "Not Active"
+        }
+      ]
+    },
+    {
+      "firstName": "Juliet",
+      "familyName": "Joseph",
+      "address": "1612",
+      "city": "Lagos",
+      "zip": "10997",
+      "s-date": "13-01-2022",
+      "job": "Developer",
+      "company": "Pluralcode",
+      "bank": "PremiumTrust Bank",
+      "IBAN": "1234567890",
+      "legalNumber": "",
+      "email": "juliet@gmail.com",
+      "mobile": "+2348147808902",
+      "tax-id": "",
+      "accountant": "Samuel Nzekwe",
+      "note": "Testing",
+      "id": 3,
+      "status": "123456",
       "invoice": [
         {
           "id": 1,
