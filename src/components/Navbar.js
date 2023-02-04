@@ -1,37 +1,39 @@
-import { Fragment } from 'react'
-import {useState} from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import img from '../assets/logo.png'
-import { NavLink } from 'react-router-dom'
-import Login from '../pages/Login'
+import React, { Fragment, useState } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import img from "../assets/logo.png";
+import Login from "../pages/Login";
+
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Clients', href: '/clients',  },
-  { name: 'Accountants', href: '/accountants', },
-  { name: 'Chats', href: '/chats',  },
-  { name: 'Profile', href: '/profile',  },
-  { name: 'English', href: '/languages',  }
-]
+  { name: "Home", href: "/home" },
+  { name: "Clients", href: "/clients" },
+  { name: "Accountants", href: "/accountants" },
+  { name: "Profile", href: "/profile" },
+  // { name: "Logout", href: "/" },
+  { name: "English", href: "/languages" },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
-
-
 export default function Example() {
-  const [loggedin, setLoggedin] = useState(true)
+  const navigate = useNavigate();
+  const [loggedin, setLoggedin] = useState(true);
 
   const handleLogin = () => {
-    console.log('logging into app')
-    setLoggedin(!loggedin)
-  }
+    console.log("logging into app");
+    setLoggedin(!loggedin);
+  };
 
+  const logout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
   if (loggedin === true) {
     return (
-    
-      <Disclosure as="nav" className="bg-white-800 shadow-md no-underline">
+      <Disclosure as="nav" className="bg-white shadow-md no-underline">
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-4">
@@ -47,7 +49,7 @@ export default function Example() {
                     )}
                   </Disclosure.Button>
                 </div>
-                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex flex-1 items-center sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
                     <img
                       className="block h-8 w-auto lg:hidden"
@@ -66,18 +68,20 @@ export default function Example() {
                         <NavLink
                           key={item.name}
                           to={item.href}
-                          className={({isActive})=>{
-                            return( 'px-6 py-2 rounded-md text-sm font-medium no-underline' + (isActive ? 'text-white bg-[#FFE9E9] no-underline hover:bg-[#FFE9E9]':'bg-[#FFE9E9] text-gray-800 hover:bg-[#FFE9E9] no-underline')
-                             
-                            )}}  
+                          className={({ isActive }) => {
+                            return (
+                              "px-6 py-2 rounded-md text-sm font-medium no-underline" +
+                              (isActive
+                                ? "text-white bg-[#FFE9E9] no-underline hover:bg-[#FFE9E9]"
+                                : "bg-[#FFE9E9] text-gray-800 hover:bg-[#FFE9E9] no-underline")
+                            );
+                          }}
                         >
-                          {item.name} 
-  
+                          {item.name}
                         </NavLink>
                       ))}
-                      <button onClick={handleLogin}>Logout</button>
+                      {/* <button onClick={handleLogin}>Logout</button> */}
                     </div>
-                  
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -88,7 +92,7 @@ export default function Example() {
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
-  
+
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
@@ -115,7 +119,10 @@ export default function Example() {
                           {({ active }) => (
                             <a
                               href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
                             >
                               Your Profile
                             </a>
@@ -125,7 +132,10 @@ export default function Example() {
                           {({ active }) => (
                             <a
                               href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
                             >
                               Settings
                             </a>
@@ -134,21 +144,24 @@ export default function Example() {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                              href="/"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                              onClick={logout}
                             >
-                              Sign out
+                              Logout
                             </a>
                           )}
                         </Menu.Item>
-                        
                       </Menu.Items>
                     </Transition>
                   </Menu>
                 </div>
               </div>
             </div>
-  
+
             <Disclosure.Panel className="sm:hidden">
               <div className="space-y-1 px-2 pt-2 pb-3">
                 {navigation.map((item) => (
@@ -157,10 +170,12 @@ export default function Example() {
                     as="a"
                     href={item.href}
                     className={classNames(
-                      item.current ? 'bg-[#FFE9E9] text-black' : 'text-gray-800 hover:bg-[#FFE9E9] hover:text-gray-800',
-                      'block px-3 py-2 rounded-md text-base font-medium'
+                      item.current
+                        ? "bg-[#FFE9E9] text-black"
+                        : "text-gray-800 hover:bg-[#FFE9E9] hover:text-gray-800",
+                      "block px-3 py-2 rounded-md text-base font-medium"
                     )}
-                    aria-current={item.current ? 'page' : undefined}
+                    aria-current={item.current ? "page" : undefined}
                   >
                     {item.name}
                   </Disclosure.Button>
@@ -171,13 +186,11 @@ export default function Example() {
           </>
         )}
       </Disclosure>
-    )
+    );
   }
   return (
     <div>
       <Login />
     </div>
-  )
+  );
 }
-  
-

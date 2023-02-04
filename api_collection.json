@@ -1,0 +1,408 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "invoices",
+  "dateExported": "2022-12-31T10:55:06.898Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "93757fbc-80d7-4060-a6b0-ab754a9863ba",
+      "name": "Admin",
+      "containerId": "",
+      "created": "2022-12-30T16:24:02.967Z",
+      "sortNum": 10000
+    },
+    {
+      "_id": "a75977dc-25b8-4b6c-bd34-436af007e5c8",
+      "name": "Client",
+      "containerId": "",
+      "created": "2022-12-31T00:20:26.106Z",
+      "sortNum": 20000
+    },
+    {
+      "_id": "69500118-9c6f-4f7a-bd2f-6c532304adef",
+      "name": "Accountant",
+      "containerId": "",
+      "created": "2022-12-31T00:05:04.509Z",
+      "sortNum": 30000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "02e5e119-6e3a-4ac6-922b-000af333e08b",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "69500118-9c6f-4f7a-bd2f-6c532304adef",
+      "name": "Profile",
+      "url": "http://localhost:3000/api/accountant/profile",
+      "method": "GET",
+      "sortNum": 5000,
+      "created": "2022-12-31T09:13:18.931Z",
+      "modified": "2022-12-31T09:45:58.602Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY3MDdjZTgwY2Y1NTUxMDBhYjUxNyIsImVtYWlsIjoiYWNjb3VudGFudDFAZ21haWwuY29tIiwiaWF0IjoxNjcyNDc5OTQ2LCJleHAiOjE3MDQwMzc1NDZ9.0czEAJHXsTuM8xkm4dWwT1zz3Z9kwHLcwzRPD9MThJk"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "67e83a4b-247e-4326-8503-48b3de8bbe1f",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "",
+      "name": "Sign In",
+      "url": "http://localhost:3000/api/user/login",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2022-12-30T17:17:59.030Z",
+      "modified": "2022-12-31T10:53:32.551Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "formdata",
+        "raw": "",
+        "form": [
+          { "name": "email", "value": "accountant1@gmail.com" },
+          { "name": "password", "value": "12345" }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "_id": "a5f93ff0-d262-48eb-9ace-5f525df2604b",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "69500118-9c6f-4f7a-bd2f-6c532304adef",
+      "name": "Get Accountants",
+      "url": "http://localhost:3000/api/accountant/accountants/",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2022-12-31T00:03:58.899Z",
+      "modified": "2022-12-31T09:42:20.191Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY2ZGUxMDYzNzE0YzM2ZTY0MDU5YiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjcyNDc2NzA1LCJleHAiOjE3MDQwMzQzMDV9.D7CH7ZabAMXD-VnvVes32nbBxCdz3kgcLtu2dFufHo8"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "aff97fc7-8aa7-4a0b-977c-f47aeb829b46",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "a75977dc-25b8-4b6c-bd34-436af007e5c8",
+      "name": "Get Clients",
+      "url": "http://localhost:3000/api/client/clients",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2022-12-31T00:20:26.106Z",
+      "modified": "2022-12-31T09:49:41.908Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY2ZGUxMDYzNzE0YzM2ZTY0MDU5YiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjcyNDQyMzM4LCJleHAiOjE3MDM5OTk5Mzh9.R9qs9Y1QQtPJW6a_sHC8ZeUe25gLw5wFwTeEJ3589hQ"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "5c188410-ab07-4042-8a23-4750d647d9dd",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "93757fbc-80d7-4060-a6b0-ab754a9863ba",
+      "name": "Create an Accountant",
+      "url": "http://localhost:3000/api/admin/create-accountant",
+      "method": "POST",
+      "sortNum": 15000,
+      "created": "2022-12-30T23:11:48.528Z",
+      "modified": "2022-12-30T23:37:31.955Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY2ZGUxMDYzNzE0YzM2ZTY0MDU5YiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjcyNDQyMzM4LCJleHAiOjE3MDM5OTk5Mzh9.R9qs9Y1QQtPJW6a_sHC8ZeUe25gLw5wFwTeEJ3589hQ"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "formdata",
+        "raw": "",
+        "form": [
+          { "name": "firstName", "value": "Accountant" },
+          { "name": "lastName", "value": "Two" },
+          { "name": "email", "value": "accountant2@gmail.com" },
+          { "name": "password", "value": "12345" },
+          { "name": "homeAddress", "value": "Just for test" },
+          { "name": "mobileNumber", "value": "+963987654321" }
+        ],
+        "files": [
+          {
+            "name": "image",
+            "value": "c:\\Users\\dash\\Downloads\\Ellipse 1.png"
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "_id": "9339107c-9eec-406a-a84c-583deb2a8dc0",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "a75977dc-25b8-4b6c-bd34-436af007e5c8",
+      "name": "Profile",
+      "url": "http://localhost:3000/api/client/profile",
+      "method": "GET",
+      "sortNum": 15000,
+      "created": "2022-12-31T09:48:36.325Z",
+      "modified": "2022-12-31T09:51:39.721Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY3N2U4OTYxNmVlZDUwNjA1ZTlhMSIsImVtYWlsIjoiY2xpZW50MUBnbWFpbC5jb20iLCJpYXQiOjE2NzI0ODAyNDcsImV4cCI6MTcwNDAzNzg0N30.8ZJlnD7ciFYH6vuKfBkrCeXNmO1REclRNKVytgbgr0M"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "f02dde39-538f-473f-88bf-d570bb69631d",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "a75977dc-25b8-4b6c-bd34-436af007e5c8",
+      "name": "Create Invoice",
+      "url": "http://localhost:3000/api/client/invoices",
+      "method": "POST",
+      "sortNum": 17500,
+      "created": "2022-12-31T10:15:18.366Z",
+      "modified": "2022-12-31T10:47:04.665Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY3N2U4OTYxNmVlZDUwNjA1ZTlhMSIsImVtYWlsIjoiY2xpZW50MUBnbWFpbC5jb20iLCJpYXQiOjE2NzI0ODE3NDYsImV4cCI6MTcwNDAzOTM0Nn0.Dg7lB_8olwjAXqDCtpDeKSForYbLBgNw2rGEGcIku6c"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "formdata",
+        "raw": "",
+        "form": [
+          { "name": "name", "value": "Test invoice name 3" },
+          { "name": "status", "value": "", "isDisabled": true }
+        ],
+        "files": [
+          {
+            "name": "image",
+            "value": "c:\\Users\\dash\\Desktop\\621d5014d04a8.image.jpg"
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "_id": "ad38bd45-40b7-433c-bca3-2605be851bd2",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "a75977dc-25b8-4b6c-bd34-436af007e5c8",
+      "name": "Get Invoices",
+      "url": "http://localhost:3000/api/client/invoices",
+      "method": "GET",
+      "sortNum": 18750,
+      "created": "2022-12-31T10:26:15.483Z",
+      "modified": "2022-12-31T10:53:21.536Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY3N2U4OTYxNmVlZDUwNjA1ZTlhMSIsImVtYWlsIjoiY2xpZW50MUBnbWFpbC5jb20iLCJpYXQiOjE2NzI0ODM5ODcsImV4cCI6MTcwNDA0MTU4N30.OSBSX45II059U7fBkg6qjRQ95yER-id7Hc3EXBB8XpI"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "72b17e72-c961-41f3-b5db-c6f38defcce3",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "69500118-9c6f-4f7a-bd2f-6c532304adef",
+      "name": "Get Accountant by Id",
+      "url": "http://localhost:3000/api/accountant/accountants/63af707ce80cf555100ab517",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2022-12-31T09:42:36.180Z",
+      "modified": "2022-12-31T09:42:53.860Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY2ZGUxMDYzNzE0YzM2ZTY0MDU5YiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjcyNDc2NzA1LCJleHAiOjE3MDQwMzQzMDV9.D7CH7ZabAMXD-VnvVes32nbBxCdz3kgcLtu2dFufHo8"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "7cc7ceea-1453-4748-8361-ed5dfbb6f46d",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "a75977dc-25b8-4b6c-bd34-436af007e5c8",
+      "name": "Get Client by Id",
+      "url": "http://localhost:3000/api/client/clients/63af7843824eea78da43eea8",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2022-12-31T09:48:24.281Z",
+      "modified": "2022-12-31T09:50:14.009Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY2ZGUxMDYzNzE0YzM2ZTY0MDU5YiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjcyNDQyMzM4LCJleHAiOjE3MDM5OTk5Mzh9.R9qs9Y1QQtPJW6a_sHC8ZeUe25gLw5wFwTeEJ3589hQ"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "6f7f3c6f-1312-4be5-9a90-cd8a2d3f04bf",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "",
+      "name": "Retrive Img",
+      "url": "http://localhost:3000/uploads/image_1672482095060.jpg",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2022-12-31T10:22:30.988Z",
+      "modified": "2022-12-31T10:23:20.618Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY3N2U4OTYxNmVlZDUwNjA1ZTlhMSIsImVtYWlsIjoiY2xpZW50MUBnbWFpbC5jb20iLCJpYXQiOjE2NzI0ODE3NDYsImV4cCI6MTcwNDAzOTM0Nn0.Dg7lB_8olwjAXqDCtpDeKSForYbLBgNw2rGEGcIku6c"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "adc238ee-33a1-463c-afde-f65a147a14d7",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "93757fbc-80d7-4060-a6b0-ab754a9863ba",
+      "name": "Create a Client",
+      "url": "http://localhost:3000/api/admin/create-client",
+      "method": "POST",
+      "sortNum": 22500,
+      "created": "2022-12-30T23:41:45.494Z",
+      "modified": "2022-12-30T23:49:47.667Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY2ZGUxMDYzNzE0YzM2ZTY0MDU5YiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjcyNDQyMzM4LCJleHAiOjE3MDM5OTk5Mzh9.R9qs9Y1QQtPJW6a_sHC8ZeUe25gLw5wFwTeEJ3589hQ",
+          "isDisabled": true
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "formdata",
+        "raw": "",
+        "form": [
+          { "name": "firstName", "value": "Client" },
+          { "name": "lastName", "value": "Two" },
+          { "name": "email", "value": "client2@gmail.com" },
+          { "name": "password", "value": "12345" },
+          { "name": "homeNumber", "value": "0298434" },
+          { "name": "mobileNumber", "value": "+963987654321" },
+          { "name": "iban", "value": "00000" },
+          { "name": "bankName", "value": "Test bank" },
+          { "name": "companyType", "value": "Business" },
+          { "name": "jobType", "value": "Dev." },
+          { "name": "zipCode", "value": "123456" },
+          { "name": "city", "value": "Damas" },
+          { "name": "legalNumber", "value": "123232324" },
+          { "name": "accountantId", "value": "63af707ce80cf555100ab517" }
+        ],
+        "files": [
+          {
+            "name": "image",
+            "value": "c:\\Users\\dash\\Downloads\\Ellipse 1.png"
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "_id": "b6d05f3b-c51d-46e0-862b-40a5e7036ffd",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "93757fbc-80d7-4060-a6b0-ab754a9863ba",
+      "name": "Sign Up",
+      "url": "http://localhost:3000/api/admin/signup",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2022-12-30T16:24:20.569Z",
+      "modified": "2022-12-30T17:16:27.227Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "formdata",
+        "raw": "",
+        "form": [
+          { "name": "firstName", "value": "Super" },
+          { "name": "lastName", "value": "Admin" },
+          { "name": "email", "value": "admin@gmail.com" },
+          { "name": "password", "value": "12345" }
+        ],
+        "files": [
+          {
+            "name": "image",
+            "value": "c:\\Users\\dash\\Downloads\\Ellipse 1.png"
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "_id": "71fb3827-c42e-4de2-a312-ab04bf11ec9a",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "69500118-9c6f-4f7a-bd2f-6c532304adef",
+      "name": "Get Invoices",
+      "url": "http://localhost:3000/api/accountant/invoices",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2022-12-31T10:34:52.399Z",
+      "modified": "2022-12-31T10:53:47.841Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY3MDdjZTgwY2Y1NTUxMDBhYjUxNyIsImVtYWlsIjoiYWNjb3VudGFudDFAZ21haWwuY29tIiwiaWF0IjoxNjcyNDg0MDEyLCJleHAiOjE3MDQwNDE2MTJ9.M0CU_xoInj3MRVXUjjSz1xMo6d3b-g32v1J_AXsLh7o"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "98aaa038-0c06-4908-86fa-d71541be6d76",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "93757fbc-80d7-4060-a6b0-ab754a9863ba",
+      "name": "Profile",
+      "url": "http://localhost:3000/api/admin/profile",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2022-12-31T08:55:59.504Z",
+      "modified": "2022-12-31T09:06:29.845Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY2ZGUxMDYzNzE0YzM2ZTY0MDU5YiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNjcyNDc3MjIzLCJleHAiOjE3MDQwMzQ4MjN9.bQAjgHAkF9cL09lJ96Dj50Vv8Zia1NfH3Z3u7U02Nwo"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "cc4553d2-5dc4-4a1e-9d2a-59bb2cba95d3",
+      "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+      "containerId": "69500118-9c6f-4f7a-bd2f-6c532304adef",
+      "name": "Get Clients",
+      "url": "http://localhost:3000/api/client/clients",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2022-12-31T10:51:37.790Z",
+      "modified": "2022-12-31T10:54:11.758Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWY3MDdjZTgwY2Y1NTUxMDBhYjUxNyIsImVtYWlsIjoiYWNjb3VudGFudDFAZ21haWwuY29tIiwiaWF0IjoxNjcyNDg0MDEyLCJleHAiOjE3MDQwNDE2MTJ9.M0CU_xoInj3MRVXUjjSz1xMo6d3b-g32v1J_AXsLh7o"
+        }
+      ],
+      "params": [],
+      "tests": []
+    }
+  ]
+}

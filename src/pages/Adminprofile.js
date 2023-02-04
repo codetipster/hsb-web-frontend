@@ -1,85 +1,114 @@
-import React, {useState} from 'react'
-import Navbar from '../components/Navbar'
-import { MdOutlineArrowBackIos } from 'react-icons/md'
-import { AiFillWechat } from 'react-icons/ai'
-import { AiFillEdit } from 'react-icons/ai'
-import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import {BiDownload} from 'react-icons/bi'
-import profileImage from '../assets/Frame.png'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { AiFillEyeInvisible, AiFillEye, AiFillEdit } from "react-icons/ai";
+import { TbCameraPlus } from "react-icons/tb";
+import profileImage from "../assets/Frame.png";
 
 const Adminprofile = () => {
-    const [seePassword, setSeePassword] = useState(false);
+  const [seePassword, setSeePassword] = useState(false);
+  const [token, setToken] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleToggle = () => {
+    setSeePassword(!seePassword);
+  };
 
-    const handleToggle = () => {
-        setSeePassword(!seePassword);
+  const handleDownload = () => {
+    console.log("downloadfrom admin profile");
+  };
+
+  useEffect(() => {
+    let details;
+    const getToken = () => {
+      const token = JSON.parse(localStorage.getItem("Token"));
+      if (token !== null || token !== undefined) {
+        setToken(token);
+      }
+      axios
+        .get("https://hsb-backend.onrender.com/api/admin/profile", {
+          headers: {
+            Authorization: token,
+            "Content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          console.log(response.data, "admin profile");
+          details = response.data;
+          setName(details.firstName);
+          setEmail(details.email);
+        });
     };
-
-    const handleDownload = ()=>{
-        console.log('downloadfrom admin profile')
-    }
+    getToken();
+  }, []);
   return (
-    <div>
-       <div className='bg-gray-100 w-full p-[80px]'>
-            <div className='bg-white w-[420px] mx-[590px] rounded-lg'>
-                <p className='font-bold text-sm p-4'>Profile picture</p>
-                    <div className='ml-[129px] p-2'>
-                        <img src={profileImage}/>
-                        <p className='text-sm ml-6 mt-2'>Ibrahim Solace</p>
-                        <p className='text-sm ml-[-6px]'>Scaling Ventures Consult</p>
-                    </div>
-                    <div className="mt-3 p-4 flex flex-col items-center font-thin justify-center">
-                        <button
-                        onClick={handleDownload}
-                        className="w-[355px] inline-flex items-center h-[45px] px-2 ml-4 py-2 tracking-wide text-white text-l font-medium bg-[#FFB5B5] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] 
-                        relative"
-                        >
-                         <span className='px-[90px]'>Download Image</span>
-                        <BiDownload className='mx-[-60px]'/>
-                        </button>      
-                    </div>    
+    <div className="bg-gray-100 w-full h-full">
+      <div className="flex flex-col items-center justify-center py-10">
+        <div className="bg-white w-[489px] h-[372px] rounded-lg">
+          <p className="font-bold text-sm p-4">Profile picture</p>
+          <div className="flex flex-col items-center justify-center">
+            <img src={profileImage} />
+            <div className="text-sm font-medium text-center">
+              <p>{name}</p>
+              <p>Scaling Ventures Consult</p>
             </div>
-           
-            <div className='bg-white w-[420px] mt-8 mx-[590px] rounded-lg'>
-                <p className='font-bold text-sm p-4'>Login details</p>
-                  <div className='mt-2 mx-6'>
-                      <label className="block mb-1 text-[12px] px-6 absolute mt-1px" for="forms-labelOverInputCode">Email address</label>
-                      <input className="w-[350px] mx-4 mt-3 h-10 px-3 shadow-lg text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline" type="email" placeholder="|johndoe@gmail.com" id="forms-labelOverInputCode"/>
-                  </div>
-
-                  <div className='relative'>
-                        <div  className="my-4 mx-6">
-                            <label className="block mb-1 text-[12px] px-6 absolute mt-1px" for="forms-labelOverInputCode">Password</label>
-                            <input 
-                                type={seePassword === false ? 'password' : 'text'}
-                                name="password" 
-                                placeholder="| ******" 
-                                className='w-[350px] h-10 mx-4 border-b text-gray-700 px-4 py-2 mt-2 border focus:ring-1 focus:ring-inset focus:ring-black rounded shadow-lg'
-                            />
-                        </div>
-
-                        <div className="text-2xl text-gray-400 absolute top-[15px] right-10">
-                            {seePassword === false ? (
-                            <AiFillEye onClick={handleToggle} />
-                            ) : (
-                            <AiFillEyeInvisible onClick={handleToggle} />
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="mt-3 p-4 flex flex-col items-center font-thin justify-center">
-                        <button
-                        onClick={handleDownload}
-                        className="w-[355px] inline-flex items-center h-[45px] px-2 ml-4 py-2 tracking-wide text-white text-l font-medium bg-[#FFB5B5] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] 
-                        relative"
-                        >
-                         <span className='px-[90px]'>Edit details</span>
-                        <AiFillEdit className='mx-[-60px]'/>
-                        </button>      
-                    </div>    
-            </div>
-        </div>    
+            <button
+              onClick={handleDownload}
+              className="w-[441px] h-[56px] inline-flex items-center justify-center p-2 text-white font-medium bg-[#FFB5B5] rounded active:bg-[#FF1C1D] hover:bg-[#FF1C1D]"
+            >
+              Change Image
+              <TbCameraPlus className="ml-4" />
+            </button>
+          </div>
+          {/* login info */}
+        </div>
+        <div className="bg-white w-[489px] h-[350px] mt-8 rounded-lg">
+          <p className="font-bold text-sm m-4">Login details</p>
+          <div className="flex flex-col items-center mx-6 mt-2">
+            <form>
+              <div>
+                <label className="block mb-2 text-[12px]">Email address</label>
+                <input
+                  className="w-[441px] h-[55px] px-3 text-base placeholder-gray-350 border rounded-lg"
+                  type="email"
+                  placeholder="|johndoe@gmail.com"
+                  value={email}
+                />
+              </div>
+              <div className="relative">
+                <div className="my-2">
+                  <label className="block mb-2 text-[12px]">Password</label>
+                  <input
+                    type={seePassword === false ? "password" : "text"}
+                    name="password"
+                    placeholder="|******"
+                    className="w-[441px] h-[55px] px-3 text-base placeholder-gray-350 border rounded-lg"
+                    value={password}
+                  />
+                </div>
+                <div className="text-2xl text-gray-400 absolute top-10 right-4">
+                  {seePassword === false ? (
+                    <AiFillEye onClick={handleToggle} />
+                  ) : (
+                    <AiFillEyeInvisible onClick={handleToggle} />
+                  )}
+                </div>
+              </div>
+              <div className="mt-4">
+                <button
+                  onClick={handleDownload}
+                  className="w-[441px] h-[55px] inline-flex items-center justify-center p-2 text-white font-medium bg-[#FFB5B5] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D]"
+                >
+                  Edit details
+                  <AiFillEdit className="ml-4" />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Adminprofile
+export default Adminprofile;

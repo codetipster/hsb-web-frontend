@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Nav2 from "../components/Nav2Client";
-import ActionButton from "../components/ActionBtn";
+import ActionButton from "../components/ActionBtn2";
 
-// https://hsb-backend.onrender.com/api/admin/invoices
-const Clientpage = ({ clients }) => {
+const Invoices = ({ clients }) => {
   const [status, setStatus] = useState(false);
   const [token, setToken] = useState("");
-  const [invoice, setInvoice] = useState([]);
-  const [client, setClients] = useState([]);
+  const [invoices, setInvoices] = useState([]);
 
   useEffect(() => {
     const getToken = () => {
@@ -17,37 +15,34 @@ const Clientpage = ({ clients }) => {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend.onrender.com/api/client/clients", {
+        .get("https://hsb-backend.onrender.com/api/client/invoices", {
           headers: {
             Authorization: token,
             "Content-type": "application/json",
           },
         })
         .then((response) => {
-          console.log(response.data, "client info");
-          setClients(response.data);
+          console.log(response.data, "client invoice");
+          setInvoices(response.data);
         });
     };
     getToken();
   }, []);
   return (
     <div className="p-24 mt-[-30px]">
-      <Nav2 title="Clients" />
+      <Nav2 title="Invoices" />
       <div className="p-4 my-10 flex items-center justify-center">
         <table className="table bg-white text-sm text-left text-gray-500 dark:text-gray-400 px-4">
           <thead className="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th className="p-4">Select</th>
-              <th className="p-4">Client ID</th>
+              <th className="p-4">Invoice Number</th>
               <th className="p-4">Client Name</th>
-              <th className="p-4">Legal Number</th>
-              <th className="p-4">Mobile Number</th>
-              <th className="p-4">Accountant in charge</th>
-              <th className="p-4">Status</th>
+              <th className="p-4">Date/Time Created</th>
+              <th className="p-4">Invoice Status</th>
             </tr>
           </thead>
           <tbody>
-            {clients.map((client) => {
+            {invoices.map((client) => {
               return (
                 <tr>
                   <td className="p-4">
@@ -85,7 +80,10 @@ const Clientpage = ({ clients }) => {
                       href="#"
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
-                      <ActionButton client={client} className="w-[20px] h-[45px]" />
+                      <ActionButton
+                        client={client}
+                        className="w-[20px] h-[45px]"
+                      />
                     </a>
                   </td>
                 </tr>
@@ -200,4 +198,4 @@ const Clientpage = ({ clients }) => {
   );
 };
 
-export default Clientpage;
+export default Invoices;
