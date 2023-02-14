@@ -1,7 +1,7 @@
 import React from "react";
 import { BsPeople, BsPerson } from "react-icons/bs";
-import InfoCard from "../components/InfoCard";
-import HomeTable from "../components/HomeTable";
+import InfoCard from "../../components/InfoCard";
+import HomeTable from "../../components/HomeTable";
 
 const Homepage = ({ clients, accountants }) => {
   const data = [

@@ -6,7 +6,7 @@ import { TbLogin } from "react-icons/tb";
 import Sidelogo from "../assets/Landing_Page.svg";
 import logo from "../assets/logo.png";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -43,14 +43,17 @@ const Login = () => {
           console.log(user, "checking user");
           let userToken = JSON.stringify(user.token);
           localStorage.setItem("Token", userToken);
-          // window.alert(user.message)
-          navigate("/home");
+          if (user.user === "admin") {
+            return navigate("/home");
+          }
+          if (user.user === "accountant") {
+            return navigate("/accountantHomePage");
+          }
         });
     } catch (err) {
       console.log(err.message);
     }
   };
-
   return (
     <>
       <div className="w-full h-full">

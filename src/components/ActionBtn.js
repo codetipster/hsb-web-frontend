@@ -7,6 +7,7 @@ function DropdownMenu({ client }) {
   const [isOpen, setIsOpen] = useState(false);
   const token = JSON.parse(localStorage.getItem("Token"));
   const url = `https://hsb-backend.onrender.com/api/client/clients/${client.id}`;
+  
   const deleteClient = () => {
     axios
       .delete(url, {
@@ -47,7 +48,7 @@ function DropdownMenu({ client }) {
               View invoice(s)
             </Link>
           </li> */}
-          <li className="mt-2 ">
+          <li className="mt-2">
             <Link
               to="/profile"
               className="px-[10px]  no-underline text-gray-800"

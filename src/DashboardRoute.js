@@ -2,20 +2,29 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./components/Navbar";
-import Homepage from "./pages/Homepage";
-import AddClient from "./pages/AddClient";
-import Clientprofile from "./pages/Clientprofile";
-import Adminprofile from "./pages/Adminprofile";
-import Accountants from "./pages/Accountants";
-import Clientpage from "./pages/Clientpage";
-import BtnLang from "./components/ActionBtn";
-import Courses from "./pages/Courses";
-import Invoices from "./pages/Invoices";
+import AccountantNavbar from "./components/AccountantNavbar";
+import Homepage from "./pages/admin/Homepage";
+import AddClient from "./pages/admin/AddClient";
+import Clientprofile from "./pages/admin/Clientprofile";
+import Adminprofile from "./pages/admin/Adminprofile";
+import Accountants from "./pages/admin/Accountants";
+import Clientpage from "./pages/admin/Clientpage";
+import Invoices from "./pages/admin/Invoices";
+
+// ACCOUNTANT ROUTES
+import AccountantHomePage from "./pages/accountant/HomePage";
+import Employees from "./pages/admin/employees";
+// import BtnLang from "./components/admin/ActionBtn";
+// import Courses from "./pages/admin/Courses";
 
 const DashboardRoute = () => {
   const [token, setToken] = useState("");
   const [clients, setClients] = useState([]);
+  const [accountantClient, setAccountantClient] = useState([]);
   const [accountants, setAccountants] = useState([]);
+  const [invoices, setInvoices] = useState([]);
+
+  // clients
   useEffect(() => {
     const getToken = () => {
       const token = JSON.parse(localStorage.getItem("Token"));
@@ -23,7 +32,7 @@ const DashboardRoute = () => {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend.onrender.com/api/client/clients", {
+        .get("https://hsb-backend.onrender.com/api/admin/clients", {
           headers: {
             Authorization: token,
             "Content-type": "application/json",
@@ -37,6 +46,30 @@ const DashboardRoute = () => {
     getToken();
   }, []);
 
+  // accountantClient
+  // clients
+  useEffect(() => {
+    const getToken = () => {
+      const token = JSON.parse(localStorage.getItem("Token"));
+      if (token !== null || token !== undefined) {
+        setToken(token);
+      }
+      axios
+        .get("https://hsb-backend.onrender.com/api/accountant/clients", {
+          headers: {
+            Authorization: token,
+            "Content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          console.log(response.data, "accountant client info");
+          setAccountantClient(response.data);
+        });
+    };
+    getToken();
+  }, []);
+
+  // accountants
   useEffect(() => {
     const getToken = () => {
       const token = JSON.parse(localStorage.getItem("Token"));
@@ -58,9 +91,32 @@ const DashboardRoute = () => {
     getToken();
   }, []);
 
+  // invoices
+  useEffect(() => {
+    const getToken = () => {
+      const token = JSON.parse(localStorage.getItem("Token"));
+      if (token !== null || token !== undefined) {
+        setToken(token);
+      }
+      axios
+        .get("https://hsb-backend.onrender.com/api/accountant/invoices", {
+          headers: {
+            Authorization: token,
+            "Content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          console.log(response.data, "invoices");
+          setInvoices(response.data);
+        });
+    };
+    getToken();
+  }, []);
+
   return (
     <div>
       <Navbar />
+      {/* <AccountantNavbar /> */}
       <Routes>
         <Route
           path="/home"
@@ -81,8 +137,20 @@ const DashboardRoute = () => {
           path="/clients/invoices"
           element={<Invoices clients={clients} />}
         />
-        <Route path="/drop" element={<BtnLang />} />
-        <Route path="/test" element={<Courses />} />
+        <Route
+          path="/clients/employees"
+          element={<Employees clients={clients} />}
+        />
+        {/* ACCOUNTANT ROUTES */}
+        <Route
+          path="/accountantHomePage"
+          element={
+            <AccountantHomePage
+              accountantClient={accountantClient}
+              invoices={invoices}
+            />
+          }
+        />
       </Routes>
     </div>
   );

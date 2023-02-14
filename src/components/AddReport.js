@@ -1,35 +1,85 @@
-import React, { useState } from "react";
-import { IoMdAddCircleOutline } from "react-icons/io";
-import { BiSave } from "react-icons/bi";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { FiUpload } from "react-icons/fi";
 
 const FileUpload = ({ clients }) => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { handleSubmit } = useForm();
+  const [token, setToken] = useState("");
   const [reports, setReports] = useState(clients);
+  const [image, setImage] = useState({});
   const [title, setTitle] = useState("");
-  const [file, setFile] = useState("");
 
-  const uploadHandler = (e) => {
-    console.log(e.target.files);
-    const file = e.target.files[0];
-    setFile(file);
-  };
+  useEffect(() => {
+    let url = `https://hsb-backend.onrender.com/api/client/clients/${id}`;
+    const getToken = () => {
+      const token = JSON.parse(localStorage.getItem("Token"));
+      if (token !== null || token !== undefined) {
+        setToken(token);
+      }
+      try {
+        axios
+          .get(url, {
+            headers: {
+              Authorization: token,
+              "Content-type": "application/json",
+            },
+          })
+          .then((response) => {
+            console.log(response.data, "individual info");
+          })
+          .catch((err) => console.log(err));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getToken();
+  }, []);
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
 
-  const handleUploadSubmit = (e) => {
-    e.preventDefault();
-    const formData = {
-      title: title,
-      id: reports.length + 1,
-      file: file,
-    };
-    console.log("submitted", formData);
+  const uploadHandler = (e) => {
+    console.log(e.target.files);
+    const image = e.target.files[0];
+    setImage(image);
+    // setImage({
+    //   imagePreview: URL.createObjectURL(e.target.files[0]),
+    //   imageAsFile: e.target.files[0],
+    // });
+  };
+
+  const handleUploadSubmit = () => {
+    const formData = new FormData();
+    formData.append("clientId", id);
+    formData.append("name", title);
+    formData.append("image", image);
+    try {
+      fetch("https://hsb-backend.onrender.com/api/accountant/reports", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: token,
+        },
+      })
+        .then((res) => res.json())
+        .then((report) => {
+          console.log(report, "checking user");
+          alert("Report sent successfully");
+          navigate("/clients/clientProfile/:id");
+        });
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (
     <div className="p-4">
-      <form onSubmit={handleUploadSubmit}>
+      <form onSubmit={handleSubmit(handleUploadSubmit)}>
         <div>
           <label
             className="block mb-1 text-[12px] px-6 absolute mt-1px"
@@ -49,8 +99,9 @@ const FileUpload = ({ clients }) => {
           <input
             type="file"
             className="justify-center items-center mt-[80px] mx-[80px]"
-            name="file"
+            name="image"
             onChange={uploadHandler}
+            // value={file}
           />
 
           <p className="p-2 mx-[70px] text-sm">
@@ -58,11 +109,11 @@ const FileUpload = ({ clients }) => {
           </p>
         </div>
         <button
-          onClick={handleUploadSubmit}
-          className="w-[150px] mt-[10px] inline-flex items-center h-[45px] px-1 ml-4 py-2 tracking-wide text-white text-l font-medium bg-[#FFB5B5] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] 
-          relative"
+          type="submit"
+          className="w-[441px] h-[56px] mt-10 flex items-center justify-center p-2 text-white font-medium disabled:bg-[#FFB5B5] rounded bg-[#FF1C1D]"
         >
-          <span className="px-[10px] ">Upload Report</span>
+          Upload
+          <FiUpload className="mr-2" />
         </button>
       </form>
     </div>

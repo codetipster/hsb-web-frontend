@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Nav2 from "../components/Nav2Accountant";
-import ActionButton from "../components/ActionBtn";
+import Nav2 from "../../components/Nav2Accountant";
+import ActionButton from "../../components/ActionBtn";
 
 const Accountants = () => {
   const [isOpen, setIsOpen] = useState(false);

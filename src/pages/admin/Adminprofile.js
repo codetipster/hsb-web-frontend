@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { AiFillEyeInvisible, AiFillEye, AiFillEdit } from "react-icons/ai";
 import { TbCameraPlus } from "react-icons/tb";
-import profileImage from "../assets/Frame.png";
+import profileImage from "../../assets/Frame.png";
 
 const Adminprofile = () => {
   const [seePassword, setSeePassword] = useState(false);

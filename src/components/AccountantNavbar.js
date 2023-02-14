@@ -6,11 +6,9 @@ import img from "../assets/logo.png";
 import Login from "../pages/Login";
 
 const navigation = [
-  { name: "Home", href: "/home" },
+  { name: "Home", href: "/accountantHomePage" },
   { name: "Clients", href: "/clients" },
-  { name: "Accountants", href: "/accountants" },
-  { name: "Profile", href: "/profile" },
-  // { name: "Logout", href: "/" },
+  { name: "Reports/Invoices", href: "/profile" },
   { name: "English", href: "/languages" },
 ];
 
@@ -118,7 +116,7 @@ export default function Example() {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="/profile"
+                              href="#"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
@@ -128,7 +126,7 @@ export default function Example() {
                             </a>
                           )}
                         </Menu.Item>
-                        {/* <Menu.Item>
+                        <Menu.Item>
                           {({ active }) => (
                             <a
                               href="#"
@@ -140,7 +138,7 @@ export default function Example() {
                               Settings
                             </a>
                           )}
-                        </Menu.Item> */}
+                        </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
                             <a
