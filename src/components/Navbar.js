@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import img from "../assets/logo.png";
 import Login from "../pages/Login";
+import { IoPersonSharp } from "react-icons/io5";
 
 const navigation = [
   { name: "Home", href: "/home" },
@@ -85,24 +86,27 @@ export default function Example() {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button
+                  {/* <button
                     type="button"
                     className="rounded-full bg-white p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#FF1C1D]"
                   >
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
+                  </button> */}
 
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
                       <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#FF1C1D]">
                         <span className="sr-only">Open user menu</span>
-                        <img
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gray-400">
+                          <IoPersonSharp size={20} />
+                        </div>
+                        {/* <img
                           className="h-8 w-8 rounded-full"
                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
-                        />
+                        /> */}
                       </Menu.Button>
                     </div>
                     <Transition
