@@ -5,10 +5,13 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { TbLogin } from "react-icons/tb";
 import Sidelogo from "../assets/Landing_Page.svg";
 import logo from "../assets/logo.png";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
   const [seePassword, setSeePassword] = useState(false);
   const { handleSubmit } = useForm();

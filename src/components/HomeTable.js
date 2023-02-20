@@ -7,7 +7,6 @@ const HomeTable = ({ clients }) => {
   // const handleChange = (e) => {
   //   const { name, checked } = e.target;
   //   if
-
   // };
   return (
     <div className="p-4 my-[-20px] flex items-center justify-center">
@@ -65,7 +64,7 @@ const HomeTable = ({ clients }) => {
                     href="#"
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   > */}
-                    <ActionButton client={client} className="w-[20px] h-[45px]" />
+                    <ActionButton clients={client} className="w-[20px] h-[45px]" />
                   {/* </a> */}
                 </td>
               </tr>

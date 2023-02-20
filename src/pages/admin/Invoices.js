@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Nav2 from "../../components/Nav2Client";
 import ActionButton from "../../components/ActionBtn2";
+import Moment from "react-moment";
 
 const Invoices = ({ clients }) => {
   const [status, setStatus] = useState(false);
@@ -73,7 +74,11 @@ const Invoices = ({ clients }) => {
                   <td className="p-4">{invoice.id}</td>
                   <td className="p-4">{invoice.name}</td>
                   <td className="p-4">HSB000{invoice.clientId}</td>
-                  <td className="p-4">{invoice.createdAt}</td>
+                  <td className="p-4">
+                    <Moment format="HH:mm DD-MM-YYYY">
+                      {invoice.createdAt}
+                    </Moment>
+                  </td>
                   <td className="p-4">
                     <div className="flex items-center">
                       <div

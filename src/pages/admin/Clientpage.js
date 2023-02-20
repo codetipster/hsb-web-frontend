@@ -85,7 +85,7 @@ const Clientpage = ({ clients }) => {
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
                       <ActionButton
-                        client={client}
+                        clients={client}
                         className="w-[20px] h-[45px]"
                       />
                     </a>

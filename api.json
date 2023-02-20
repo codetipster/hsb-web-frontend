@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "invoices",
-    "dateExported": "2023-02-10T11:52:17.056Z",
+    "dateExported": "2023-02-18T19:37:34.919Z",
     "version": "1.1",
     "folders": [
         {
@@ -55,7 +55,7 @@
             "method": "POST",
             "sortNum": 7500,
             "created": "2022-12-31T13:35:44.696Z",
-            "modified": "2023-02-07T18:27:20.544Z",
+            "modified": "2023-02-18T19:04:15.186Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -69,11 +69,11 @@
                 "form": [
                     {
                         "name": "clientId",
-                        "value": "63e2938cbe7129a158fe3a8f"
+                        "value": "63ea8f268a51f8d60174a1ab"
                     },
                     {
                         "name": "name",
-                        "value": "Test report name 2"
+                        "value": "Test report name 3"
                     }
                 ],
                 "files": [
@@ -94,7 +94,7 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2022-12-30T17:17:59.030Z",
-            "modified": "2023-02-10T09:56:49.754Z",
+            "modified": "2023-02-18T19:36:51.046Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -254,7 +254,7 @@
             "method": "POST",
             "sortNum": 12500,
             "created": "2023-01-02T08:48:25.878Z",
-            "modified": "2023-02-10T08:52:15.996Z",
+            "modified": "2023-02-18T19:22:51.516Z",
             "headers": [],
             "params": [],
             "body": {
@@ -263,7 +263,7 @@
                 "form": [
                     {
                         "name": "legalNumber",
-                        "value": "112233"
+                        "value": "12345674"
                     },
                     {
                         "name": "password",
@@ -340,6 +340,30 @@
             "created": "2022-12-31T09:48:36.325Z",
             "modified": "2023-01-27T08:45:20.495Z",
             "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3495d420-8848-4416-8c0f-0ad5a5677b75",
+            "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+            "containerId": "",
+            "name": "Notification",
+            "url": "{{url}}/api/user/notification/63d38c1abebb6feaa7b39bef",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-02-15T00:07:06.300Z",
+            "modified": "2023-02-18T19:36:59.484Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                },
                 {
                     "name": "Authorization",
                     "value": "{{token}}"
@@ -577,11 +601,11 @@
             "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
             "containerId": "a75977dc-25b8-4b6c-bd34-436af007e5c8",
             "name": "Update Employee",
-            "url": "{{url}}/api/client/employees/63b322f093c36638e9503578",
+            "url": "{{url}}/api/client/employees/63f126aa06cc24782bbecee3",
             "method": "PUT",
             "sortNum": 18320.3,
             "created": "2023-01-02T18:38:53.179Z",
-            "modified": "2023-01-27T08:48:59.966Z",
+            "modified": "2023-02-18T19:28:11.006Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -793,11 +817,11 @@
             "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
             "containerId": "a75977dc-25b8-4b6c-bd34-436af007e5c8",
             "name": "Get Client by Id",
-            "url": "{{url}}/api/client/clients/63bf0eb099cfd05c745a9778 ",
+            "url": "{{url}}/api/client/clients/63e2938cbe7129a158fe3a8f",
             "method": "GET",
             "sortNum": 20000,
             "created": "2022-12-31T09:48:24.281Z",
-            "modified": "2023-01-27T08:50:02.565Z",
+            "modified": "2023-02-10T15:11:05.356Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -835,7 +859,7 @@
             "method": "POST",
             "sortNum": 22500,
             "created": "2022-12-30T23:41:45.494Z",
-            "modified": "2023-02-06T20:53:52.920Z",
+            "modified": "2023-02-13T19:34:28.301Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -857,7 +881,7 @@
                     },
                     {
                         "name": "email",
-                        "value": "mayarkulthum@gmail.com"
+                        "value": "dashmetal.12@gmail.com"
                     },
                     {
                         "name": "password",
@@ -897,11 +921,11 @@
                     },
                     {
                         "name": "legalNumber",
-                        "value": "1234567"
+                        "value": "1122334455"
                     },
                     {
                         "name": "accountantId",
-                        "value": "63d38c79bebb6feaa7b39bf6"
+                        "value": "63e29291be7129a158fe3a81"
                     }
                 ],
                 "files": [
@@ -984,7 +1008,7 @@
             "method": "PUT",
             "sortNum": 35000,
             "created": "2022-12-31T13:07:59.018Z",
-            "modified": "2023-02-07T18:46:54.265Z",
+            "modified": "2023-02-14T23:44:56.266Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -1001,6 +1025,35 @@
                         "value": "COMPLETED"
                     }
                 ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "0e6e5e4a-e871-4403-87c1-cca00b9a7ed3",
+            "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+            "containerId": "93757fbc-80d7-4060-a6b0-ab754a9863ba",
+            "name": "Send Comment",
+            "url": "{{url}}/api/admin/send-comment",
+            "method": "POST",
+            "sortNum": 35000,
+            "created": "2023-02-14T18:59:45.506Z",
+            "modified": "2023-02-14T19:00:40.322Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "clientId",
+                        "value": "5345rtdrb45"
+                    },
+                    {
+                        "name": "comment",
+                        "value": "some notification message"
+                    }
+                ],
+                "files": []
             },
             "tests": []
         },

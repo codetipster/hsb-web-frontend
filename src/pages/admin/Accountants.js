@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Moment from "react-moment";
 import Nav2 from "../../components/Nav2Accountant";
 import ActionButton from "../../components/ActionBtn";
 
@@ -70,7 +71,9 @@ const Accountants = () => {
                   <td className="p-4">{accountant.mobileNumber}</td>
                   <td className="p-4">{accountant.firstName}</td>
                   <td className="p-4">{accountant.email}</td>
-                  <td className="p-4">{accountant.createdAt}</td>
+                  <td className="p-4">
+                    <Moment format="HH:mm DD-MM-YYYY">{accountant.createdAt}</Moment>
+                  </td>
                   <td className="py-4 px-6">
                     <div className="flex items-center">
                       <div

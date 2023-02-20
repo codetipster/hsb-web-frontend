@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ActionButton from "../components/AccountantActionButton";
 
-const HomeTable = ({ accountantClient }) => {
+const HomeTable = ({ accountantClients }) => {
   const [status, setStatus] = useState(false);
 
   // const handleChange = (e) => {
@@ -10,8 +10,8 @@ const HomeTable = ({ accountantClient }) => {
 
   // };
   return (
-    <div className="flex items-center justify-center">
-      <table className="table bg-white text-sm text-left text-gray-500 dark:text-gray-400 px-4">
+    <div className="flex items-center justify-center p-4 my-6">
+      <table className="table bg-white text-sm text-left text-gray-500 dark:text-gray-400 px-4 shadow-xl">
         <thead className="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th className="p-4">
@@ -34,7 +34,7 @@ const HomeTable = ({ accountantClient }) => {
           </tr>
         </thead>
         <tbody>
-          {accountantClient.map((client) => {
+          {accountantClients.map((client) => {
             return (
               <tr>
                 <td className="p-4">
@@ -73,7 +73,7 @@ const HomeTable = ({ accountantClient }) => {
                     href="#"
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   > */}
-                  <ActionButton client={client} className="w-[20px] h-[45px]" />
+                  <ActionButton accountantClients={client} className="w-[20px] h-[45px]" />
                   {/* </a> */}
                 </td>
               </tr>

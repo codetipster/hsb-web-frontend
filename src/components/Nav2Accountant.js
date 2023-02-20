@@ -81,22 +81,21 @@ const Nav2 = ({ title }) => {
           </div>
         </form>
       </div>
-      <div className="flex">
+      {/* <div className="flex"> */}
         <div className=" flex-col items-center font-thin justify-center">
           <button
             onClick={handleSubmit}
-            className="w-[260px] inline-flex items-center h-[45px] px-2 ml-4 tracking-wide text-[#FF1C1D] text-l font-medium bg-[#FFE9E9] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] hover:text-white 
-                              relative"
+            className="w-[158px] h-[56px] inline-flex items-center justify-center text-white font-medium bg-[#FF1C1D] rounded-xl"
           >
-            <span className="px-[20px]">Filter account</span>
-            <HiOutlineFilter className="mx-[-10px]" />
+            Filter clients
+            <HiOutlineFilter className="ml-2" />
           </button>
         </div>
 
-        <div className=" flex-col items-center font-thin justify-center">
+        {/* <div className=" flex-col items-center font-thin justify-center">
           <AddAccountantModal />
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 };

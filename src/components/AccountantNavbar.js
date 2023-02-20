@@ -2,13 +2,14 @@ import React, { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { IoPersonSharp } from "react-icons/io5";
 import img from "../assets/logo.png";
 import Login from "../pages/Login";
 
 const navigation = [
   { name: "Home", href: "/accountantHomePage" },
-  { name: "Clients", href: "/clients" },
-  { name: "Reports/Invoices", href: "/profile" },
+  { name: "Clients", href: "/accountantClientPage" },
+  { name: "Reports/Invoices", href: "/accountantInvoices" },
   { name: "English", href: "/languages" },
 ];
 
@@ -88,7 +89,7 @@ export default function Example() {
                     className="rounded-full bg-white p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#FF1C1D]"
                   >
                     <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
+                    {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
                   </button>
 
                   {/* Profile dropdown */}
@@ -96,11 +97,14 @@ export default function Example() {
                     <div>
                       <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#FF1C1D]">
                         <span className="sr-only">Open user menu</span>
-                        <img
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gray-400">
+                          <IoPersonSharp size={20} />
+                        </div>
+                        {/* <img
                           className="h-8 w-8 rounded-full"
                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
-                        />
+                        /> */}
                       </Menu.Button>
                     </div>
                     <Transition
@@ -113,7 +117,7 @@ export default function Example() {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
+                        {/* <Menu.Item>
                           {({ active }) => (
                             <a
                               href="#"
@@ -125,8 +129,8 @@ export default function Example() {
                               Your Profile
                             </a>
                           )}
-                        </Menu.Item>
-                        <Menu.Item>
+                        </Menu.Item> */}
+                        {/* <Menu.Item>
                           {({ active }) => (
                             <a
                               href="#"
@@ -138,7 +142,7 @@ export default function Example() {
                               Settings
                             </a>
                           )}
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item>
                           {({ active }) => (
                             <a

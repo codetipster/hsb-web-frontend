@@ -3,10 +3,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { BiDotsVertical } from "react-icons/bi";
 
-function DropdownMenu({ client }) {
+function DropdownMenu({ clients }) {
   const [isOpen, setIsOpen] = useState(false);
   const token = JSON.parse(localStorage.getItem("Token"));
-  const url = `https://hsb-backend.onrender.com/api/client/clients/${client.id}`;
+  const url = `https://hsb-backend.onrender.com/api/client/clients/${clients.id}`;
   
   const deleteClient = () => {
     axios
@@ -34,7 +34,7 @@ function DropdownMenu({ client }) {
         <ul className="absolute px-3 py-2 right-0 w-48 bg-white rounded-md shadow-lg">
           <li className="mt-2">
             <Link
-              to={`/clients/clientProfile/${client.id}`}
+              to={`/clients/clientProfile/${clients.id}`}
               className="px-[10px] no-underline text-gray-800"
             >
               View client Profile
