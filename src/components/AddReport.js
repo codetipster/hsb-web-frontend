@@ -4,12 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FiUpload } from "react-icons/fi";
 
-const FileUpload = ({ clients }) => {
+const FileUpload = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { handleSubmit } = useForm();
   const [token, setToken] = useState("");
-  const [reports, setReports] = useState(clients);
   const [image, setImage] = useState({});
   const [title, setTitle] = useState("");
 

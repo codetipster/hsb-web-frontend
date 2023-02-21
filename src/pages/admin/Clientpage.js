@@ -4,7 +4,6 @@ import Nav2 from "../../components/Nav2Client";
 import ActionButton from "../../components/ActionBtn";
 
 const Clientpage = ({ clients }) => {
-  const [status, setStatus] = useState(false);
   const [token, setToken] = useState("");
   const [invoice, setInvoice] = useState([]);
   const [client, setClients] = useState([]);
@@ -29,6 +28,25 @@ const Clientpage = ({ clients }) => {
     };
     getToken();
   }, []);
+
+  const getStatus = (status) => {
+    let statusClass;
+    switch (status) {
+      case "ACTIVE":
+        statusClass = "p-4 text-green-500";
+        break;
+
+      case "PENDING":
+        statusClass = "p-4 text-yellow-600";
+        break;
+
+      default: //failed
+        statusClass = "p-4 text-red-600";
+        break;
+    }
+    return statusClass;
+  };
+  
   return (
     <div className="p-24 mt-[-30px]">
       <Nav2 title="Clients" />
@@ -66,18 +84,8 @@ const Clientpage = ({ clients }) => {
                   <td className="p-4">{client.legalNumber}</td>
                   <td className="p-4">{client.mobileNumber}</td>
                   <td className="p-4">{client.accountantName}</td>
-
-                  <td className="p-4">
-                    <div className="flex items-center">
-                      <div
-                        className={
-                          status
-                            ? "h-2.5 w-2.5 rounded-full bg-green-400 mr-2"
-                            : "h-2.5 w-2.5 rounded-full bg-red-500 mr-2"
-                        }
-                      ></div>{" "}
-                      {client.status}
-                    </div>
+                  <td className={getStatus(client.status)}>
+                    {client.status}
                   </td>
                   <td className="p-4">
                     <a

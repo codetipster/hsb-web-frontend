@@ -3,32 +3,33 @@ import axios from "axios";
 import AccountantNavbar from "../../components/AccountantNavbar";
 import Nav2 from "../../components/Nav2Client";
 import ActionButton from "../../components/ActionBtn2";
+import Moment from "react-moment";
 
-const AccountantInvoices = ({ clients }) => {
+const AccountantInvoices = ({ invoices }) => {
   const [status, setStatus] = useState(false);
   const [token, setToken] = useState("");
-  const [invoices, setInvoices] = useState([]);
+  // const [invoices, setInvoices] = useState([]);
 
-  useEffect(() => {
-    const getToken = () => {
-      const token = JSON.parse(localStorage.getItem("Token"));
-      if (token !== null || token !== undefined) {
-        setToken(token);
-      }
-      axios
-        .get("https://hsb-backend.onrender.com/api/accountant/invoices", {
-          headers: {
-            Authorization: token,
-            "Content-type": "application/json",
-          },
-        })
-        .then((response) => {
-          console.log(response.data, "invoices");
-          setInvoices(response.data);
-        });
-    };
-    getToken();
-  }, []);
+  // useEffect(() => {
+  //   const getToken = () => {
+  //     const token = JSON.parse(localStorage.getItem("Token"));
+  //     if (token !== null || token !== undefined) {
+  //       setToken(token);
+  //     }
+  //     axios
+  //       .get("https://hsb-backend.onrender.com/api/accountant/invoices", {
+  //         headers: {
+  //           Authorization: token,
+  //           "Content-type": "application/json",
+  //         },
+  //       })
+  //       .then((response) => {
+  //         console.log(response.data, "invoices");
+  //         setInvoices(response.data);
+  //       });
+  //   };
+  //   getToken();
+  // }, []);
   return (
     <>
       <AccountantNavbar />
@@ -76,7 +77,9 @@ const AccountantInvoices = ({ clients }) => {
                     <td className="p-4">{invoice.id}</td>
                     <td className="p-4">{invoice.name}</td>
                     <td className="p-4">HSB000{invoice.clientId}</td>
-                    <td className="p-4">{invoice.createdAt}</td>
+                    <td className="p-4">
+                    <Moment format="HH:mm DD-MM-YYYY">{invoice.createdAt}</Moment>
+                  </td>
                     <td className="p-4">
                       <div className="flex items-center">
                         <div
@@ -95,7 +98,7 @@ const AccountantInvoices = ({ clients }) => {
                         className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                       >
                         <ActionButton
-                          client={invoice}
+                          invoices={invoice}
                           className="w-[20px] h-[45px]"
                         />
                       </a>

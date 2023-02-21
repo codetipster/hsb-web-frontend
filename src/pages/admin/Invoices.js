@@ -5,7 +5,6 @@ import ActionButton from "../../components/ActionBtn2";
 import Moment from "react-moment";
 
 const Invoices = ({ clients }) => {
-  const [status, setStatus] = useState(false);
   const [token, setToken] = useState("");
   const [invoices, setInvoices] = useState([]);
 
@@ -29,6 +28,25 @@ const Invoices = ({ clients }) => {
     };
     getToken();
   }, []);
+
+  const getStatus = (status) => {
+    let statusClass;
+    switch (status) {
+      case "ACTIVE":
+        statusClass = "p-4 text-green-500";
+        break;
+
+      case "PENDING":
+        statusClass = "p-4 text-yellow-600";
+        break;
+
+      default: //failed
+        statusClass = "p-4 text-red-600";
+        break;
+    }
+    return statusClass;
+  };
+
   return (
     <div className="p-24 mt-[-30px]">
       <Nav2 title="Invoices" />
@@ -79,17 +97,8 @@ const Invoices = ({ clients }) => {
                       {invoice.createdAt}
                     </Moment>
                   </td>
-                  <td className="p-4">
-                    <div className="flex items-center">
-                      <div
-                        className={
-                          status
-                            ? "h-2.5 w-2.5 rounded-full bg-green-400 mr-2"
-                            : "h-2.5 w-2.5 rounded-full bg-red-500 mr-2"
-                        }
-                      ></div>{" "}
-                      {invoice.status}
-                    </div>
+                  <td className={getStatus(invoice.status)}>
+                    {invoice.status}
                   </td>
                   <td className="p-4">
                     <a
@@ -97,7 +106,7 @@ const Invoices = ({ clients }) => {
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
                       <ActionButton
-                        client={invoice}
+                        client={invoice.clientId}
                         className="w-[20px] h-[45px]"
                       />
                     </a>

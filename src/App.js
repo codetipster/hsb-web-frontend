@@ -72,8 +72,7 @@ function App() {
       />
       <Route
         path="/accountantClientPage"
-        element={<AccountantClientpage />}
-        accountantClients={accountantClients}
+        element={<AccountantClientpage accountantClients={accountantClients} />}
       />
       <Route
         path="/accountantInvoices"

@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+// import { useNavigate, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { HiCheck } from "react-icons/hi";
 
-const SendCommentModal = () => {
+const SendCommentModal = ({client}) => {
+  // const { id } = useParams();
+  // console.log(client,"person")
   const { handleSubmit } = useForm();
   const [show, setShow] = useState(false);
-  const [seePassword, setSeePassword] = useState(false);
-  const handleToggle = () => {
-    setSeePassword(!seePassword);
+  const [comment, setComment] = useState("");
+
+  const handleChange = (e) => {
+    setComment(e.target.value);
   };
+
+  const data = {
+    comment: comment,
+    clientId: client,
+  };
+
   //handle modal close
   const handleClose = () => setShow(false);
   //handle modal show
@@ -18,12 +28,6 @@ const SendCommentModal = () => {
   const handleCancel = (e) => {
     e.preventDefault(e);
     setShow(false);
-  };
-
-  const [comment, setComment] = useState("");
-
-  const handleChange = (e) => {
-    setComment(e.target.value);
   };
 
   const [token, setToken] = useState("");
@@ -37,26 +41,26 @@ const SendCommentModal = () => {
     getToken();
   }, []);
 
-  //   const createAccountantData = () => {
-  //     const url = "https://hsb-backend.onrender.com/api/admin/create-accountant";
-  //     try {
-  //       fetch(url, {
-  //         method: "POST",
-  //         body: JSON.stringify(details),
-  //         headers: {
-  //           Authorization: token,
-  //           "Content-type": "application/json",
-  //         },
-  //       })
-  //         .then((res) => res.json())
-  //         .then((response) => {
-  //           console.log(response, "response from creating accountant");
-  //           window.alert(response.message);
-  //         });
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
+  const handleSendComment = () => {
+    const url = "https://hsb-backend.onrender.com/api/admin/send-comment";
+    try {
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          Authorization: token,
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((response) => {
+          console.log(response, "response from sending comment");
+          window.alert(response.comment);
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <>
@@ -81,11 +85,11 @@ const SendCommentModal = () => {
             </Modal.Title>
           </div>
         </Modal.Header>
-        <div className="flex items-center justify-center mt-4">
-          You are about to send a comment to Client 1010101010
+        <div className="flex items-center justify-center mt-4 px-6">
+          You are about to send a comment to Client {client}
         </div>
         <form
-          //   onSubmit={handleSubmit(createAccountantData)}
+          onSubmit={handleSubmit(handleSendComment)}
           className="w-full flex flex-col justify-center items-center my-3 px-4"
         >
           <textarea

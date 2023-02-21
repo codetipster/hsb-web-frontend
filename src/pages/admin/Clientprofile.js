@@ -16,13 +16,6 @@ const Clientprofile = ({ clients }) => {
   };
   const handleClose = () => setShow(false);
 
-  const handleReview = () => {
-    console.log("review");
-  };
-
-  const handleDownload = () => {
-    console.log("download");
-  };
   const [token, setToken] = useState("");
   const initalClientInfo = {
     firstName: "",
@@ -114,6 +107,40 @@ const Clientprofile = ({ clients }) => {
     getToken();
   }, []);
 
+  const handleDownload = () => {
+    console.log("download");
+  };
+  
+  // const handleDownload = () => {
+  //   fetch('https://cors-anywhere.herokuapp.com/' + fileURL, {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/pdf',
+  //   },
+  // })
+  // .then((response) => response.blob())
+  // .then((blob) => {
+  //   // Create blob link to download
+  //   const url = window.URL.createObjectURL(
+  //     new Blob([blob]),
+  //   );
+  //   const link = document.createElement('a');
+  //   link.href = url;
+  //   link.setAttribute(
+  //     'download',
+  //     `FileName.pdf`,
+  //   );
+
+  //   // Append to html link element page
+  //   document.body.appendChild(link);
+
+  //   // Start download
+  //   link.click();
+
+  //   // Clean up and remove the link
+  //   link.parentNode.removeChild(link);
+  // });
+  // };
   return (
     <div>
       <div className="bg-gray-100 w-full h-full">
@@ -125,10 +152,7 @@ const Clientprofile = ({ clients }) => {
             </Link>
             <Link to="/clients/invoices" className="no-underline">
               <div>
-                <button
-                  onClick={handleReview}
-                  className="w-[160px] inline-flex items-center h-[45px] px-2 ml-4 py-2 tracking-wide text-white text-l font-medium bg-[#FF1C1D] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] relative"
-                >
+                <button className="w-[160px] inline-flex items-center h-[45px] px-2 ml-4 py-2 tracking-wide text-white text-l font-medium bg-[#FF1C1D] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] relative">
                   <span className="px-[4px]">Review Invoice</span>
                   <MdOutlinePreview className="mx-[1px]" />
                 </button>
@@ -152,7 +176,7 @@ const Clientprofile = ({ clients }) => {
                 </h6>
                 <div className="my-3">
                   <button
-                    onClick={handleDownload}
+                    // onClick={handleDownload}
                     className="w-[441px] h-[56px] inline-flex items-center justify-center text-white font-medium bg-[#FFB5B5] rounded active:bg-[#FF1C1D] hover:bg-[#FF1C1D]"
                   >
                     Download Image
@@ -185,7 +209,7 @@ const Clientprofile = ({ clients }) => {
                           </p>
                         </div>
                         <div>
-                          <BiDownload />
+                          <BiDownload onClick={handleDownload} />
                         </div>
                       </div>
                     </div>

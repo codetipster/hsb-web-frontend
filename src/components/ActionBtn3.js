@@ -26,7 +26,7 @@ function DropdownMenu({ client }) {
           <li className="mt-2 ">
             <Link
             //   to="/profile"
-              className="px-[10px]  no-underline text-gray-800"
+              className="px-[10px]  no-underline text-green-700"
             >
               Approve Request
             </Link>
@@ -34,7 +34,7 @@ function DropdownMenu({ client }) {
           <li className="mt-2 ">
             <Link
             //   to="/profile"
-              className="px-[10px]  no-underline text-gray-800"
+              className="px-[10px]  no-underline text-red-700"
             >
               Decline Request
             </Link>

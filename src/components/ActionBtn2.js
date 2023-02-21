@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SendCommentModal from "./SendCommentModal";
 import ActionButton from "./ActionBtn4";
 
-function DropdownMenu({ client }) {
+function DropdownMenu({client}) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ function DropdownMenu({ client }) {
             <ActionButton />
           </li>
           <li className="mt-2">
-            <SendCommentModal />
+            <SendCommentModal client={client} />
           </li>
         </ul>
       )}

@@ -4,7 +4,7 @@ import AccountantNavbar from "../../components/AccountantNavbar";
 import Nav2 from "../../components/Nav2Accountant";
 import ActionButton from "../../components/AccountantActionButton";
 
-const AccountantClientpage = () => {
+const AccountantClientpage = ({accountantClients}) => {
   const [status, setStatus] = useState(false);
   const [token, setToken] = useState("");
   const [invoice, setInvoice] = useState([]);
@@ -59,7 +59,7 @@ const AccountantClientpage = () => {
               </tr>
             </thead>
             <tbody>
-              {clients.map((client) => {
+              {accountantClients.map((client) => {
                 return (
                   <tr>
                     <td className="p-4">
@@ -102,7 +102,7 @@ const AccountantClientpage = () => {
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     > */}
                       <ActionButton
-                        client={client}
+                        accountantClients={client}
                         className="w-[20px] h-[45px]"
                       />
                       {/* </a> */}

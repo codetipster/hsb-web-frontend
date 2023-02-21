@@ -2,12 +2,24 @@ import React, { useState } from "react";
 import ActionButton from "./ActionBtn";
 
 const HomeTable = ({ clients }) => {
-  const [status, setStatus] = useState(false);
+  const getStatus = (status) => {
+    let statusClass;
+    switch (status) {
+      case "ACTIVE":
+        statusClass = "p-4 text-green-500";
+        break;
 
-  // const handleChange = (e) => {
-  //   const { name, checked } = e.target;
-  //   if
-  // };
+      case "PENDING":
+        statusClass = "p-4 text-yellow-600";
+        break;
+
+      default: //failed
+        statusClass = "p-4 text-red-600";
+        break;
+    }
+    return statusClass;
+  };
+
   return (
     <div className="p-4 my-[-20px] flex items-center justify-center">
       <table className="table bg-white text-sm text-left text-gray-500 dark:text-gray-400 px-4">
@@ -46,8 +58,8 @@ const HomeTable = ({ clients }) => {
                 <td className="p-4">{client.legalNumber}</td>
                 <td className="p-4">{client.mobileNumber}</td>
                 <td className="p-4">{client.accountantName}</td>
-
-                <td className="p-4">
+                <td className={getStatus(client.status)}>{client.status}</td>
+                {/* <td className="p-4">
                   <div className="flex items-center">
                     <div
                       className={
@@ -58,13 +70,16 @@ const HomeTable = ({ clients }) => {
                     ></div>{" "}
                     {client.status}
                   </div>
-                </td>
+                </td> */}
                 <td className="p-4">
                   {/* <a
                     href="#"
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   > */}
-                    <ActionButton clients={client} className="w-[20px] h-[45px]" />
+                  <ActionButton
+                    clients={client}
+                    className="w-[20px] h-[45px]"
+                  />
                   {/* </a> */}
                 </td>
               </tr>

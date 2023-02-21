@@ -10,7 +10,6 @@ const Accountants = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  const [status, setStatus] = useState(false);
   const [accountants, setAccountants] = useState([]);
   const [token, setToken] = useState("");
 
@@ -34,6 +33,24 @@ const Accountants = () => {
     };
     getToken();
   }, []);
+
+  const getStatus = (status) => {
+    let statusClass;
+    switch (status) {
+      case "ACTIVE":
+        statusClass = "p-4 text-green-500";
+        break;
+
+      case "PENDING":
+        statusClass = "p-4 text-yellow-600";
+        break;
+
+      default: //failed
+        statusClass = "p-4 text-red-600";
+        break;
+    }
+    return statusClass;
+  };
 
   return (
     <div className="p-24 mt-[-30px]">
@@ -72,19 +89,12 @@ const Accountants = () => {
                   <td className="p-4">{accountant.firstName}</td>
                   <td className="p-4">{accountant.email}</td>
                   <td className="p-4">
-                    <Moment format="HH:mm DD-MM-YYYY">{accountant.createdAt}</Moment>
+                    <Moment format="HH:mm DD-MM-YYYY">
+                      {accountant.createdAt}
+                    </Moment>
                   </td>
-                  <td className="py-4 px-6">
-                    <div className="flex items-center">
-                      <div
-                        className={
-                          status
-                            ? "h-2.5 w-2.5 rounded-full bg-green-400 mr-2"
-                            : "h-2.5 w-2.5 rounded-full bg-red-500 mr-2"
-                        }
-                      ></div>{" "}
-                      {accountant.status}
-                    </div>
+                  <td className={getStatus(accountant.status)}>
+                    {accountant.status}
                   </td>
                   {/* <td className="py-4 px-6">
                     <a
