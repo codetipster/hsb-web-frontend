@@ -1,9 +1,46 @@
 import React, { useState } from "react";
 import { BiDotsVertical } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-function DropdownMenu({ client }) {
+function DropdownMenu({ employeeId }) {
+  // const { id } = useParams();
   const [isOpen, setIsOpen] = useState(false);
+  const token = JSON.parse(localStorage.getItem("Token"));
+  const url = `https://hsb-backend.onrender.com/api/client/employees/${employeeId}`;
+  const status = "ACCEPTED";
+  const status1 = "DECLINED";
+
+  const approveRequest = () => {
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        status: status,
+      }),
+      headers: {
+        Authorization: token,
+        "Content-type": "application/json",
+      },
+    }).then((response) => {
+      console.log(response, "inactive client");
+      alert("Request Approved");
+    });
+  };
+
+  const declineRequest = () => {
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        status: status1,
+      }),
+      headers: {
+        Authorization: token,
+        "Content-type": "application/json",
+      },
+    }).then((response) => {
+      console.log(response, "inactive client");
+      alert("Request Declined");
+    });
+  };
 
   return (
     <div>
@@ -15,29 +52,16 @@ function DropdownMenu({ client }) {
       </button>
       {isOpen && (
         <ul className="absolute px-3 py-2 w-48 bg-white rounded-md shadow-lg">
-          <li className="mt-2">
-            <Link
-              //   to={`/clients/clientProfile/${client.id}`}
-              className="px-[10px] no-underline text-gray-800"
-            >
-              View Request
-            </Link>
-          </li>
-          <li className="mt-2 ">
-            <Link
-            //   to="/profile"
-              className="px-[10px]  no-underline text-green-700"
-            >
+          <li className="px-[10px] py-2 text-gray-700">View Request</li>
+          <li className="px-[10px] py-2 text-green-700">
+            <button type="submit" onClick={approveRequest}>
               Approve Request
-            </Link>
+            </button>
           </li>
-          <li className="mt-2 ">
-            <Link
-            //   to="/profile"
-              className="px-[10px]  no-underline text-red-700"
-            >
+          <li className="px-[10px] py-2 text-red-700">
+            <button type="submit" onClick={declineRequest}>
               Decline Request
-            </Link>
+            </button>
           </li>
         </ul>
       )}

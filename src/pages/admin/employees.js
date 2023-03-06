@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Nav from "../../components/Nav3";
 import ActionButton from "../../components/ActionBtn5";
+import Moment from "react-moment";
 
 const Employees = ({ clients }) => {
   const [token, setToken] = useState("");
@@ -31,12 +32,12 @@ const Employees = ({ clients }) => {
   const getStatus = (status) => {
     let statusClass;
     switch (status) {
-      case "ACTIVE":
-        statusClass = "p-4 text-green-500";
+      case "ACCEPTED":
+        statusClass = "p-4 text-green-600";
         break;
 
       case "PENDING":
-        statusClass = "p-4 text-yellow-400";
+        statusClass = "p-4 text-yellow-600";
         break;
 
       default: //failed
@@ -48,7 +49,7 @@ const Employees = ({ clients }) => {
 
   return (
     <div className="p-24 mt-[-30px]">
-      <Nav/>
+      <Nav />
       <div className="p-4 my-10 flex items-center justify-center">
         <table className="table bg-white text-sm text-left text-gray-500 dark:text-gray-400 px-4">
           <thead className="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
@@ -91,7 +92,11 @@ const Employees = ({ clients }) => {
                   <td className="p-4">{employee.name}</td>
                   <td className="p-4">{employee.bankName}</td>
                   <td className="p-4">{employee.iban}</td>
-                  <td className="p-4">{employee.createdAt}</td>
+                  <td className="p-4">
+                    <Moment format="HH:mm DD-MM-YYYY">
+                      {employee.createdAt}
+                    </Moment>
+                  </td>
                   <td className={getStatus(employee.status)}>
                     {employee.status}
                   </td>
@@ -101,7 +106,7 @@ const Employees = ({ clients }) => {
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
                       <ActionButton
-                        client={employee}
+                        employee={employee.id}
                         className="w-[20px] h-[45px]"
                       />
                     </a>

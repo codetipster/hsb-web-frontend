@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { BiDotsVertical } from "react-icons/bi";
-import { Link } from "react-router-dom";
 import SendCommentModal from "./SendCommentModal";
 import ActionButton from "./ActionBtn4";
 
-function DropdownMenu({client}) {
+function DropdownMenu({ client, client1 }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,18 +16,11 @@ function DropdownMenu({client}) {
       </button>
       {isOpen && (
         <ul className="absolute px-3 py-2 right-0 w-48 bg-white rounded-md shadow-lg">
-          <li className="mt-2">
-            <Link
-              //   to={`/clients/clientProfile/${client.id}`}
-              className="px-[10px] no-underline text-gray-800"
-            >
-              Download
-            </Link>
+          <li className="px-[10px] py-2 text-gray-700">Download</li>
+          <li className="px-[10px] py-2 text-gray-700 ">
+            <ActionButton client1={client1} />
           </li>
-          <li className="mt-2 ">
-            <ActionButton />
-          </li>
-          <li className="mt-2">
+          <li className="px-[10px] py-2 text-gray-700">
             <SendCommentModal client={client} />
           </li>
         </ul>

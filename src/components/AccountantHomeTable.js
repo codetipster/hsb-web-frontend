@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import ActionButton from "../components/AccountantActionButton";
 
 const HomeTable = ({ accountantClients }) => {
-  const [status, setStatus] = useState(false);
+  const getStatus = (status) => {
+    let statusClass;
+    switch (status) {
+      case "ACTIVE":
+        statusClass = "p-4 text-green-500";
+        break;
 
-  // const handleChange = (e) => {
-  //   const { name, checked } = e.target;
-  //   if
+      case "PENDING":
+        statusClass = "p-4 text-yellow-600";
+        break;
 
-  // };
+      default: //failed
+        statusClass = "p-4 text-red-600";
+        break;
+    }
+    return statusClass;
+  };
   return (
     <div className="flex items-center justify-center p-4 my-6">
       <table className="table bg-white text-sm text-left text-gray-500 dark:text-gray-400 px-4 shadow-xl">
@@ -24,9 +34,10 @@ const HomeTable = ({ accountantClients }) => {
                 <label htmlFor="checkbox-all-search" className="sr-only">
                   checkbox
                 </label>
-                <span className="pl-2">Client ID</span>
+                {/* <span className="pl-2">Client ID</span> */}
               </div>
             </th>
+            <th className="p-4">Client ID</th>
             <th className="p-4">Client Name</th>
             <th className="p-4">Legal Number</th>
             <th className="p-4">Mobile Number</th>
@@ -50,30 +61,23 @@ const HomeTable = ({ accountantClients }) => {
                     <label htmlFor="checkbox-all-search" className="sr-only">
                       checkbox
                     </label>
-                    <span className="pl-2">HSB000{client.id}</span>
+                    {/* <span className="pl-2">HSB000{client.id}</span> */}
                   </div>
                 </td>
+                <td className="p-4">HSB000{client.id}</td>
                 <td className="p-4">{client.firstName}</td>
                 <td className="p-4">{client.legalNumber}</td>
                 <td className="p-4">{client.mobileNumber}</td>
-                <td className="p-4">
-                  <div className="flex items-center">
-                    <div
-                      className={
-                        status
-                          ? "h-2.5 w-2.5 rounded-full bg-green-400 mr-2"
-                          : "h-2.5 w-2.5 rounded-full bg-red-500 mr-2"
-                      }
-                    ></div>{" "}
-                    {client.status}
-                  </div>
-                </td>
+                <td className={getStatus(client.status)}>{client.status}</td>
                 <td className="p-4">
                   {/* <a
                     href="#"
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   > */}
-                  <ActionButton accountantClients={client} className="w-[20px] h-[45px]" />
+                  <ActionButton
+                    accountantClients={client}
+                    className="w-[20px] h-[45px]"
+                  />
                   {/* </a> */}
                 </td>
               </tr>

@@ -258,7 +258,7 @@ const AccountantClientprofile = ({ clients }) => {
                   );
                 })}
             </div>
-            <Link to="/clients/employees" className="no-underline">
+            <Link to="/accountantEmployees" className="no-underline">
               <div className="my-4 mx-6">
                 <button
                   onClick={handleDownload}
@@ -305,7 +305,7 @@ const AccountantClientprofile = ({ clients }) => {
                   );
                 })}
             </div>
-            <Link to="/clients/invoices" className="no-underline">
+            <Link to="/accountantInvoices" className="no-underline">
               <div className="my-4 mx-6">
                 <button
                   onClick={handleDownload}

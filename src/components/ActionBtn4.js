@@ -1,43 +1,84 @@
 import React, { useState } from "react";
-import { BiDotsVertical } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import NeedMoreDataModal from "./NeedMoreDataModal";
 
-function DropdownMenu({ client }) {
+function DropdownMenu({ client1 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const token = JSON.parse(localStorage.getItem("Token"));
+  const url = `https://hsb-backend.onrender.com/api/accountant/invoices/${client1}`;
+  const status = "COMPLETED";
+  const status1 = "INREVIEW";
+  const status2 = "NEED MORE DATA";
+
+  const completedInvoice = () => {
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        status: status,
+      }),
+      headers: {
+        Authorization: token,
+        "Content-type": "application/json",
+      },
+    }).then((response) => {
+      console.log(response, "inactive client");
+      alert("Invoice Completed");
+    });
+  };
+
+  const inReviewInvoice = () => {
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        status: status1,
+      }),
+      headers: {
+        Authorization: token,
+        "Content-type": "application/json",
+      },
+    }).then((response) => {
+      console.log(response, "inactive client");
+      alert("Invoice sent for review");
+    });
+  };
+
+  const needMoreData = () => {
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        status: status2,
+      }),
+      headers: {
+        Authorization: token,
+        "Content-type": "application/json",
+      },
+    }).then((response) => {
+      console.log(response, "inactive client");
+      alert("Invoice needs more info");
+    });
+  };
 
   return (
     <div>
       <button
-        className="inline-block px-[10px] py-2 rounded-md text-sm font-medium leading-5 text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 focus:bg-gray-100 transition duration-150 ease-in-out"
+        className="rounded-md text-sm font-medium text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 focus:bg-gray-100 transition duration-150 ease-in-out"
         onClick={() => setIsOpen(!isOpen)}
       >
         Change Status
       </button>
       {isOpen && (
         <ul className="absolute px-3 py-2 w-48 bg-white rounded-md shadow-lg">
-          <li className="mt-2">
-            <Link
-              //   to={`/clients/clientProfile/${client.id}`}
-              className="px-[10px] no-underline text-gray-800"
-            >
+          <li className="px-[10px] py-2 text-green-700">
+            <button type="submit" onClick={completedInvoice}>
               Completed
-            </Link>
+            </button>
           </li>
-          <li className="mt-2 ">
-            <Link
-              //   to="/profile"
-              className="px-[10px]  no-underline text-gray-800"
-            >
+          <li className="px-[10px] py-2 text-yellow-700">
+            <button type="submit" onClick={inReviewInvoice}>
               In Review
-            </Link>
+            </button>
           </li>
-          <li className="mt-2 ">
-            <Link
-              //   to="/profile"
-              className="px-[10px]  no-underline text-gray-800"
-            >
-              Need More data
-            </Link>
+          <li className="px-[10px] py-2 text-red-700">
+            <NeedMoreDataModal client1={client1} />
           </li>
         </ul>
       )}

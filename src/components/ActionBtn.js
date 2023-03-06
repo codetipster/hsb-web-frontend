@@ -7,7 +7,41 @@ function DropdownMenu({ clients }) {
   const [isOpen, setIsOpen] = useState(false);
   const token = JSON.parse(localStorage.getItem("Token"));
   const url = `https://hsb-backend.onrender.com/api/client/clients/${clients.id}`;
-  
+  const status = "INACTIVE";
+  const status1 = "ACTIVE";
+
+  const activateClient = () => {
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        status: status1,
+      }),
+      headers: {
+        Authorization: token,
+        "Content-type": "application/json",
+      },
+    }).then((response) => {
+      console.log(response, "inactive client");
+      alert("Client Successfully Activated");
+    });
+  };
+
+  const deactivateClient = () => {
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        status: status,
+      }),
+      headers: {
+        Authorization: token,
+        "Content-type": "application/json",
+      },
+    }).then((response) => {
+      console.log(response, "inactive client");
+      alert("Client Successfully Deactivated");
+    });
+  };
+
   const deleteClient = () => {
     axios
       .delete(url, {
@@ -18,10 +52,10 @@ function DropdownMenu({ clients }) {
       })
       .then((response) => {
         console.log(response.data, "delete client");
-        alert(response.data.acknowledged)
+        alert(response.data.acknowledged);
       });
   };
-
+  
   return (
     <div>
       <button
@@ -35,38 +69,33 @@ function DropdownMenu({ clients }) {
           <li className="mt-2">
             <Link
               to={`/clients/clientProfile/${clients.id}`}
-              className="px-[10px] no-underline text-gray-800"
+              className="px-[10px] py-2 no-underline text-gray-800"
             >
-              View client Profile
+              View Client Profile
             </Link>
           </li>
           {/* <li className="mt-2 ">
             <Link
               to="/clients"
-              className="px-[10px]  no-underline text-gray-800"
+              className="px-[10px] py-2  no-underline text-gray-800"
             >
               View invoice(s)
             </Link>
           </li> */}
-          <li className="mt-2">
-            <Link
-              to="/profile"
-              className="px-[10px]  no-underline text-gray-800"
-            >
-              Drop feedback
-            </Link>
+          {/* <li className="mt-2 px-[10px] py-2 text-gray-800">Drop feedback</li> */}
+          <li className="mt-2 px-[10px] py-2 text-green-600">
+            <button type="submit" onClick={activateClient}>
+              Activate
+            </button>
           </li>
-          <li className="mt-2 ">
-            <Link
-              to="/profile"
-              className="px-[10px]  no-underline text-gray-800"
-            >
+          <li className="mt-2 px-[10px] py-2 text-blue-600">
+            <button type="submit" onClick={deactivateClient}>
               Deactivate
-            </Link>
+            </button>
           </li>
-          <li className="mt-2 px-[10px] text-red-600">
+          <li className="mt-2 px-[10px] py-2 text-red-600">
             <button type="submit" onClick={deleteClient}>
-              Delete
+              Delete Client
             </button>
           </li>
         </ul>

@@ -47,6 +47,7 @@ const AddAccountantModal = () => {
     };
     getToken();
   }, []);
+  
   const createAccountantData = () => {
     const url = "https://hsb-backend.onrender.com/api/admin/create-accountant";
     try {
@@ -67,34 +68,12 @@ const AddAccountantModal = () => {
       console.log(error.message);
     }
   };
-  // handle form submit
-  // const handleSubmit = (e) => {
-  //   e.preventDefault(e);
-  //   const newData = {
-  //     firstName: firstName,
-  //     familyName: familyName,
-  //     phone: phone,
-  //     email: email,
-  //     status: selectedOption,
-  //     date: new Date().toISOString(),
-  //     id: accountants.length + 1,
-  //     password: password,
-  //   };
-
-  //   axios
-  //     .post("http://localhost:3001/accountants", newData)
-  //     .then((response) => {
-  //       setAccountant(accountants.concat(response.data));
-
-  //       setShow(!show);
-  //     });
-  // };
 
   return (
     <>
       <button
         onClick={handleShow}
-        className="w-[260px] inline-flex items-center h-[45px] px-2 ml-4 tracking-wide text-white text-l font-medium bg-[#FF1C1D] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] 
+        className="w-[237px] inline-flex items-center h-[56px] px-2 ml-4 tracking-wide text-white text-l font-medium bg-[#FF1C1D] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] 
             relative"
       >
         <span className="px-[20px]">Add new accountant</span>

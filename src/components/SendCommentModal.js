@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Modal from "react-bootstrap/Modal";
 import { HiCheck } from "react-icons/hi";
 
-const SendCommentModal = ({client}) => {
+const SendCommentModal = ({ client }) => {
   // const { id } = useParams();
   // console.log(client,"person")
   const { handleSubmit } = useForm();
@@ -64,12 +64,7 @@ const SendCommentModal = ({client}) => {
 
   return (
     <>
-      <button
-        onClick={handleShow}
-        className="px-[10px]  no-underline text-gray-800"
-      >
-        Send Comment
-      </button>
+      <button onClick={handleShow}>Send Comment</button>
 
       <Modal
         show={show}
@@ -86,7 +81,7 @@ const SendCommentModal = ({client}) => {
           </div>
         </Modal.Header>
         <div className="flex items-center justify-center mt-4 px-6">
-          You are about to send a comment to Client {client}
+          You are about to send a comment to Client {client} 
         </div>
         <form
           onSubmit={handleSubmit(handleSendComment)}
@@ -105,7 +100,7 @@ const SendCommentModal = ({client}) => {
               type="submit"
               className="w-[441px] h-[56px] inline-flex items-center justify-center text-white font-medium bg-[#FF1C1D] rounded  active:bg-[#FF1C1D] text-xl"
             >
-              <span>Save</span>
+              <span>Send</span>
               <HiCheck className="ml-2" />
             </button>
           </div>

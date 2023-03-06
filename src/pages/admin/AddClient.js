@@ -5,7 +5,7 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { BiSave } from "react-icons/bi";
 import AccountantInfo from "../../components/AccountantInfo";
-
+import { useTranslation, Trans } from "react-i18next";
 const AddClient = ({ clients }) => {
   const navigate = useNavigate();
   const { handleSubmit } = useForm();
@@ -13,6 +13,9 @@ const AddClient = ({ clients }) => {
   const handleToggle = () => {
     setSeePassword(!seePassword);
   };
+
+  // for language
+  const { t } = useTranslation();
 
   const initialValues = {
     firstName: "",
@@ -102,6 +105,11 @@ const AddClient = ({ clients }) => {
           <MdOutlineArrowBackIos className="mr-2" /> Add new client
         </div>
       </Link>
+      {/* <p>
+        <Trans i18nKey="description.part1">
+          Edit <code>src/App.js</code> and save to reload.
+        </Trans>
+      </p> */}
       <div className="bg-white w-[489px] mt-4 rounded-lg">
         <div className="font-bold text-sm mx-10 mt-12">Create a new Client</div>
         <form className="px-4" onSubmit={handleSubmit(createClientData)}>

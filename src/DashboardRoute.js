@@ -10,6 +10,7 @@ import Accountants from "./pages/admin/Accountants";
 import Clientpage from "./pages/admin/Clientpage";
 import Invoices from "./pages/admin/Invoices";
 import Employees from "./pages/admin/employees";
+// import { Languages } from "./pages/admin/Languages";
 
 const DashboardRoute = () => {
   const [token, setToken] = useState("");
@@ -73,7 +74,10 @@ const DashboardRoute = () => {
           path="/clients/add-client"
           element={<AddClient clients={clients} />}
         />
-        <Route path="/clients/clientProfile/:id" element={<Clientprofile />} />
+        <Route
+          path="/clients/clientProfile/:id"
+          element={<Clientprofile />}
+        />
         <Route path="/profile" element={<Adminprofile />} />
         <Route
           path="/accountants"
@@ -87,6 +91,7 @@ const DashboardRoute = () => {
           path="/clients/employees"
           element={<Employees clients={clients} />}
         />
+        {/* <Route path="/languages" element={<Languages />} /> */}
       </Routes>
     </div>
   );

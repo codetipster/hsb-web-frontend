@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Nav2 from "../../components/Nav2Client";
-import ActionButton from "../../components/ActionBtn2";
+import Nav from "../../components/Nav3";
+import ActionButton from "../../components/ActionBtn5";
 import Moment from "react-moment";
 
-const Invoices = ({clients}) => {
+const AccountantEmployees = ({ clients }) => {
   const [token, setToken] = useState("");
-  const [invoices, setInvoices] = useState([]);
+  const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
     const getToken = () => {
@@ -15,15 +15,15 @@ const Invoices = ({clients}) => {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend.onrender.com/api/admin/invoices", {
+        .get("https://hsb-backend.onrender.com/api/admin/employees", {
           headers: {
             Authorization: token,
             "Content-type": "application/json",
           },
         })
         .then((response) => {
-          console.log(response.data, "invoices");
-          setInvoices(response.data);
+          console.log(response.data, "employees");
+          setEmployees(response.data);
         });
     };
     getToken();
@@ -32,16 +32,16 @@ const Invoices = ({clients}) => {
   const getStatus = (status) => {
     let statusClass;
     switch (status) {
-      case "COMPLETED":
-        statusClass = "p-4 text-green-700";
+      case "ACCEPTED":
+        statusClass = "p-4 text-green-600";
         break;
 
-      case "INREVIEW":
-        statusClass = "p-4 text-yellow-700";
+      case "PENDING":
+        statusClass = "p-4 text-yellow-600";
         break;
 
       default: //failed
-        statusClass = "p-4 text-red-700";
+        statusClass = "p-4 text-red-600";
         break;
     }
     return statusClass;
@@ -49,7 +49,7 @@ const Invoices = ({clients}) => {
 
   return (
     <div className="p-24 mt-[-30px]">
-      <Nav2 title="Invoices" />
+      <Nav />
       <div className="p-4 my-10 flex items-center justify-center">
         <table className="table bg-white text-sm text-left text-gray-500 dark:text-gray-400 px-4">
           <thead className="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
@@ -66,15 +66,15 @@ const Invoices = ({clients}) => {
                   </label>
                 </div>
               </th>
-              <th className="p-4">Invoice Number</th>
-              <th className="p-4">Invoice Name</th>
-              <th className="p-4">Client Id</th>
+              <th className="p-4">Employee Name</th>
+              <th className="p-4">Bank Name</th>
+              <th className="p-4">IBAN Number</th>
               <th className="p-4">Date/Time Created</th>
-              <th className="p-4">Invoice Status</th>
+              <th className="p-4">Employee Status</th>
             </tr>
           </thead>
-          <tbody>
-            {invoices.map((invoice) => {
+          {/* <tbody>
+            {employees.map((employee) => {
               return (
                 <tr>
                   <td className="p-4">
@@ -89,16 +89,16 @@ const Invoices = ({clients}) => {
                       </label>
                     </div>
                   </td>
-                  <td className="p-4">{invoice.id}</td>
-                  <td className="p-4">{invoice.name}</td>
-                  <td className="p-4">HSB000{invoice.clientId}</td>
+                  <td className="p-4">{employee.name}</td>
+                  <td className="p-4">{employee.bankName}</td>
+                  <td className="p-4">{employee.iban}</td>
                   <td className="p-4">
                     <Moment format="HH:mm DD-MM-YYYY">
-                      {invoice.createdAt}
+                      {employee.createdAt}
                     </Moment>
                   </td>
-                  <td className={getStatus(invoice.status)}>
-                    {invoice.status}
+                  <td className={getStatus(employee.status)}>
+                    {employee.status}
                   </td>
                   <td className="p-4">
                     <a
@@ -106,8 +106,7 @@ const Invoices = ({clients}) => {
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
                       <ActionButton
-                        client={invoice.clientId}
-                        client1={invoice.id}
+                        employee={employee.id}
                         className="w-[20px] h-[45px]"
                       />
                     </a>
@@ -115,11 +114,11 @@ const Invoices = ({clients}) => {
                 </tr>
               );
             })}
-          </tbody>
+          </tbody> */}
         </table>
       </div>
     </div>
   );
 };
 
-export default Invoices;
+export default AccountantEmployees;

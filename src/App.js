@@ -8,6 +8,7 @@ import AccountantHomePage from "./pages/accountant/HomePage";
 import AccountantClientpage from "./pages/accountant/ClientPage";
 import AccountantInvoices from "./pages/accountant/invoices";
 import AccountantClientprofile from "./pages/accountant/ClientProfile";
+import AccountantEmployees from "./pages/accountant/employees";
 
 function App() {
   const [token, setToken] = useState("");
@@ -77,6 +78,10 @@ function App() {
       <Route
         path="/accountantInvoices"
         element={<AccountantInvoices invoices={invoices} />}
+      />
+      <Route
+        path="/accountantEmployees"
+        element={<AccountantEmployees />}
       />
       <Route
         path="/accountantClientPage/clientProfile/:id"

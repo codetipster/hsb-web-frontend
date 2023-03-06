@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const Login = () => {
   const MySwal = withReactContent(Swal);
@@ -45,7 +46,9 @@ const Login = () => {
         .then((user) => {
           console.log(user, "checking user");
           let userToken = JSON.stringify(user.token);
+          let Id = JSON.stringify(user.id);
           localStorage.setItem("Token", userToken);
+          localStorage.setItem("Id", Id);
           if (user.user === "admin") {
             return navigate("/home");
           }

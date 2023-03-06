@@ -1,25 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { BiDotsVertical } from "react-icons/bi";
 
 function DropdownMenu({ accountantClients }) {
   const [isOpen, setIsOpen] = useState(false);
-  const token = JSON.parse(localStorage.getItem("Token"));
-    const url = `https://hsb-backend.onrender.com/api/client/clients/${accountantClients.id}`;
-  //   const deleteClient = () => {
-  //     axios
-  //       .delete(url, {
-  //         headers: {
-  //           Authorization: token,
-  //           "Content-type": "application/json",
-  //         },
-  //       })
-  //       .then((response) => {
-  //         console.log(response.data, "delete client");
-  //         alert(response.data.acknowledged)
-  //       });
-  //   };
 
   return (
     <div>
@@ -34,18 +18,18 @@ function DropdownMenu({ accountantClients }) {
           <li className="mt-2">
             <Link
               to={`/accountantClientPage/clientProfile/${accountantClients.id}`}
-              className="px-[10px] no-underline text-gray-800"
+              className="p-2 no-underline text-gray-800"
             >
               View client Profile
             </Link>
           </li>
           <li className="mt-2 ">
-            <Link to="/accountantInvoices" className="px-[10px]  no-underline text-gray-800">
+            <Link to="/accountantInvoices" className="p-2  no-underline text-gray-800">
               View invoice(s)
             </Link>
           </li>
           <li className="mt-2 ">
-            <Link className="px-[10px]  no-underline text-gray-800">
+            <Link className="p-2  no-underline text-gray-800">
               Drop feedback
             </Link>
           </li>

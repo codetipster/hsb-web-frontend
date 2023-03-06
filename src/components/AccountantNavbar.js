@@ -1,8 +1,10 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { IoPersonSharp } from "react-icons/io5";
+import { IoMdNotifications } from "react-icons/io";
 import img from "../assets/logo.png";
 import Login from "../pages/Login";
 
@@ -10,7 +12,7 @@ const navigation = [
   { name: "Home", href: "/accountantHomePage" },
   { name: "Clients", href: "/accountantClientPage" },
   { name: "Reports/Invoices", href: "/accountantInvoices" },
-  { name: "English", href: "/languages" },
+  // { name: "English", href: "/home" },
 ];
 
 function classNames(...classes) {
@@ -20,6 +22,7 @@ function classNames(...classes) {
 export default function Example() {
   const navigate = useNavigate();
   const [loggedin, setLoggedin] = useState(true);
+  const [notifications, setNotification] = useState([]);
 
   const handleLogin = () => {
     console.log("logging into app");
@@ -30,9 +33,32 @@ export default function Example() {
     localStorage.clear();
     navigate("/");
   };
+
+  useEffect(() => {
+    const getToken = () => {
+      const token = JSON.parse(localStorage.getItem("Token"));
+      const id = JSON.parse(localStorage.getItem("Id"));
+      if (token !== null || token !== undefined) {
+        // setToken(token);
+      }
+      axios
+        .get(`https://hsb-backend.onrender.com/api/user/notification/${id}`, {
+          headers: {
+            Authorization: token,
+            "Content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          console.log(response.data, "notification");
+          setNotification(response.data);
+        });
+    };
+    getToken();
+  }, []);
+
   if (loggedin === true) {
     return (
-      <Disclosure as="nav" className="bg-white shadow-md no-underline">
+      <Disclosure as="nav" className="bg-white flex items-center justify-between shadow-md no-underline">
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-4">
@@ -84,13 +110,48 @@ export default function Example() {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button
-                    type="button"
-                    className="rounded-full bg-white p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#FF1C1D]"
-                  >
-                    <span className="sr-only">View notifications</span>
-                    {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
-                  </button>
+                  <Menu as="div" className="relative ml-3">
+                    <div>
+                      <Menu.Button className="flex rounded-full  text-sm">
+                        <span className="sr-only">Open user menu</span>
+                        {/* <div className="rounded-full bg-white p-1 text-gray-400 w-8 h-8"> */}
+                        <IoMdNotifications size={30} color="black" />
+                        {/* </div> */}
+                      </Menu.Button>
+                    </div>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-[300px] origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        {Array.isArray(notifications) &&
+                        notifications.length ? (
+                          <div>
+                            {notifications.map((notification) => {
+                              return (
+                                <Menu.Item>
+                                  <p
+                                    className="
+                                   px-4 text-sm text-gray-700"
+                                  >
+                                    {notification.messageBody}
+                                  </p>
+                                </Menu.Item>
+                              );
+                            })}
+                          </div>
+                        ) : (
+                          <h3 className="
+                          px-4 text-sm text-gray-700">No New Notifications</h3>
+                        )}
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
 
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">

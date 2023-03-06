@@ -7,8 +7,9 @@ import { BiDownload, BiAddToQueue } from "react-icons/bi";
 import { MdOutlineArrowBackIos, MdOutlinePreview } from "react-icons/md";
 import profileImage from "../../assets/Frame.png";
 import ActionButton from "../../components/ActionBtn3";
+import Moment from "react-moment";
 
-const Clientprofile = ({ clients }) => {
+const Clientprofile = () => {
   const { id } = useParams();
   const [show, setShow] = useState(false);
   const handleShow = () => {
@@ -82,6 +83,7 @@ const Clientprofile = ({ clients }) => {
             const _employees = [];
             info.employees.forEach((item) => {
               const _employeesObject = {
+                id: item.id,
                 name: item.name,
                 createdAt: item.createdAt,
                 status: item.status,
@@ -110,7 +112,7 @@ const Clientprofile = ({ clients }) => {
   const handleDownload = () => {
     console.log("download");
   };
-  
+
   // const handleDownload = () => {
   //   fetch('https://cors-anywhere.herokuapp.com/' + fileURL, {
   //   method: 'GET',
@@ -141,6 +143,43 @@ const Clientprofile = ({ clients }) => {
   //   link.parentNode.removeChild(link);
   // });
   // };
+
+  // employee status
+  const getStatus = (status) => {
+    let statusClass;
+    switch (status) {
+      case "ACCEPTED":
+        statusClass = "text-green-600";
+        break;
+
+      case "PENDING":
+        statusClass = "text-yellow-600";
+        break;
+
+      default: //failed
+        statusClass = "text-red-600";
+        break;
+    }
+    return statusClass;
+  };
+  // invoice status
+  const getStatus1 = (status) => {
+    let statusClass;
+    switch (status) {
+      case "COMPLETED":
+        statusClass = "text-green-600";
+        break;
+
+      case "INREVIEW":
+        statusClass = "text-yellow-600";
+        break;
+
+      default: //failed
+        statusClass = "text-red-600";
+        break;
+    }
+    return statusClass;
+  };
   return (
     <div>
       <div className="bg-gray-100 w-full h-full">
@@ -203,8 +242,9 @@ const Clientprofile = ({ clients }) => {
                             {data.name}
                             <br />
                             <span className="text-gray-400 ">
-                              {" "}
-                              {data.createdAt}
+                              <Moment format="HH:mm DD-MM-YYYY">
+                                {data.createdAt}
+                              </Moment>
                             </span>
                           </p>
                         </div>
@@ -261,11 +301,12 @@ const Clientprofile = ({ clients }) => {
                             {data.name}
                             <br />
                             <span className="text-gray-400 ">
-                              {" "}
-                              {data.createdAt}
+                              <Moment format="HH:mm DD-MM-YYYY">
+                                {data.createdAt}
+                              </Moment>
                             </span>
                             <br />
-                            <span className="text-green-400">
+                            <span className={getStatus(data.status)}>
                               {" "}
                               {data.status}
                             </span>
@@ -273,7 +314,7 @@ const Clientprofile = ({ clients }) => {
                         </div>
                         <div>
                           {/* <BiDownload /> */}
-                          <ActionButton />
+                          <ActionButton employeeId={data.id} />
                         </div>
                       </div>
                     </div>
@@ -309,11 +350,12 @@ const Clientprofile = ({ clients }) => {
                             {data.name}
                             <br />
                             <span className="text-gray-400 ">
-                              {" "}
-                              {data.createdAt}
+                              <Moment format="HH:mm DD-MM-YYYY">
+                                {data.createdAt}
+                              </Moment>
                             </span>
                             <br />
-                            <span className="text-green-400">
+                            <span className={getStatus1(data.status)}>
                               {" "}
                               {data.status}
                             </span>

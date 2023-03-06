@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "invoices",
-    "dateExported": "2023-02-18T19:37:34.919Z",
+    "dateExported": "2023-03-05T17:29:44.736Z",
     "version": "1.1",
     "folders": [
         {
@@ -254,8 +254,13 @@
             "method": "POST",
             "sortNum": 12500,
             "created": "2023-01-02T08:48:25.878Z",
-            "modified": "2023-02-18T19:22:51.516Z",
-            "headers": [],
+            "modified": "2023-03-02T17:46:32.734Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
             "params": [],
             "body": {
                 "type": "formdata",
@@ -263,7 +268,7 @@
                 "form": [
                     {
                         "name": "legalNumber",
-                        "value": "12345674"
+                        "value": "112233"
                     },
                     {
                         "name": "password",
@@ -744,7 +749,7 @@
             "method": "GET",
             "sortNum": 18750,
             "created": "2022-12-31T10:26:15.483Z",
-            "modified": "2023-02-07T18:12:57.003Z",
+            "modified": "2023-03-02T17:48:06.259Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -752,16 +757,6 @@
                 }
             ],
             "params": [],
-            "body": {
-                "type": "formdata",
-                "raw": "",
-                "form": [
-                    {
-                        "name": "client_id",
-                        "value": "63e2938cbe7129a158fe3a8f"
-                    }
-                ]
-            },
             "tests": []
         },
         {
@@ -773,7 +768,7 @@
             "method": "GET",
             "sortNum": 19375,
             "created": "2023-01-01T19:21:58.025Z",
-            "modified": "2023-01-27T10:17:46.168Z",
+            "modified": "2023-03-02T17:44:24.323Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -781,16 +776,6 @@
                 }
             ],
             "params": [],
-            "body": {
-                "type": "formdata",
-                "raw": "",
-                "form": [
-                    {
-                        "name": "client_id",
-                        "value": "63d3a13b4904138151bd3c19"
-                    }
-                ]
-            },
             "tests": []
         },
         {
@@ -1164,6 +1149,35 @@
                 }
             ],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c2e20bd9-4696-4811-9e22-1e7d955ef783",
+            "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+            "containerId": "69500118-9c6f-4f7a-bd2f-6c532304adef",
+            "name": "Updata Accountant Status",
+            "url": "{{url}}/api/accountant/accountants/63e29291be7129a158fe3a81",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-03-05T17:24:15.177Z",
+            "modified": "2023-03-05T17:27:49.589Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "status",
+                        "value": "DEACTIVATED"
+                    }
+                ]
+            },
             "tests": []
         },
         {

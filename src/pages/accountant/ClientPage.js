@@ -4,8 +4,7 @@ import AccountantNavbar from "../../components/AccountantNavbar";
 import Nav2 from "../../components/Nav2Accountant";
 import ActionButton from "../../components/AccountantActionButton";
 
-const AccountantClientpage = ({accountantClients}) => {
-  const [status, setStatus] = useState(false);
+const AccountantClientpage = ({ accountantClients }) => {
   const [token, setToken] = useState("");
   const [invoice, setInvoice] = useState([]);
   const [clients, setClients] = useState([]);
@@ -30,6 +29,25 @@ const AccountantClientpage = ({accountantClients}) => {
     };
     getToken();
   }, []);
+
+  const getStatus = (status) => {
+    let statusClass;
+    switch (status) {
+      case "ACTIVE":
+        statusClass = "p-4 text-green-500";
+        break;
+
+      case "PENDING":
+        statusClass = "p-4 text-yellow-600";
+        break;
+
+      default: //failed
+        statusClass = "p-4 text-red-600";
+        break;
+    }
+    return statusClass;
+  };
+
   return (
     <>
       <AccountantNavbar />
@@ -49,9 +67,10 @@ const AccountantClientpage = ({accountantClients}) => {
                     <label htmlFor="checkbox-all-search" className="sr-only">
                       checkbox
                     </label>
-                    <span className="pl-2">Client ID</span>
+                    {/* <span className="pl-2">Client ID</span> */}
                   </div>
                 </th>
+                <th className="p-4">Client ID</th>
                 <th className="p-4">Client Name</th>
                 <th className="p-4">Legal Number</th>
                 <th className="p-4">Mobile Number</th>
@@ -78,23 +97,15 @@ const AccountantClientpage = ({accountantClients}) => {
                         >
                           checkbox
                         </label>
-                        <span className="pl-2">HSB000{client.id}</span>
+                        {/* <span className="pl-2">HSB000{client.id}</span> */}
                       </div>
                     </td>
+                    <td className="p-4">HSB000{client.id}</td>
                     <td className="p-4">{client.firstName}</td>
                     <td className="p-4">{client.legalNumber}</td>
                     <td className="p-4">{client.mobileNumber}</td>
-                    <td className="p-4">
-                      <div className="flex items-center">
-                        <div
-                          className={
-                            status
-                              ? "h-2.5 w-2.5 rounded-full bg-green-400 mr-2"
-                              : "h-2.5 w-2.5 rounded-full bg-red-500 mr-2"
-                          }
-                        ></div>{" "}
-                        {client.status}
-                      </div>
+                    <td className={getStatus(client.status)}>
+                      {client.status}
                     </td>
                     <td className="p-4">
                       {/* <a
