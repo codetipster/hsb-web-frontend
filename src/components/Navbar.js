@@ -6,7 +6,8 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import img from "../assets/logo.png";
 import Login from "../pages/Login";
 import { IoPersonSharp } from "react-icons/io5";
-import { IoMdNotifications } from "react-icons/io";
+import Badge from "@mui/material/Badge";
+import { Notifications } from "@mui/icons-material";
 // import Languageoption from "./LanguageDropdown";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
@@ -133,7 +134,9 @@ export default function Example() {
                       <Menu.Button className="flex rounded-full  text-sm">
                         <span className="sr-only">Open user menu</span>
                         {/* <div className="rounded-full bg-white p-1 text-gray-400 w-8 h-8"> */}
-                        <IoMdNotifications size={30} color="black" />
+                        <Badge badgeContent={5} color="error">
+                          <Notifications size={30} color="black" />
+                        </Badge>
                         {/* </div> */}
                       </Menu.Button>
                     </div>
