@@ -1,13 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Disclosure, Menu, Transition, Popover } from "@headlessui/react";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import img from "../assets/logo.png";
 import Login from "../pages/Login";
 import { IoPersonSharp } from "react-icons/io5";
 import Badge from "@mui/material/Badge";
 import { Notifications } from "@mui/icons-material";
+import Moment from "react-moment";
 // import Languageoption from "./LanguageDropdown";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
@@ -120,63 +121,62 @@ export default function Example() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  {/* <button
-                    type="button"
-                    className="rounded-full bg-white p-1 text-gray-400 w-10 h-10"
-                  >
-                    <span className="sr-only">Viewnotifications</span>
-                    <BellIcon size={20} aria-hidden="true" />
-                  </button> */}
-                  {/* Notification dropdown */}
-                  <Menu as="div" className="relative ml-3">
-                    <div>
-                      <Menu.Button className="flex rounded-full  text-sm">
-                        <span className="sr-only">Open user menu</span>
-                        {/* <div className="rounded-full bg-white p-1 text-gray-400 w-8 h-8"> */}
-                        <Badge badgeContent={5} color="error">
-                          <Notifications size={30} color="black" />
-                        </Badge>
-                        {/* </div> */}
-                      </Menu.Button>
-                    </div>
+
+                <div className="flex items-center justify-around bg-red-800">
+                {/* Notification dropdown */}
+                  <Popover className="relative">
+                    <Popover.Button className="flex rounded-full  text-sm">
+                      <Badge badgeContent={5} color="error">
+                        <Notifications size={30} color="black" />
+                      </Badge>
+                    </Popover.Button>
                     <Transition
                       as={Fragment}
                       enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
+                      enterFrom="transform scale-95"
+                      enterTo="transform scale-100"
                       leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
+                      leaveFrom="transform scale-95"
+                      leaveTo="transform scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-[300px] origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        {Array.isArray(notifications) &&
-                        notifications.length ? (
-                          <div>
-                            {notifications.map((notification) => {
-                              return (
-                                <Menu.Item>
-                                  <p
-                                    className="
-                                   px-4 text-sm text-gray-700"
-                                  >
-                                    {notification.messageBody}
-                                  </p>
-                                </Menu.Item>
-                              );
-                            })}
+                      <Popover.Panel className="absolute -right-16 z-10 mt-2 bg-white shadow-xl rounded w-[400px]">
+                        <div className="relative">
+                          <div className="w-full font-semibold text-white p-2 text-lg bg-gray-400 ">
+                            Notifications
                           </div>
-                        ) : (
-                          <h3
-                            className="
+                          {Array.isArray(notifications) &&
+                          notifications.length ? (
+                            <div className="mt-2">
+                              {notifications.map((notification) => {
+                                return (
+                                  <div className="flex items-center justify-between rounded-t px-3">
+                                    <p
+                                      className="
+                                    text-sm text-gray-700"
+                                    >
+                                      {notification.messageBody}
+                                    </p>
+                                    <span className="text-xs text-gray-400">
+                                      <Moment format="HH:mm DD-MM-YYYY">
+                                        {notification.createdAt}
+                                      </Moment>
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          ) : (
+                            <h3
+                              className="
                           px-4 text-sm text-gray-700"
-                          >
-                            No New Notifications
-                          </h3>
-                        )}
-                      </Menu.Items>
+                            >
+                              No New Notifications
+                            </h3>
+                          )}
+                        </div>
+                      </Popover.Panel>
                     </Transition>
-                  </Menu>
+                  </Popover>
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
