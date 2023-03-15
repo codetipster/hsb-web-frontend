@@ -13,7 +13,7 @@ const FileUpload = () => {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
-    let url = `https://hsb-backend.onrender.com/api/client/clients/${id}`;
+    let url = `https://hsb-backend-app-rpnm.onrender.com/api/client/clients/${id}`;
     const getToken = () => {
       const token = JSON.parse(localStorage.getItem("Token"));
       if (token !== null || token !== undefined) {
@@ -58,7 +58,7 @@ const FileUpload = () => {
     formData.append("name", title);
     formData.append("image", image);
     try {
-      fetch("https://hsb-backend.onrender.com/api/accountant/reports", {
+      fetch("https://hsb-backend-app-rpnm.onrender.com/api/accountant/reports", {
         method: "POST",
         body: formData,
         headers: {

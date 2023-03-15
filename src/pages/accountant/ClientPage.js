@@ -16,7 +16,7 @@ const AccountantClientpage = ({ accountantClients }) => {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend.onrender.com/api/accountant/clients", {
+        .get("https://hsb-backend-app-rpnm.onrender.com/api/accountant/clients", {
           headers: {
             Authorization: token,
             "Content-type": "application/json",

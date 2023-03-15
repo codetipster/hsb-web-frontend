@@ -45,7 +45,7 @@ const NeedMoreDataModal = ({ client, client1 }) => {
   }, []);
 
   const handleSendComment = () => {
-    const url = "https://hsb-backend.onrender.com/api/admin/send-comment";
+    const url = "https://hsb-backend-app-rpnm.onrender.com/api/admin/send-comment";
     try {
       fetch(url, {
         method: "POST",

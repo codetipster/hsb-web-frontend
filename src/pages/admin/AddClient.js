@@ -78,7 +78,7 @@ const AddClient = ({ clients }) => {
   }, []);
 
   const createClientData = () => {
-    const url = "https://hsb-backend.onrender.com/api/admin/create-client";
+    const url = "https://hsb-backend-app-rpnm.onrender.com/api/admin/create-client";
     try {
       fetch(url, {
         method: "POST",

@@ -9,6 +9,8 @@ import AccountantClientpage from "./pages/accountant/ClientPage";
 import AccountantInvoices from "./pages/accountant/invoices";
 import AccountantClientprofile from "./pages/accountant/ClientProfile";
 import AccountantEmployees from "./pages/accountant/employees";
+import Chat from "./pages/accountant/Chat";
+import ChatText from "./pages/accountant/ChatText";
 
 function App() {
   const [token, setToken] = useState("");
@@ -23,7 +25,7 @@ function App() {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend.onrender.com/api/accountant/clients", {
+        .get("https://hsb-backend-app-rpnm.onrender.com/api/accountant/clients", {
           headers: {
             Authorization: token,
             "Content-type": "application/json",
@@ -45,7 +47,7 @@ function App() {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend.onrender.com/api/accountant/invoices", {
+        .get("https://hsb-backend-app-rpnm.onrender.com/api/accountant/invoices", {
           headers: {
             Authorization: token,
             "Content-type": "application/json",
@@ -87,6 +89,8 @@ function App() {
         path="/accountantClientPage/clientProfile/:id"
         element={<AccountantClientprofile />}
       />
+      <Route path="/chats" element={<Chat/>}/>
+      <Route path="/chats/messages" element={<ChatText/>}/>
     </Routes>
   );
 }

@@ -6,7 +6,7 @@ import { BiDotsVertical } from "react-icons/bi";
 function DropdownMenu({ clients }) {
   const [isOpen, setIsOpen] = useState(false);
   const token = JSON.parse(localStorage.getItem("Token"));
-  const url = `https://hsb-backend.onrender.com/api/client/clients/${clients.id}`;
+  const url = `https://hsb-backend-app-rpnm.onrender.com/api/client/clients/${clients.id}`;
   const status = "INACTIVE";
   const status1 = "ACTIVE";
 

@@ -41,7 +41,7 @@ const Clientprofile = () => {
   } = clientInfo;
 
   useEffect(() => {
-    let url = `https://hsb-backend.onrender.com/api/client/clients/${id}`;
+    let url = `https://hsb-backend-app-rpnm.onrender.com/api/client/clients/${id}`;
     let info;
     const getToken = () => {
       const token = JSON.parse(localStorage.getItem("Token"));

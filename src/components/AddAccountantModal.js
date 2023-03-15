@@ -49,7 +49,7 @@ const AddAccountantModal = () => {
   }, []);
   
   const createAccountantData = () => {
-    const url = "https://hsb-backend.onrender.com/api/admin/create-accountant";
+    const url = "https://hsb-backend-app-rpnm.onrender.com/api/admin/create-accountant";
     try {
       fetch(url, {
         method: "POST",

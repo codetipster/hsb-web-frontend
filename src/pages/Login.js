@@ -32,7 +32,7 @@ const Login = () => {
 
   const handleLoginValidation = () => {
     try {
-      fetch("https://hsb-backend.onrender.com/api/user/login", {
+      fetch("https://hsb-backend-app-rpnm.onrender.com/api/user/login", {
         method: "POST",
         body: JSON.stringify({
           email: loginDetails.email,

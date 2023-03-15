@@ -53,7 +53,7 @@ export default function Example() {
         // setToken(token);
       }
       axios
-        .get(`https://hsb-backend.onrender.com/api/user/notification/${id}`, {
+        .get(`https://hsb-backend-app-rpnm.onrender.com/api/user/notification/${id}`, {
           headers: {
             Authorization: token,
             "Content-type": "application/json",
@@ -122,7 +122,7 @@ export default function Example() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-around bg-red-800">
+                <div className="flex items-center justify-around">
                 {/* Notification dropdown */}
                   <Popover className="relative">
                     <Popover.Button className="flex rounded-full  text-sm">

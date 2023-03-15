@@ -5,7 +5,7 @@ import { BiDotsVertical } from "react-icons/bi";
 function DropdownMenu({ accountant }) {
   const [isOpen, setIsOpen] = useState(false);
   const token = JSON.parse(localStorage.getItem("Token"));
-  const url = `https://hsb-backend.onrender.com/api/accountant/accountants/${accountant}`;
+  const url = `https://hsb-backend-app-rpnm.onrender.com/api/accountant/accountants/${accountant}`;
   const status = "ACTIVE";
   const status1 = "DEACTIVATED";
   const status2 = "DELETED";
@@ -54,9 +54,23 @@ function DropdownMenu({ accountant }) {
       },
     }).then((response) => {
       console.log(response, "delete client");
-      alert("Delete Accountant");
+      alert("Accountant Deleted");
     });
   };
+
+  // const deleteAccountant1 = () => {
+  //   axios
+  //     .delete(url, {
+  //       headers: {
+  //         Authorization: token,
+  //         "Content-type": "application/json",
+  //       },
+  //     })
+  //     .then((response) => {
+  //       console.log(response, "delete client");
+  //       alert("Accountant Deleted");
+  //     });
+  // };
 
   return (
     <div>
@@ -80,7 +94,7 @@ function DropdownMenu({ accountant }) {
           </li>
           <li className="mt-2 p-2 text-red-600">
             <button type="submit" onClick={deleteAccountant}>
-              Delete Client
+              Delete Accountant
             </button>
           </li>
         </ul>

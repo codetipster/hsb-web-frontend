@@ -27,7 +27,7 @@ const AccountantInfo = ({ onMessage }) => {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend.onrender.com/api/accountant/accountants/", {
+        .get("https://hsb-backend-app-rpnm.onrender.com/api/accountant/accountants/", {
           headers: {
             Authorization: token,
             "Content-type": "application/json",

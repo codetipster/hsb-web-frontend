@@ -25,7 +25,7 @@ const DashboardRoute = () => {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend.onrender.com/api/admin/clients", {
+        .get("https://hsb-backend-app-rpnm.onrender.com/api/admin/clients", {
           headers: {
             Authorization: token,
             "Content-type": "application/json",
@@ -47,7 +47,7 @@ const DashboardRoute = () => {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend.onrender.com/api/accountant/accountants", {
+        .get("https://hsb-backend-app-rpnm.onrender.com/api/accountant/accountants", {
           headers: {
             Authorization: token,
             "Content-type": "application/json",

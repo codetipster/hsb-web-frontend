@@ -13,8 +13,8 @@ import Moment from "react-moment";
 const navigation = [
   { name: "Home", href: "/accountantHomePage" },
   { name: "Clients", href: "/accountantClientPage" },
+  { name: "Chat", href: "/chats" },
   { name: "Reports/Invoices", href: "/accountantInvoices" },
-  // { name: "English", href: "/home" },
 ];
 
 function classNames(...classes) {
@@ -44,7 +44,7 @@ export default function Example() {
         // setToken(token);
       }
       axios
-        .get(`https://hsb-backend.onrender.com/api/user/notification/${id}`, {
+        .get(`https://hsb-backend-app-rpnm.onrender.com/api/user/notification/${id}`, {
           headers: {
             Authorization: token,
             "Content-type": "application/json",
