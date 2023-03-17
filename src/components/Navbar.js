@@ -29,7 +29,8 @@ function classNames(...classes) {
 export default function Example() {
   const navigate = useNavigate();
   const [loggedin, setLoggedin] = useState(true);
-  const [notifications, setNotification] = useState([]);
+  const [notifications, setNotifications] = useState([]);
+  const [counter, setCounter] = useState(0);
   const { t } = useTranslation();
   const handleClick = (e) => {
     i18next.changeLanguage(e.target.value);
@@ -45,6 +46,36 @@ export default function Example() {
     navigate("/");
   };
 
+  // useEffect(() => {
+  //   const getToken = () => {
+  //     const token = JSON.parse(localStorage.getItem("Token"));
+  //     const id = JSON.parse(localStorage.getItem("Id"));
+  //     if (token !== null || token !== undefined) {
+  //       // setToken(token);
+  //     }
+  //     axios
+  //       .get(
+  //         `https://hsb-backend-app-rpnm.onrender.com/api/user/notification/${id}`,
+  //         {
+  //           headers: {
+  //             Authorization: token,
+  //             "Content-type": "application/json",
+  //           },
+  //         }
+  //       )
+  //       .then((response) => {
+  //         console.log(response.data, "notification");
+  //         setNotification(response.data);
+  //       });
+  //   };
+  //   getToken();
+  // }, []);
+
+
+
+
+
+  // notifications and notifications counter
   useEffect(() => {
     const getToken = () => {
       const token = JSON.parse(localStorage.getItem("Token"));
@@ -53,15 +84,19 @@ export default function Example() {
         // setToken(token);
       }
       axios
-        .get(`https://hsb-backend-app-rpnm.onrender.com/api/user/notification/${id}`, {
-          headers: {
-            Authorization: token,
-            "Content-type": "application/json",
-          },
-        })
+        .get(
+          `https://hsb-backend-app-rpnm.onrender.com/api/user/last-notification/${id}`,
+          {
+            headers: {
+              Authorization: token,
+              "Content-type": "application/json",
+            },
+          }
+        )
         .then((response) => {
-          console.log(response.data, "notification");
-          setNotification(response.data);
+          console.log(response.data.count, "notification-counter");
+          setCounter(response.data.count);
+          setNotifications(response.data.data)
         });
     };
     getToken();
@@ -123,10 +158,10 @@ export default function Example() {
                 </div>
 
                 <div className="flex items-center justify-around">
-                {/* Notification dropdown */}
+                  {/* Notification dropdown */}
                   <Popover className="relative">
                     <Popover.Button className="flex rounded-full  text-sm">
-                      <Badge badgeContent={5} color="error">
+                      <Badge badgeContent={counter} color="error">
                         <Notifications size={30} color="black" />
                       </Badge>
                     </Popover.Button>

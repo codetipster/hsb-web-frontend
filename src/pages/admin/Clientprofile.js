@@ -8,10 +8,12 @@ import { MdOutlineArrowBackIos, MdOutlinePreview } from "react-icons/md";
 import profileImage from "../../assets/Frame.png";
 import ActionButton from "../../components/ActionBtn3";
 import Moment from "react-moment";
+import fileDownload from "js-file-download";
 
 const Clientprofile = () => {
   const { id } = useParams();
   const [show, setShow] = useState(false);
+  const [fileName, setFileName] = useState("");
   const handleShow = () => {
     setShow(true);
   };
@@ -108,41 +110,22 @@ const Clientprofile = () => {
     };
     getToken();
   }, []);
-
-  const handleDownload = () => {
-    console.log("download");
+  
+  const handleDownload = (e) => {
+    e.preventDefault();
+    let url = "https://hsb-backend-app-rpnm.onrender.com/download/";
+    const token = JSON.parse(localStorage.getItem("Token"));
+    axios
+      .get(url, {
+        headers: {
+          Authorization: token,
+        },
+        responseType: "blob",
+      })
+      .then((res) => {
+        fileDownload(res.data, "downloaded.png");
+      });
   };
-
-  // const handleDownload = () => {
-  //   fetch('https://cors-anywhere.herokuapp.com/' + fileURL, {
-  //   method: 'GET',
-  //   headers: {
-  //     'Content-Type': 'application/pdf',
-  //   },
-  // })
-  // .then((response) => response.blob())
-  // .then((blob) => {
-  //   // Create blob link to download
-  //   const url = window.URL.createObjectURL(
-  //     new Blob([blob]),
-  //   );
-  //   const link = document.createElement('a');
-  //   link.href = url;
-  //   link.setAttribute(
-  //     'download',
-  //     `FileName.pdf`,
-  //   );
-
-  //   // Append to html link element page
-  //   document.body.appendChild(link);
-
-  //   // Start download
-  //   link.click();
-
-  //   // Clean up and remove the link
-  //   link.parentNode.removeChild(link);
-  // });
-  // };
 
   // employee status
   const getStatus = (status) => {
@@ -249,7 +232,11 @@ const Clientprofile = () => {
                           </p>
                         </div>
                         <div>
-                          <BiDownload onClick={handleDownload} />
+                          <BiDownload
+                            size={20}
+                            onClick={handleDownload}
+                            className="cursor-pointer"
+                          />
                         </div>
                       </div>
                     </div>
@@ -362,7 +349,11 @@ const Clientprofile = () => {
                           </p>
                         </div>
                         <div>
-                          <BiDownload />
+                          <BiDownload
+                            size={20}
+                            onClick={handleDownload}
+                            className="cursor-pointer"
+                          />
                         </div>
                       </div>
                     </div>

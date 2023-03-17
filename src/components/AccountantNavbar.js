@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import { Disclosure, Menu, Transition,Popover } from "@headlessui/react";
+import { Disclosure, Menu, Transition, Popover } from "@headlessui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { IoPersonSharp } from "react-icons/io5";
@@ -24,7 +24,8 @@ function classNames(...classes) {
 export default function Example() {
   const navigate = useNavigate();
   const [loggedin, setLoggedin] = useState(true);
-  const [notifications, setNotification] = useState([]);
+  const [notifications, setNotifications] = useState([]);
+  const [counter, setCounter] = useState(0);
 
   const handleLogin = () => {
     console.log("logging into app");
@@ -44,15 +45,19 @@ export default function Example() {
         // setToken(token);
       }
       axios
-        .get(`https://hsb-backend-app-rpnm.onrender.com/api/user/notification/${id}`, {
-          headers: {
-            Authorization: token,
-            "Content-type": "application/json",
-          },
-        })
+        .get(
+          `https://hsb-backend-app-rpnm.onrender.com/api/user/last-notification/${id}`,
+          {
+            headers: {
+              Authorization: token,
+              "Content-type": "application/json",
+            },
+          }
+        )
         .then((response) => {
-          console.log(response.data, "notification");
-          setNotification(response.data);
+          console.log(response.data.count, "notification-counter");
+          setCounter(response.data.count);
+          setNotifications(response.data.data);
         });
     };
     getToken();
@@ -118,7 +123,7 @@ export default function Example() {
                   {/* Notification dropdown */}
                   <Popover className="relative">
                     <Popover.Button className="flex rounded-full  text-sm">
-                      <Badge badgeContent={5} color="error">
+                      <Badge badgeContent={counter} color="error">
                         <Notifications size={30} color="black" />
                       </Badge>
                     </Popover.Button>
