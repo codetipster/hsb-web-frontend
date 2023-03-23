@@ -82,7 +82,7 @@ function App() {
         element={<AccountantInvoices invoices={invoices} />}
       />
       <Route
-        path="/accountantEmployees"
+        path="/accountantClientPage/accountantEmployees"
         element={<AccountantEmployees />}
       />
       <Route

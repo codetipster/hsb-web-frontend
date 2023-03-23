@@ -13,7 +13,9 @@ import fileDownload from "js-file-download";
 const Clientprofile = () => {
   const { id } = useParams();
   const [show, setShow] = useState(false);
-  const [fileName, setFileName] = useState("");
+  const [invoice, setInvoice] = useState([]);
+  const [invoiceFileUrl, setInvoiceFileUrl] = useState("");
+  const [reportFileUrl, setReportFileUrl] = useState("");
   const handleShow = () => {
     setShow(true);
   };
@@ -60,6 +62,8 @@ const Clientprofile = () => {
           .then((response) => {
             console.log(response.data, "individual info");
             info = response.data;
+            setInvoice(response.data.invoices);
+
             // invoices
             const _invoices = [];
             info.invoices.forEach((item) => {
@@ -67,6 +71,7 @@ const Clientprofile = () => {
                 name: item.name,
                 createdAt: item.createdAt,
                 status: item.status,
+                image: item.image,
               };
               _invoices.push(_invoicesObject);
             });
@@ -89,6 +94,27 @@ const Clientprofile = () => {
                 name: item.name,
                 createdAt: item.createdAt,
                 status: item.status,
+                bankName: item.bankName,
+                beginning: item.beginning,
+                birthDate: item.birthDate,
+                birthName: item.birthName,
+                birthPlace: item.birthPlace,
+                clientId: item.clientId,
+                company: item.company,
+                createdAt: item.createdAt,
+                employmentType: item.employmentType,
+                firstName: item.firstName,
+                healthInsurance: item.healthInsurance,
+                homeNumber: item.homeNumber,
+                iban: item.iban,
+                id: item.id,
+                jobTitle: item.jobTitle,
+                nationality: item.nationality,
+                postalCode: item.postalCode,
+                salary: item.salary,
+                socialNumber: item.socialNumber,
+                taxNumber: item.taxNumber,
+                updatedAt: item.updatedAt,
               };
               _employees.push(_employeesObject);
             });
@@ -110,22 +136,27 @@ const Clientprofile = () => {
     };
     getToken();
   }, []);
-  
-  const handleDownload = (e) => {
-    e.preventDefault();
-    let url = "https://hsb-backend-app-rpnm.onrender.com/download/";
-    const token = JSON.parse(localStorage.getItem("Token"));
-    axios
-      .get(url, {
-        headers: {
-          Authorization: token,
-        },
-        responseType: "blob",
-      })
-      .then((res) => {
-        fileDownload(res.data, "downloaded.png");
-      });
-  };
+
+  console.log(invoice, "invoices");
+  // const handleDownload = (e) => {
+  //   const fileUrl = fileName;
+  //   const extractedName = fileUrl.match(/uploads\/(.+)$/)[1];
+  //   e.preventDefault();
+  //   let url = `https://hsb-backend-app-rpnm.onrender.com/download/${extractedName}`;
+  //   console.log(url, "download url");
+  //   const token = JSON.parse(localStorage.getItem("Token"));
+  //   axios
+  //     .get(url, {
+  //       headers: {
+  //         Authorization: token,
+  //       },
+  //       responseType: "blob",
+  //     })
+  //     .then((res) => {
+  //       console.log(res, "checking download");
+  //       fileDownload(res.data, "downloaded.png");
+  //     });
+  // };
 
   // employee status
   const getStatus = (status) => {
@@ -234,7 +265,7 @@ const Clientprofile = () => {
                         <div>
                           <BiDownload
                             size={20}
-                            onClick={handleDownload}
+                            // onClick={handleDownload}
                             className="cursor-pointer"
                           />
                         </div>
@@ -300,8 +331,10 @@ const Clientprofile = () => {
                           </p>
                         </div>
                         <div>
-                          {/* <BiDownload /> */}
-                          <ActionButton employeeId={data.id} />
+                          <ActionButton
+                            employeeInfo={data}
+                            employeeId={data.id}
+                          />
                         </div>
                       </div>
                     </div>
@@ -310,10 +343,7 @@ const Clientprofile = () => {
             </div>
             <Link to="/clients/employees" className="no-underline">
               <div className="my-4 mx-6">
-                <button
-                  onClick={handleDownload}
-                  className="w-[441px] h-[56px] inline-flex items-center justify-center text-white font-medium bg-[#FFB5B5] rounded active:bg-[#FF1C1D] hover:bg-[#FF1C1D]"
-                >
+                <button className="w-[441px] h-[56px] inline-flex items-center justify-center text-white font-medium bg-[#FFB5B5] rounded active:bg-[#FF1C1D] hover:bg-[#FF1C1D]">
                   Review all
                   <MdOutlinePreview className="ml-4" />
                 </button>
@@ -351,7 +381,7 @@ const Clientprofile = () => {
                         <div>
                           <BiDownload
                             size={20}
-                            onClick={handleDownload}
+                            // onClick={handleDownload}
                             className="cursor-pointer"
                           />
                         </div>
@@ -362,10 +392,7 @@ const Clientprofile = () => {
             </div>
             <Link to="/clients/invoices" className="no-underline">
               <div className="my-4 mx-6">
-                <button
-                  onClick={handleDownload}
-                  className="w-[441px] h-[56px] inline-flex items-center justify-center text-white font-medium bg-[#FFB5B5] rounded active:bg-[#FF1C1D] hover:bg-[#FF1C1D]"
-                >
+                <button className="w-[441px] h-[56px] inline-flex items-center justify-center text-white font-medium bg-[#FFB5B5] rounded active:bg-[#FF1C1D] hover:bg-[#FF1C1D]">
                   Review all
                   <MdOutlinePreview className="ml-4" />
                 </button>

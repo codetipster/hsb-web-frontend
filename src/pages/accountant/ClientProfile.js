@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import AccountantNavbar from "../../components/AccountantNavbar";
-import AddReport from "../../components/AddReport";
+import AddReport from "../../components/AddReportAccountant";
 import { BiDownload, BiAddToQueue } from "react-icons/bi";
 import { MdOutlineArrowBackIos, MdOutlinePreview } from "react-icons/md";
 import profileImage from "../../assets/Frame.png";
@@ -258,7 +258,7 @@ const AccountantClientprofile = ({ clients }) => {
                   );
                 })}
             </div>
-            <Link to="/accountantEmployees" className="no-underline">
+            <Link to="/accountantClientPage/accountantEmployees" className="no-underline">
               <div className="my-4 mx-6">
                 <button
                   onClick={handleDownload}

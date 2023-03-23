@@ -4,7 +4,7 @@ import Nav2 from "../../components/Nav2Client";
 import ActionButton from "../../components/ActionBtn2";
 import Moment from "react-moment";
 
-const Invoices = ({clients}) => {
+const Invoices = ({ clients }) => {
   const [token, setToken] = useState("");
   const [invoices, setInvoices] = useState([]);
 
@@ -68,7 +68,7 @@ const Invoices = ({clients}) => {
               </th>
               <th className="p-4">Invoice Number</th>
               <th className="p-4">Invoice Name</th>
-              <th className="p-4">Client Id</th>
+              <th className="p-4">Client Name</th>
               <th className="p-4">Date/Time Created</th>
               <th className="p-4">Invoice Status</th>
             </tr>
@@ -91,7 +91,7 @@ const Invoices = ({clients}) => {
                   </td>
                   <td className="p-4">{invoice.id}</td>
                   <td className="p-4">{invoice.name}</td>
-                  <td className="p-4">HSB000{invoice.clientId}</td>
+                  <td className="p-4">{invoice.clientName}</td>
                   <td className="p-4">
                     <Moment format="HH:mm DD-MM-YYYY">
                       {invoice.createdAt}
@@ -108,6 +108,7 @@ const Invoices = ({clients}) => {
                       <ActionButton
                         client={invoice.clientId}
                         client1={invoice.id}
+                        imageUrl={invoice.image}
                         className="w-[20px] h-[45px]"
                       />
                     </a>

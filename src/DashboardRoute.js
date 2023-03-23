@@ -47,12 +47,15 @@ const DashboardRoute = () => {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend-app-rpnm.onrender.com/api/accountant/accountants", {
-          headers: {
-            Authorization: token,
-            "Content-type": "application/json",
-          },
-        })
+        .get(
+          "https://hsb-backend-app-rpnm.onrender.com/api/accountant/accountants",
+          {
+            headers: {
+              Authorization: token,
+              "Content-type": "application/json",
+            },
+          }
+        )
         .then((response) => {
           console.log(response.data, "accountant info");
           setAccountants(response.data);
@@ -74,10 +77,7 @@ const DashboardRoute = () => {
           path="/clients/add-client"
           element={<AddClient clients={clients} />}
         />
-        <Route
-          path="/clients/clientProfile/:id"
-          element={<Clientprofile />}
-        />
+        <Route path="/clients/clientProfile/:id" element={<Clientprofile />} />
         <Route path="/profile" element={<Adminprofile />} />
         <Route
           path="/accountants"

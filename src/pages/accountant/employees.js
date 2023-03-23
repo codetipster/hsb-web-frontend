@@ -3,6 +3,7 @@ import axios from "axios";
 import Nav from "../../components/Nav3";
 import ActionButton from "../../components/ActionBtn5";
 import Moment from "react-moment";
+import AccountantNavbar from "../../components/AccountantNavbar";
 
 const AccountantEmployees = ({ clients }) => {
   const [token, setToken] = useState("");
@@ -48,32 +49,34 @@ const AccountantEmployees = ({ clients }) => {
   };
 
   return (
-    <div className="p-24 mt-[-30px]">
-      <Nav />
-      <div className="p-4 my-10 flex items-center justify-center">
-        <table className="table bg-white text-sm text-left text-gray-500 dark:text-gray-400 px-4">
-          <thead className="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th className="p-4">
-                <div className="flex items-center">
-                  <input
-                    id="checkbox-all-search"
-                    type="checkbox"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label for="checkbox-all-search" className="sr-only">
-                    checkbox
-                  </label>
-                </div>
-              </th>
-              <th className="p-4">Employee Name</th>
-              <th className="p-4">Bank Name</th>
-              <th className="p-4">IBAN Number</th>
-              <th className="p-4">Date/Time Created</th>
-              <th className="p-4">Employee Status</th>
-            </tr>
-          </thead>
-          {/* <tbody>
+    <>
+    <AccountantNavbar/>
+      <div className="p-24 mt-[-30px]">
+        <Nav />
+        <div className="p-4 my-10 flex items-center justify-center">
+          <table className="table bg-white text-sm text-left text-gray-500 dark:text-gray-400 px-4">
+            <thead className="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th className="p-4">
+                  <div className="flex items-center">
+                    <input
+                      id="checkbox-all-search"
+                      type="checkbox"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    />
+                    <label for="checkbox-all-search" className="sr-only">
+                      checkbox
+                    </label>
+                  </div>
+                </th>
+                <th className="p-4">Employee Name</th>
+                <th className="p-4">Bank Name</th>
+                <th className="p-4">IBAN Number</th>
+                <th className="p-4">Date/Time Created</th>
+                <th className="p-4">Employee Status</th>
+              </tr>
+            </thead>
+            {/* <tbody>
             {employees.map((employee) => {
               return (
                 <tr>
@@ -115,9 +118,10 @@ const AccountantEmployees = ({ clients }) => {
               );
             })}
           </tbody> */}
-        </table>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

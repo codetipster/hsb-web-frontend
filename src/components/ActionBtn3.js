@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { BiDotsVertical } from "react-icons/bi";
 import { Link, useParams } from "react-router-dom";
+import ViewRequestModal from "./ViewRequestModal";
 
-function DropdownMenu({ employeeId }) {
+function DropdownMenu({ employeeId, employeeInfo }) {
   // const { id } = useParams();
   const [isOpen, setIsOpen] = useState(false);
   const token = JSON.parse(localStorage.getItem("Token"));
@@ -52,7 +53,8 @@ function DropdownMenu({ employeeId }) {
       </button>
       {isOpen && (
         <ul className="absolute px-3 py-2 w-48 bg-white rounded-md shadow-lg">
-          <li className="px-[10px] py-2 text-gray-700">View Request</li>
+          {/* <li className="px-[10px] py-2 text-gray-700">View Request</li> */}
+          <ViewRequestModal employeeInfo={employeeInfo} />
           <li className="px-[10px] py-2 text-green-700">
             <button type="submit" onClick={approveRequest}>
               Approve Request
