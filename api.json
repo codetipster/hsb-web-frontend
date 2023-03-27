@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "invoices",
-    "dateExported": "2023-03-19T17:55:29.469Z",
+    "dateExported": "2023-03-24T19:28:44.691Z",
     "version": "1.1",
     "folders": [
         {
@@ -50,12 +50,31 @@
             "_id": "0f2529cd-2b51-47e4-8ad8-0a5149ef001f",
             "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
             "containerId": "69500118-9c6f-4f7a-bd2f-6c532304adef",
+            "name": "Get Reports",
+            "url": "{{url}}/api/accountant/reports",
+            "method": "GET",
+            "sortNum": 7500,
+            "created": "2022-12-31T13:35:44.696Z",
+            "modified": "2023-03-24T19:20:49.412Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "cf289056-1a75-437a-8087-ebfefe528ffc",
+            "colId": "41faecf7-7cc0-4879-a5aa-f75bb5bdf759",
+            "containerId": "69500118-9c6f-4f7a-bd2f-6c532304adef",
             "name": "Create Report",
             "url": "{{url}}/api/accountant/reports",
             "method": "POST",
-            "sortNum": 7500,
-            "created": "2022-12-31T13:35:44.696Z",
-            "modified": "2023-03-15T22:13:47.560Z",
+            "sortNum": 8750,
+            "created": "2023-03-24T19:20:05.821Z",
+            "modified": "2023-03-24T19:20:05.821Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -69,11 +88,11 @@
                 "form": [
                     {
                         "name": "clientId",
-                        "value": "64122034e752e60a5a12ed5c"
+                        "value": "641df76c44241944d014a24a"
                     },
                     {
                         "name": "name",
-                        "value": "Test report name 4"
+                        "value": "Test report name 1"
                     }
                 ],
                 "files": [
@@ -94,7 +113,7 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2022-12-30T17:17:59.030Z",
-            "modified": "2023-03-19T17:41:15.858Z",
+            "modified": "2023-03-24T19:16:12.262Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -358,7 +377,7 @@
             "method": "POST",
             "sortNum": 15000,
             "created": "2022-12-30T23:11:48.528Z",
-            "modified": "2023-03-16T18:03:51.506Z",
+            "modified": "2023-03-24T19:15:18.732Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -372,7 +391,7 @@
                 "form": [
                     {
                         "name": "firstName",
-                        "value": "Ibrahim"
+                        "value": "Dash"
                     },
                     {
                         "name": "lastName",
@@ -380,7 +399,7 @@
                     },
                     {
                         "name": "email",
-                        "value": "alkaisibrahim@gmail.com"
+                        "value": "dashmetal.12@gmail.com"
                     },
                     {
                         "name": "password",
@@ -394,8 +413,7 @@
                         "name": "mobileNumber",
                         "value": "+963987654321"
                     }
-                ],
-                "files": []
+                ]
             },
             "tests": []
         },
@@ -899,7 +917,7 @@
             "method": "POST",
             "sortNum": 22500,
             "created": "2022-12-30T23:41:45.494Z",
-            "modified": "2023-03-16T18:07:44.334Z",
+            "modified": "2023-03-24T19:18:05.039Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -913,7 +931,7 @@
                 "form": [
                     {
                         "name": "firstName",
-                        "value": "Mustafa"
+                        "value": "Mayar"
                     },
                     {
                         "name": "lastName",
@@ -921,7 +939,7 @@
                     },
                     {
                         "name": "email",
-                        "value": "sahar.rihan82@gmail.com"
+                        "value": "mayar@gmail.com"
                     },
                     {
                         "name": "password",
@@ -961,11 +979,11 @@
                     },
                     {
                         "name": "legalNumber",
-                        "value": "SaharHSB"
+                        "value": "11223344"
                     },
                     {
                         "name": "accountantId",
-                        "value": "64135a08a76a10114e1c72cf"
+                        "value": "641df6bd44241944d014a245"
                     }
                 ],
                 "files": [
@@ -986,7 +1004,7 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2022-12-30T16:24:20.569Z",
-            "modified": "2023-03-14T15:44:29.395Z",
+            "modified": "2023-03-20T20:40:23.983Z",
             "headers": [],
             "params": [],
             "body": {
@@ -1003,7 +1021,7 @@
                     },
                     {
                         "name": "email",
-                        "value": "admin1@gmail.com"
+                        "value": "admin@gmail.com"
                     },
                     {
                         "name": "password",

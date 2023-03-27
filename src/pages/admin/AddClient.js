@@ -55,7 +55,6 @@ const AddClient = ({ clients }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDetails({ ...details, [name]: value });
-    console.log(details, "details");
   };
 
   const [token, setToken] = useState("");

@@ -29,20 +29,20 @@ const ViewRequestModal = ({ employeeInfo }) => {
             </Modal.Title>
           </div>
         </Modal.Header>
-        <div className="my-2 mx-4 p-3">
-          <div className="grid grid-cols-4 gap-4">
-            <p>
-              <span className="font-semibold">Name:</span>
+        <div className="my-2 mx-2 p-2">
+          <div className="grid gap-4">
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Name</span>
               {employeeInfo.name}
-            </p>
-            <p>
-              <span className="font-semibold">Birth Date:</span>
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Birth Date</span>
               {employeeInfo.birthDate}
-            </p>
-            <p>
-              <span className="font-semibold">Beginning:</span>
-              {employeeInfo.beginning}
-            </p>
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Bank Name</span>
+              {employeeInfo.bankName}
+            </div>
           </div>
 
           <div className="flex items-center justify-center mt-4 px-2">

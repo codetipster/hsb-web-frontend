@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { BiBookAdd } from "react-icons/bi";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { stripBasename } from "@remix-run/router";
 
 const AddAccountantModal = () => {
   const { handleSubmit } = useForm();
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [seePassword, setSeePassword] = useState(false);
   const handleToggle = () => {
@@ -47,9 +48,10 @@ const AddAccountantModal = () => {
     };
     getToken();
   }, []);
-  
+
   const createAccountantData = () => {
-    const url = "https://hsb-backend-app-rpnm.onrender.com/api/admin/create-accountant";
+    const url =
+      "https://hsb-backend-app-rpnm.onrender.com/api/admin/create-accountant";
     try {
       fetch(url, {
         method: "POST",
@@ -62,7 +64,8 @@ const AddAccountantModal = () => {
         .then((res) => res.json())
         .then((response) => {
           console.log(response, "response from creating accountant");
-          window.alert(response.message)
+          window.alert(response.message);
+          navigate("/accountants");
         });
     } catch (error) {
       console.log(error.message);
@@ -196,7 +199,6 @@ const AddAccountantModal = () => {
               <span className="px-[20px]">Cancel</span>
               <BiBookAdd className="mx-[-10px]" />
             </button>
-
             <button
               type="submit"
               className="w-[200px] inline-flex items-center h-[45px] px-2 ml-4 tracking-wide text-white text-l font-medium bg-[#FF1C1D] rounded  focus:outline-none active:bg-[#FF1C1D] hover:bg-[#FF1C1D] 

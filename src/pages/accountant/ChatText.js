@@ -2,6 +2,7 @@ import React from "react";
 import AccountantNavbar from "../../components/AccountantNavbar";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
+import { display } from "@mui/system";
 
 const ChatText = () => {
   return (

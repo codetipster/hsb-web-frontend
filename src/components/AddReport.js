@@ -69,7 +69,6 @@ const FileUpload = () => {
         .then((report) => {
           console.log(report, "checking user");
           alert("Report sent successfully");
-          navigate("/clients/clientProfile/:id");
         });
     } catch (err) {
       console.log(err.message);

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import AccountantNavbar from "../../components/AccountantNavbar";
 import Nav2 from "../../components/Nav2Client";
 import ActionButton from "../../components/ActionBtn2";
@@ -12,9 +13,9 @@ import TabPanel from "@mui/lab/TabPanel";
 import Profile from "../../assets/profile.png";
 
 const AccountantInvoices = ({ invoices, client, client1 }) => {
-  const [status, setStatus] = useState(false);
-  const [value, setValue] = React.useState(1);
-  const [messages, setMessages] = React.useState([]);
+  const [value, setValue] = useState(1);
+  const [messages, setMessages] = useState([]);
+  const [reports, setReports] = useState([]);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -35,6 +36,27 @@ const AccountantInvoices = ({ invoices, client, client1 }) => {
     }
     return statusClass;
   };
+  useEffect(() => {
+    const getToken = () => {
+      const token = JSON.parse(localStorage.getItem("Token"));
+      axios
+        .get(
+          "https://hsb-backend-app-rpnm.onrender.com/api/accountant/reports",
+          {
+            headers: {
+              Authorization: token,
+              "Content-type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data, "report");
+          setReports(response.data);
+        });
+    };
+    getToken();
+  }, []);
+
   return (
     <>
       <AccountantNavbar />
@@ -138,55 +160,41 @@ const AccountantInvoices = ({ invoices, client, client1 }) => {
               </TabList>
             </div>
           </Box>
-          <TabPanel value="1">
-            <div className="w-[980px] h-[74px] rounded-lg my-2 bg-white shadow-lg flex items-center justify-between px-6">
-              <div className="flex flex-col ml-4 text-black text-sm">
-                <div className="font-semibold">Simon Ibrahim</div>
-                <div className="font-normal">HSB 000000124</div>
-              </div>
-              <div className="text-green-500 font-medium text-sm">
-                View Report
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel value="1">
-            <div className="w-[980px] h-[74px] rounded-lg my-2 bg-white shadow-lg flex items-center justify-between px-6">
-              <div className="flex flex-col ml-4 text-black text-sm">
-                <div className="font-semibold">Simon Ibrahim</div>
-                <div className="font-normal">HSB 000000124</div>
-              </div>
-              <div className="text-green-500 font-medium text-sm">
-                View Report
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel value="1">
-            <div className="w-[980px] h-[74px] rounded-lg my-2 bg-white shadow-lg flex items-center justify-between px-6">
-              <div className="flex flex-col ml-4 text-black text-sm">
-                <div className="font-semibold">Simon Ibrahim</div>
-                <div className="font-normal">HSB 000000124</div>
-              </div>
-              <div className="text-green-500 font-medium text-sm">
-                View Report
-              </div>
-            </div>
-          </TabPanel>
+          {reports.map((report) => {
+            return (
+              <TabPanel value="1">
+                <div className="w-[980px] h-[74px] rounded-lg my-2 bg-white shadow-lg flex items-center justify-between px-6">
+                  <div className="flex items-center">
+                    {/* <img src={Profile} className="w-[60px] h-[60px]" /> */}
+                    <div className="flex flex-col ml-4 text-black text-sm">
+                      <div className="font-semibold">{report.clientName}</div>
+                      <div className="font-normal">
+                        HSB<span className="ml-2">{report.clientId}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-green-500 font-medium text-sm">
+                    View Report
+                  </div>
+                </div>
+              </TabPanel>
+            );
+          })}
           {invoices.map((invoice) => {
             return (
               <TabPanel value="2">
                 <div className="w-[980px] h-[74px] rounded-lg my-6 bg-white shadow-lg flex items-center justify-between px-6">
                   <div className="flex items-center">
-                    <img src={Profile} className="w-[60px] h-[60px]" />
+                    {/* <img src={Profile} className="w-[60px] h-[60px]" /> */}
                     <div className="flex flex-col ml-4 text-black text-sm">
                       <div className="font-semibold">{invoice.name}</div>
-                      <div className="font-semibold">{invoice.id}</div>
-                      <div className="font-medium">
-                        Scaling Ventures International
+                      <div className="font-normal">
+                        HSB<span className="ml-2">{invoice.clientId}</span>
                       </div>
                     </div>
                   </div>
                   <div className="text-green-500 font-medium text-sm">
-                    12 read messages
+                    View Invoices
                   </div>
                 </div>
               </TabPanel>
