@@ -75,17 +75,17 @@ const Chat = () => {
                       <img src={Profile} className="w-[60px] h-[60px]" />
                       <div className="flex flex-col ml-4 text-black text-sm">
                         {/* <div className="font-semibold">Godwin Issachar</div> */}
-                        <div className="font-semibold">
-                          {message.type}
-                        </div>
                         <div className="font-medium">
-                          Scaling Ventures International
+                          {message.id}
+                        </div>
+                        <div className="font-semibold">
+                          {message.text}
                         </div>
                       </div>
                     </div>
-                    <div className="text-green-500 font-medium text-sm">
+                    {/* <div className="text-green-500 font-medium text-sm">
                       12 read messages
-                    </div>
+                    </div> */}
                   </div>
                 </TabPanel>
               );

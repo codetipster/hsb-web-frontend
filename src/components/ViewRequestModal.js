@@ -30,7 +30,7 @@ const ViewRequestModal = ({ employeeInfo }) => {
           </div>
         </Modal.Header>
         <div className="my-2 mx-2 p-2">
-          <div className="grid gap-4">
+          <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col font-medium text-sm text-black">
               <span className="font-normal text-[#33322D]">Name</span>
               {employeeInfo.name}
@@ -40,8 +40,60 @@ const ViewRequestModal = ({ employeeInfo }) => {
               {employeeInfo.birthDate}
             </div>
             <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Birth Place</span>
+              {employeeInfo.birthPlace}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
               <span className="font-normal text-[#33322D]">Bank Name</span>
               {employeeInfo.bankName}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Company</span>
+              {employeeInfo.company}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">ClientId</span>
+              {employeeInfo.clientId}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">
+                Employment Type
+              </span>
+              {employeeInfo.employmentType}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Job Title</span>
+              {employeeInfo.jobTitle}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Salary</span>
+              {employeeInfo.salary}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Nationality</span>
+              {employeeInfo.nationality}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Social Number</span>
+              {employeeInfo.socialNumber}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Postal Code</span>
+              {employeeInfo.postalCode}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Tax Number</span>
+              {employeeInfo.taxNumber}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">
+                Health Insurance
+              </span>
+              {employeeInfo.healthInsurance}
+            </div>
+            <div className="flex flex-col font-medium text-sm text-black">
+              <span className="font-normal text-[#33322D]">Status</span>
+              {employeeInfo.status}
             </div>
           </div>
 

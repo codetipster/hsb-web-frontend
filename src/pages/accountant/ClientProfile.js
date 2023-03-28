@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
+import Moment from "react-moment";
 import AccountantNavbar from "../../components/AccountantNavbar";
 import AddReport from "../../components/AddReportAccountant";
 import { BiDownload, BiAddToQueue } from "react-icons/bi";
@@ -93,6 +94,27 @@ const AccountantClientprofile = ({ clients }) => {
                 name: item.name,
                 createdAt: item.createdAt,
                 status: item.status,
+                bankName: item.bankName,
+                beginning: item.beginning,
+                birthDate: item.birthDate,
+                birthName: item.birthName,
+                birthPlace: item.birthPlace,
+                clientId: item.clientId,
+                company: item.company,
+                createdAt: item.createdAt,
+                employmentType: item.employmentType,
+                firstName: item.firstName,
+                healthInsurance: item.healthInsurance,
+                homeNumber: item.homeNumber,
+                iban: item.iban,
+                id: item.id,
+                jobTitle: item.jobTitle,
+                nationality: item.nationality,
+                postalCode: item.postalCode,
+                salary: item.salary,
+                socialNumber: item.socialNumber,
+                taxNumber: item.taxNumber,
+                updatedAt: item.updatedAt,
               };
               _employees.push(_employeesObject);
             });
@@ -115,9 +137,45 @@ const AccountantClientprofile = ({ clients }) => {
     getToken();
   }, []);
 
+  // employee status
+  const getStatus = (status) => {
+    let statusClass;
+    switch (status) {
+      case "ACCEPTED":
+        statusClass = "text-green-600";
+        break;
+
+      case "PENDING":
+        statusClass = "text-yellow-600";
+        break;
+
+      default: //failed
+        statusClass = "text-red-600";
+        break;
+    }
+    return statusClass;
+  };
+  // invoice status
+  const getStatus1 = (status) => {
+    let statusClass;
+    switch (status) {
+      case "COMPLETED":
+        statusClass = "text-green-600";
+        break;
+
+      case "INREVIEW":
+        statusClass = "text-yellow-600";
+        break;
+
+      default: //failed
+        statusClass = "text-red-600";
+        break;
+    }
+    return statusClass;
+  };
   return (
     <div>
-      <AccountantNavbar/>
+      <AccountantNavbar />
       <div className="bg-gray-100 w-full h-full">
         <div className="flex flex-col items-center justify-center">
           <div className="w-full flex items-center justify-between py-4 px-8">
@@ -239,26 +297,32 @@ const AccountantClientprofile = ({ clients }) => {
                             {data.name}
                             <br />
                             <span className="text-gray-400 ">
-                              {" "}
-                              {data.createdAt}
+                              <Moment format="HH:mm DD-MM-YYYY">
+                                {data.createdAt}
+                              </Moment>
                             </span>
                             <br />
-                            <span className="text-green-400">
+                            <span className={getStatus(data.status)}>
                               {" "}
                               {data.status}
                             </span>
                           </p>
                         </div>
                         <div>
-                          {/* <BiDownload /> */}
-                          <ActionButton />
+                          <ActionButton
+                            employeeInfo={data}
+                            employeeId={data.id}
+                          />
                         </div>
                       </div>
                     </div>
                   );
                 })}
             </div>
-            <Link to="/accountantClientPage/accountantEmployees" className="no-underline">
+            <Link
+              to="/accountantClientPage/accountantEmployees"
+              className="no-underline"
+            >
               <div className="my-4 mx-6">
                 <button
                   onClick={handleDownload}

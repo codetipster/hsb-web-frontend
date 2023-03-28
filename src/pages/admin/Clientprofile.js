@@ -90,7 +90,6 @@ const Clientprofile = () => {
             const _employees = [];
             info.employees.forEach((item) => {
               const _employeesObject = {
-                id: item.id,
                 name: item.name,
                 createdAt: item.createdAt,
                 status: item.status,
