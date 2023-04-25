@@ -13,6 +13,17 @@ There are three main category of users:
 - Clients (Also created in the database by the admin ONLY)
 
 ### Architecture
+![Architecture diagram](src/assets/Screenshot%202023-04-25%20at%2018.58.54.png)
+The highlevel overview of how the entire HSB application works is as outlined in the diagram above.
+
+- Frontend Application: The frontend of the desktop admin and accountant application is built with React, which is a popular JavaScript library for building user interfaces. React will provide the user interface for the admin and accountant desktop application.
+
+- Backend Application: The backend of the application is built with Node, which is a popular JavaScript runtime environment. Node will handle the business logic of the application, communicate with the database and provide an API to the frontend.
+
+- Mobile Application: The mobile application is built with Flutter, which is an open-source mobile application development framework created by Google. Flutter allows the application to be developed for both Android and iOS devices, and will provide the user interface for clients to communicate with the admin and accountant applications.
+
+- Database: The application's database is powered by MongoDB(this semester we decided to switch to PostgreSQL-WIP status), which is a popular NoSQL document-oriented database. MongoDB will store all the data for the application, including accountants, clients, and their communications.
+
 ### Threat Model
 ![Where web applications without security measures lie](src/assets/Screenshot%202023-04-25%20at%2016.26.16.png)
 
