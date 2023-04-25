@@ -10,6 +10,8 @@ There are three main category of users:
 
 ### Architecture
 ### Threat Model
+![Where web applications without security measures lie](src/assets/Screenshot%202023-04-25%20at%2016.26.16.png)
+
 1. Authentication and access control: The website must ensure that only authorized users have access to sensitive tax information. Threats to authentication and access control could include unauthorized access to user accounts through phishing or other social engineering attacks, weak password policies, or vulnerabilities in the website's login system.
 
 2. Data confidentiality and integrity: The website must ensure that sensitive tax information is kept confidential and cannot be altered or manipulated by unauthorized users. Threats to data confidentiality and integrity could include hacking or malware attacks that result in data theft or manipulation, or insider threats such as employees or contractors who misuse their access to the website's systems.
