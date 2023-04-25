@@ -34,8 +34,9 @@ The highlevel overview of how the entire HSB application works is as outlined in
 3. Denial of Service (DoS) attacks: The website must be able to withstand DoS attacks, which are attempts to overwhelm the website's servers with a flood of traffic or requests. These attacks can prevent legitimate users from accessing the website's services, and could be carried out by hackers or other malicious actors.
 Compliance and regulatory issues: The website must comply with relevant tax laws and regulations, such as the Internal Revenue Service (IRS) guidelines for electronic tax filing. Threats to compliance and regulatory issues could include data breaches that expose user information, or failure to properly secure data and systems.
 
-4. Third-party integration: The website may need to integrate with third-party software or services, such as payment processing systems or tax preparation software(future considerations). Threats to third-party integration could include vulnerabilities in these systems that could be exploited to gain unauthorized access to the website's data or systems.
+4. Third-party integration(Future thoughts for payments): The website may need to integrate with third-party software or services, such as payment processing systems or tax preparation software(future considerations). Threats to third-party integration could include vulnerabilities in these systems that could be exploited to gain unauthorized access to the website's data or systems.
 
+![Threat model diagram](src/assets/Screenshot%202023-04-25%20at%2019.24.07.png)
 ### Safety Measures
 To mitigate the above mentioned threats, we sort to implement a range of security measures, such as:
 
