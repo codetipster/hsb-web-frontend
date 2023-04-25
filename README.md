@@ -1,5 +1,8 @@
+
 # HSB
 A tax management application used to facilitate tax management related conversation between the HSB group, tax accountants, and tax clients.
+
+[![Github repo  size in bytes]](https://img.shields.io/github/languages/code-size/codetipster/hsb-web-frontend)]
 
 ### Overview
 HSB digital platform consists of an administrative web based desktop on the management side, and a mobile application client component that enables clients interact with the web platform from the client side.
