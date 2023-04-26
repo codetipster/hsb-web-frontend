@@ -17,12 +17,25 @@ There are three main category of users:
 A deployed version of this application(web) is currently running on the following live URL(https://hsbkanzlei.de).
 
 Follow these steps to get it running on your local machine;
-- Clone the repository by running `git clone https://github.com/codetipster/hsb-web-frontend.git` from your terminal.
+- Clone this repository by running `git clone https://github.com/codetipster/hsb-web-frontend.git` from your terminal.
 - Cd into cloned project with `cd hsb-web-frontend`.
 - run `npm install`to install all required dependencies.
 - run `npm start`to start the project on localhost.
 - for test purposes, please login with [email: admin@gmail.com, password: 12345]
 
+#### Server setup
+-  Clone the server side repository by running `git clone https://github.com/codetipster/hsb.git`
+- cd into cloned project with `cd hsb`.
+- run `npm install`to install dependencies
+- Visit `https://www.mongodb.com/cloud/atlas` to sign up for a free account if you don't have one already
+- After signing in, create a new cluster by following the prompts. Choose a cloud provider, region, and cluster tier according to your requirements. With a free tier, you can create an M0 Sandbox cluster with limited resources. Add your database authentication method.
+- Create a database user: Click the "Database Access" menu item in the left sidebar. Click "Add New Database User" and create a new user with a username and password. Make a note of the credentials, as you'll need them later to connect to the database. Set the user privileges as needed (e.g., "Read and Write to Any Database").
+- Whitelist your IP address: Click the "Network Access" menu item in the left sidebar. Click "Add IP Address" and add your local machine's IP address or a range of IP addresses that should be allowed to connect to the database. Alternatively, you can choose "Allow Access from Anywhere," but this is less secure and not recommended for production environments.
+-  Get the connection string: Click on the "Clusters" menu item in the left sidebar. Click on the "Connect" button next to your cluster, then click on "Connect Your Application." Choose "Node.js" as the driver and the appropriate driver version. You'll see a connection string like this: 
+`mongodb+srv://username:password@clustername.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+- create a .env file at the root of your cloned project and update your own .env file with the connection string you got in the previous step as your MONGODB_REMOTE_URL variable like this: MONGODB_REMOTE_URL=mongodb+srv://username:password@clustername.mongodb.net/my_database?retryWrites=true&w=majority.
+- Also specify a different PORT within your .env file: PORT = 8080
+- start the server by running `npm run dev` to start the local web server on port 8080
 
 ### Architecture
 ![Architecture diagram](src/assets/Screenshot%202023-04-25%20at%2018.58.54.png)
