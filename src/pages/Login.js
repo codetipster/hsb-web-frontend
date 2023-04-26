@@ -52,6 +52,14 @@ const Login = () => {
       // Using HttpOnly cookies for storing Token and Id
       document.cookie = `Token=${userToken}; path=/; HttpOnly; Secure; SameSite=Strict`;
       document.cookie = `Id=${Id}; path=/; HttpOnly; Secure; SameSite=Strict`;
+
+      MySwal.fire({
+        icon: 'success',
+        title: 'Login Successful',
+        text: 'You are now logged in.',
+        showConfirmButton: false,
+        timer: 2000,
+      });
       
       if (user.user === "admin") {
         return navigate("/home");
@@ -71,6 +79,12 @@ const Login = () => {
 
     } catch (err) {
       console.log(err.message);
+      MySwal.fire({
+        icon: 'error',
+        title: 'Login Failed',
+        text: 'Invalid email or password.',
+        timer: 1500
+      });
       setIsRateLimited(true);
       setTimeout(() => {
         setIsRateLimited(false);
