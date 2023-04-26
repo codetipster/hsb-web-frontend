@@ -12,6 +12,17 @@ There are three main category of users:
 - Accountants (created by the admin), manages the tax management accounts  for assigned clients
 - Clients (Also created in the database by the admin ONLY)
 
+### How to run this application (Locally)
+A deployed version of this application(web) is currently running on the following live URL(https://hsbkanzlei.de).
+
+Follow these steps to get it running on your local machine;
+- Clone the repository by running `git clone https://github.com/codetipster/hsb-web-frontend.git` from your terminal.
+- Cd into cloned project with `cd hsb-web-frontend`.
+- run `npm install`to install all required dependencies.
+- run `npm start`to start the project on localhost.
+- for test purposes, please login with [email: admin@gmail.com, password: 12345]
+
+
 ### Architecture
 ![Architecture diagram](src/assets/Screenshot%202023-04-25%20at%2018.58.54.png)
 The highlevel overview of how the entire HSB application works is as outlined in the diagram above.
@@ -37,6 +48,31 @@ Compliance and regulatory issues: The website must comply with relevant tax laws
 4. Third-party integration(Future thoughts for payments): The website may need to integrate with third-party software or services, such as payment processing systems or tax preparation software(future considerations). Threats to third-party integration could include vulnerabilities in these systems that could be exploited to gain unauthorized access to the website's data or systems.
 
 ![Threat model diagram](src/assets/Screenshot%202023-04-25%20at%2019.24.07.png)
+
+### Before Security:
+Unsecured HTTP requests: 
+The login function from the login page was sending an HTTP POST request to our remote server with the user's email and password in plain text. If this connection is not secured with HTTPS, this could allow an attacker to intercept and view the user's sensitive information.
+|
+|
+#### Solution (After Security)
+
+Here's a summary of the changes made to address the identified security vulnerabilities:
+
+1. Insecure password storage: Replaced `useState` with `useRef` for email and password storage. `useRef` doesn't trigger a re-render, and it isn't accessible via React DevTools, which makes it a safer choice for storing sensitive information.
+
+2. No input sanitization: Imported the DOMPurify library to sanitize user input. DOMPurify helps prevent Cross-Site Scripting (XSS) attacks by sanitizing the user input before sending it to the server.
+
+3. Insecure localStorage usage: Replaced localStorage with HttpOnly cookies for storing the user token and user ID. HttpOnly cookies can only be accessed by the server and not by any client-side JavaScript code, which reduces the risk of XSS attacks. The login credentials should not be stored in the browser's local storage or session storage as it can make the user's sensitive information easily accessible to malicious scripts. Using browser cookies with the secure and HTTP-only flags set to store the authentication token, provides better security and prevents cross-site scripting (XSS) attacks.
+
+
+
+Lack of server-side validation: 
+The server-side validation of the user input was not originally implemented, which meant that malicious users could potentially exploit vulnerabilities by submitting malicious data.
+
+No protection against Cross-Site Scripting (XSS) attacks: The application does not sanitize user input, which could lead to cross-site scripting (XSS) attacks. Malicious users could inject scripts into the application, allowing them to steal user data or perform other malicious actions.
+Lack of password security measures: The application does not enforce strong password policies, such as requiring a minimum password length or complexity, which could make it easier for attackers to crack user passwords.
+Insecure password storage: It is unclear how the user's password is being stored on the server. If the passwords are stored in plaintext or using weak hashing algorithms, they could be easily compromised in the event of a data breach.
+Lack of CSRF protection: The application does not implement CSRF protection, which could allow attackers to submit malicious requests on behalf of the user.
 ### Safety Measures
 To mitigate the above mentioned threats, we sort to implement a range of security measures, such as:
 
@@ -49,3 +85,4 @@ To mitigate the above mentioned threats, we sort to implement a range of securit
 4. Compliance with relevant regulations and standards, such as the Payment Card Industry Data Security Standard (PCI DSS) or the IRS e-file program requirements.
 
 5. Regular security training and awareness programs for employees and contractors, to help prevent insider threats and social engineering attacks.
+

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
@@ -11,55 +11,59 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
+// Importing DOMPurify for input sanitization
+import DOMPurify from "dompurify";
+
 const Login = () => {
   const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
   const [seePassword, setSeePassword] = useState(false);
   const { handleSubmit } = useForm();
-  const initialValues = {
-    email: "",
-    password: "",
-  };
-  const [loginDetails, setLoginDetails] = useState(initialValues);
-  const { email, password } = loginDetails;
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLoginDetails({ ...loginDetails, [name]: value });
-  };
+
+  // Removed initialValues and useState for loginDetails
+
+  // Using useRef instead of useState for email and password
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
   const handleToggle = () => {
     setSeePassword(!seePassword);
   };
 
-  const handleLoginValidation = () => {
+  const handleLoginValidation = async () => {
     try {
-      fetch("https://hsb-backend-app-rpnm.onrender.com/api/user/login", {
-        method: "POST",
-        body: JSON.stringify({
-          email: loginDetails.email,
-          password: loginDetails.password,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((res) => res.json())
-        .then((user) => {
-          console.log(user, "checking user");
-          let userToken = JSON.stringify(user.token);
-          let Id = JSON.stringify(user.id);
-          localStorage.setItem("Token", userToken);
-          localStorage.setItem("Id", Id);
-          if (user.user === "admin") {
-            return navigate("/home");
-          }
-          if (user.user === "accountant") {
-            return navigate("/accountantHomePage");
-          }
-        });
+      // Sanitize email and password input
+      const sanitizedEmail = DOMPurify.sanitize(emailRef.current.value);
+      const sanitizedPassword = DOMPurify.sanitize(passwordRef.current.value);
+
+      const res = await axios.post("https://hsb-backend-app-rpnm.onrender.com/api/user/login", {
+        email: sanitizedEmail,
+        password: sanitizedPassword,
+      });
+
+      const user = res.data;
+      console.log(user, "checking user");
+
+      let userToken = JSON.stringify(user.token);
+      let Id = JSON.stringify(user.id);
+
+      // Using HttpOnly cookies for storing Token and Id
+      document.cookie = `Token=${userToken}; path=/; HttpOnly; Secure; SameSite=Strict`;
+      document.cookie = `Id=${Id}; path=/; HttpOnly; Secure; SameSite=Strict`;
+
+      if (user.user === "admin") {
+        return navigate("/home");
+      }
+      if (user.user === "accountant") {
+        return navigate("/accountantHomePage");
+      }
     } catch (err) {
       console.log(err.message);
     }
   };
+
+
+
   return (
     <>
       <div className="w-full h-full">
@@ -79,60 +83,62 @@ const Login = () => {
                 <form
                   className="flex flex-col items-center justify-center"
                   onSubmit={handleSubmit(handleLoginValidation)}
-                >
+                  >
                   <div className="mb-4">
+                    {/* Using ref instead of value and onChange */}
                     <input
                       type="email"
                       name="email"
-                      value={email}
                       placeholder="Email"
                       className="w-[441px] h-[55px] border border-[#2b9558] text-gray-700 p-3 focus:ring-1 focus:ring-inset focus:ring-[#2b9558] rounded-lg"
-                      onChange={handleChange}
+                      ref={emailRef}
                       required
                     />
                   </div>
                   <div className="relative">
                     <div className="my-4">
+                      {/* Using ref instead of value and onChange */}
                       <input
                         type={seePassword === false ? "password" : "text"}
                         name="password"
-                        value={password}
                         placeholder="Password"
                         className="w-[441px] h-[55px] border border-[#2b9558] text-gray-700 p-3 focus:ring-1 focus:ring-inset focus:ring-[#2b9558] rounded-lg"
-                        onChange={handleChange}
+                        ref={passwordRef}
                         required
                       />
                     </div>
-
+              
                     <div className="text-2xl text-gray-500 absolute top-10 right-5">
-                      {seePassword === false ? (
-                        <AiFillEye onClick={handleToggle} />
-                      ) : (
-                        <AiFillEyeInvisible onClick={handleToggle} />
-                      )}
+                        {seePassword === false ? (
+                          <AiFillEye onClick={handleToggle} />
+                        ) : (
+                          <AiFillEyeInvisible onClick={handleToggle} />
+                        )}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="w-[168px] text-xs h-[18px] text-gray-400 font-normal relative left-[145px]">
-                    Forgot Password? Reset here
-                  </div>
-
+                          
+                    <div className="w-[168px] text-xs h-[18px] text-gray-400 font-normal relative left-[145px]">
+                      Forgot Password? Reset here
+                    </div>
+                  
                   <button
-                    type="submit"
-                    className="mt-10 mb-4 flex items-center justify-center w-[441px] h-[56px] px-2 py-2 tracking-wide text-white text-l font-medium rounded bg-[#FF1C1D] disabled:bg-[#FFB5B5]"
-                    disabled={!password}
-                  >
+                      type="submit"
+                      className="mt-10 mb-4 flex items-center justify-center w-[441px] h-[56px] px-2 py-2 tracking-wide text-white text-l font-medium rounded bg-[#FF1C1D] disabled:bg-[#FFB5B5]"
+                    // Removed the disabled={!password} as password is now managed using useRef
+                    >
                     Sign In <TbLogin className="ml-2" />
                   </button>
                 </form>
               </div>
             </div>
           </div>
-          <div className="w-1/2">
-            <img src={Sidelogo} alt="side-image" className="w-full h-screen" />
-          </div>
-        </div>
-      </div>
+
+  
+                <div className="w-1/2">
+                  <img src={Sidelogo} alt="side-image" className="w-full h-screen" />
+                </div>
+              </div>
+            </div>
     </>
   );
 };
