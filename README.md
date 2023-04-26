@@ -3,6 +3,7 @@
 # HSB
 A tax management application used to facilitate tax management related conversation between the HSB group, tax accountants, and tax clients.
 
+The server side application for this website is found here:
 
 
 ### Overview
@@ -29,7 +30,7 @@ The highlevel overview of how the entire HSB application works is as outlined in
 
 - Frontend Application: The frontend of the desktop admin and accountant application is built with React, which is a popular JavaScript library for building user interfaces. React will provide the user interface for the admin and accountant desktop application.
 
-- Backend Application: The backend of the application is built with Node, which is a popular JavaScript runtime environment. Node will handle the business logic of the application, communicate with the database and provide an API to the frontend.
+- Backend Application(server side:): The backend of the application is built with Node, which is a popular JavaScript runtime environment. Node will handle the business logic of the application, communicate with the database and provide an API to the frontend.
 
 - Mobile Application: The mobile application is built with Flutter, which is an open-source mobile application development framework created by Google. Flutter allows the application to be developed for both Android and iOS devices, and will provide the user interface for clients to communicate with the admin and accountant applications.
 
@@ -52,8 +53,9 @@ Compliance and regulatory issues: The website must comply with relevant tax laws
 ### Before Security:
 Unsecured HTTP requests: 
 The login function from the login page was sending an HTTP POST request to our remote server with the user's email and password in plain text. If this connection is not secured with HTTPS, this could allow an attacker to intercept and view the user's sensitive information.
-|
-|
+
+No rate limiting: 
+The code did not originally implement rate limiting for the login request. This meant that users were allowed to make multiple countless attempts at login into the application, making the application potentially susceptible to brute force attacks.  can 
 #### Solution (After Security)
 
 Here's a summary of the changes made to address the identified security vulnerabilities:
@@ -63,6 +65,8 @@ Here's a summary of the changes made to address the identified security vulnerab
 2. No input sanitization: Imported the DOMPurify library to sanitize user input. DOMPurify helps prevent Cross-Site Scripting (XSS) attacks by sanitizing the user input before sending it to the server.
 
 3. Insecure localStorage usage: Replaced localStorage with HttpOnly cookies for storing the user token and user ID. HttpOnly cookies can only be accessed by the server and not by any client-side JavaScript code, which reduces the risk of XSS attacks. The login credentials should not be stored in the browser's local storage or session storage as it can make the user's sensitive information easily accessible to malicious scripts. Using browser cookies with the secure and HTTP-only flags set to store the authentication token, provides better security and prevents cross-site scripting (XSS) attacks.
+
+4. Implementing rate limiting for both client side and server side.
 
 
 

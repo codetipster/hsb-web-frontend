@@ -14,12 +14,15 @@ import axios from "axios";
 // Importing DOMPurify for input sanitization
 import DOMPurify from "dompurify";
 
+const RATE_LIMIT_TIMEOUT = 10000; // Set rate limit to 5 seconds
+
 const Login = () => {
   const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
   const [seePassword, setSeePassword] = useState(false);
   const { handleSubmit } = useForm();
-
+  const [isRateLimited, setIsRateLimited] = useState(false);
+  
   // Removed initialValues and useState for loginDetails
 
   // Using useRef instead of useState for email and password
@@ -35,14 +38,13 @@ const Login = () => {
       // Sanitize email and password input
       const sanitizedEmail = DOMPurify.sanitize(emailRef.current.value);
       const sanitizedPassword = DOMPurify.sanitize(passwordRef.current.value);
-
-      const res = await axios.post("https://hsb-backend-app-rpnm.onrender.com/api/user/login", {
+      const loginSuccess =  false;
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/login`, {
         email: sanitizedEmail,
         password: sanitizedPassword,
       });
 
       const user = res.data;
-      console.log(user, "checking user");
 
       let userToken = JSON.stringify(user.token);
       let Id = JSON.stringify(user.id);
@@ -50,15 +52,29 @@ const Login = () => {
       // Using HttpOnly cookies for storing Token and Id
       document.cookie = `Token=${userToken}; path=/; HttpOnly; Secure; SameSite=Strict`;
       document.cookie = `Id=${Id}; path=/; HttpOnly; Secure; SameSite=Strict`;
-
+      
       if (user.user === "admin") {
         return navigate("/home");
       }
       if (user.user === "accountant") {
         return navigate("/accountantHomePage");
       }
+      //simulate failed login attempt
+      if (!loginSuccess) {
+        setIsRateLimited(true);
+        setTimeout(()  =>  {
+          setIsRateLimited(false);
+        }, RATE_LIMIT_TIMEOUT);
+        return;
+      }
+
+
     } catch (err) {
       console.log(err.message);
+      setIsRateLimited(true);
+      setTimeout(() => {
+        setIsRateLimited(false);
+      }, RATE_LIMIT_TIMEOUT);
     }
   };
 
@@ -123,7 +139,8 @@ const Login = () => {
                   
                   <button
                       type="submit"
-                      className="mt-10 mb-4 flex items-center justify-center w-[441px] h-[56px] px-2 py-2 tracking-wide text-white text-l font-medium rounded bg-[#FF1C1D] disabled:bg-[#FFB5B5]"
+                      disabled={isRateLimited}
+                      className="mt-10 mb-4 flex items-center justify-center w-[441px] h-[56px] px-2 py-2 tracking-wide text-white text-l font-medium rounded bg-[#FF1C1D] disabled:bg-[#7c7575] disabled:cursor-not-allowed"
                     // Removed the disabled={!password} as password is now managed using useRef
                     >
                     Sign In <TbLogin className="ml-2" />
