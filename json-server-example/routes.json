@@ -1,0 +1,5 @@
+{
+    "/login": "/users?email=:email&password=:password",
+    "/accountants/:id/clients": "/clients?accountant_id=:id"
+}
+  

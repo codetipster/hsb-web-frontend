@@ -1,0 +1,80 @@
+{
+  "users": [
+    { "id": 1, "email": "admin@example.com", "password": "admin123", "role": "admin" },
+    { "id": 2, "email": "accountant1@example.com", "password": "accountant123", "role": "accountant" },
+    { "id": 3, "email": "accountant2@example.com", "password": "accountant123", "role": "accountant" },
+    { "id": 4, "email": "client1@example.com", "password": "client123", "role": "client" },
+    { "id": 5, "email": "client2@example.com", "password": "client123", "role": "client" }
+  ],
+
+
+  "accountants": [
+    { "id": 1, 
+      "phone": "07968565502",
+      "familyName": "Snow",
+      "firstName": "John",
+      "email": "johnsnow12@gmail.com", 
+      "user_id": 2 
+  },
+
+  {   "id": 2, 
+      "phone": "04568565504",
+      "familyName": "Ibrahim",
+      "firstName": "Adieu", 
+      "email": "ibrahim@gmail.com",
+      "user_id": 3 
+  }
+ ],
+
+
+  "clients": [
+  {   "id": 1, 
+      "firstName": "Typicode",
+      "familyName": "Typicode",
+      "address": "The moon host",
+      "city": "Berlin",
+      "zip": 123456,
+      "startDate": "12.12.12",
+      "job": "Software engineer",
+      "company": "Real estate",
+      "bank": "Targobank",
+      "IBAN": "103i494u5895244758",
+      "legalNo": 12345678,
+      "email": "client1@example.com",
+      "mobile": 98765432444,
+      "taxId": 123000,
+      "note": "Please invest in us.",
+      "user_id": 4, 
+      "accountant_id": 1, 
+      "active": true,
+      "reports": [
+          {
+            "id": 1,
+            "name": "file.jpg",
+            "url": "http://localhost:3000/files/file.jpg"
+          }
+        ],
+      "invoices": [
+          {
+            "id": 1,
+            "title": "Cleaner and better customer experience..",
+            "createdOn": "2023-01-06T11:41:57.678Z",
+            "status": "Not Active"
+          },
+          {
+            "id": 2,
+            "title": "Cleaner and better customer experience..",
+            "createdOn": "2023-01-06T11:41:57.678Z",
+            "status": "Not Active"
+          }
+      ]
+  },
+
+  {  "id": 2, 
+      "name": "Globex Corp.", 
+      "user_id": 5, 
+      "accountant_id": 2, 
+      "active": true 
+  }
+  ]
+}

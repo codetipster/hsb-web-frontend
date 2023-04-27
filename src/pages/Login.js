@@ -39,7 +39,7 @@ const Login = () => {
       const sanitizedEmail = DOMPurify.sanitize(emailRef.current.value);
       const sanitizedPassword = DOMPurify.sanitize(passwordRef.current.value);
       const loginSuccess =  false;
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/login`, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL_DEVELOPMENT}/api/user/login`, {
         email: sanitizedEmail,
         password: sanitizedPassword,
       });
@@ -137,7 +137,7 @@ const Login = () => {
                         required
                       />
                     </div>
-              
+                    
                     <div className="text-2xl text-gray-500 absolute top-10 right-5">
                         {seePassword === false ? (
                           <AiFillEye onClick={handleToggle} />

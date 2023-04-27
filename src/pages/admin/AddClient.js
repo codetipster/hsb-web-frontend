@@ -6,6 +6,8 @@ import { MdOutlineArrowBackIos } from "react-icons/md";
 import { BiSave } from "react-icons/bi";
 import AccountantInfo from "../../components/AccountantInfo";
 import { useTranslation, Trans } from "react-i18next";
+
+
 const AddClient = ({ clients }) => {
   const navigate = useNavigate();
   const { handleSubmit } = useForm();
@@ -77,7 +79,7 @@ const AddClient = ({ clients }) => {
   }, []);
 
   const createClientData = () => {
-    const url = "https://hsb-backend-app-rpnm.onrender.com/api/admin/create-client";
+    const url = `${process.env.REACT_APP_API_URL_DEVELOPMENT}/api/admin/create-client`;
     try {
       fetch(url, {
         method: "POST",
@@ -121,7 +123,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="firstName"
               value={firstName}
@@ -138,7 +140,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="lastName"
               value={lastName}
@@ -155,7 +157,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="email"
               name="email"
               value={email}
@@ -173,7 +175,7 @@ const AddClient = ({ clients }) => {
               </label>
               <input
                 id="forms-labelOverInputCode"
-                className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+                className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
                 type={seePassword === false ? "password" : "text"}
                 placeholder="|***********"
                 name="password"
@@ -199,7 +201,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="homeNumber"
               value={homeNumber}
@@ -216,7 +218,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="mobileNumber"
               value={mobileNumber}
@@ -233,7 +235,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="companyType"
               value={companyType}
@@ -250,7 +252,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="bankName"
               value={bankName}
@@ -267,7 +269,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="iban"
               value={iban}
@@ -284,7 +286,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="jobType"
               value={jobType}
@@ -301,7 +303,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="zipCode"
               value={zipCode}
@@ -318,7 +320,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="city"
               value={city}
@@ -335,7 +337,7 @@ const AddClient = ({ clients }) => {
             </label>
             <input
               id="forms-labelOverInputCode"
-              className="w-[441px] h-[55px] px-3 text-base text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
+              className="w-[441px] h-[55px] px-3 text-sm placeholder-gray-350 border rounded-lg focus:shadow-outline"
               type="text"
               name="legalNumber"
               value={legalNumber}

@@ -16,10 +16,12 @@ There are three main category of users:
 ### How to run this application (Locally)
 A deployed version of this application(web) is currently running on the following live URL(https://hsbkanzlei.de).
 
+#### Client side setup
 Follow these steps to get it running on your local machine;
 - Clone this repository by running `git clone https://github.com/codetipster/hsb-web-frontend.git` from your terminal.
 - Cd into cloned project with `cd hsb-web-frontend`.
 - run `npm install`to install all required dependencies.
+- create a .env file within the root of the project and add REACT_APP_API_URL=https://hsb-backend-app-rpnm.onrender.com into it.
 - run `npm start`to start the project on localhost.
 - for test purposes, please login with [email: admin@gmail.com, password: 12345]
 

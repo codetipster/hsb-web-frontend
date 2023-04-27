@@ -71,6 +71,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^8.0.1",
     "file-loader": "^6.2.0",
     "flag-icon-css": "^4.1.7",
     "json-server": "^0.17.1",

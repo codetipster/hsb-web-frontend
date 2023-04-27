@@ -26,7 +26,7 @@ const Adminprofile = () => {
         setToken(token);
       }
       axios
-        .get("https://hsb-backend-app-rpnm.onrender.com/api/admin/profile", {
+        .get(`${process.env.REACT_APP_API_URL_DEVELOPMENT}/api/admin/profile`, {
           headers: {
             Authorization: token,
             "Content-type": "application/json",
